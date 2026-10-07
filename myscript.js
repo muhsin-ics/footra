@@ -227,8 +227,7 @@
     });
   })();
 
-
-/* about */
+//about
 
   // ========== GLOBAL VARIABLES ==========
         let cartTotal = 0;
