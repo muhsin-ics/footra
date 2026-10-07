@@ -584,3 +584,50 @@
 
         // Initialize
         updateCartCount();
+
+//Product
+
+const product = JSON.parse(localStorage.getItem("selectedProduct"));
+
+let selectedSize = null;
+
+if(product){
+    document.getElementById("productName").innerText = product.name;
+    document.getElementById("productPrice").innerText = product.price;
+    document.getElementById("productImage").src = product.image;
+}
+
+// Size selection
+document.querySelectorAll(".size-options button").forEach(btn=>{
+    btn.addEventListener("click",function(){
+        document.querySelectorAll(".size-options button")
+        .forEach(b=>b.classList.remove("active"));
+
+        this.classList.add("active");
+        selectedSize = this.innerText;
+    });
+});
+
+// Checkout button
+document.querySelector(".checkout-btn").addEventListener("click", function(){
+
+    if(!selectedSize){
+        alert("Please select a size first.");
+        return;
+    }
+
+    const checkoutData = {
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        size: selectedSize
+    };
+
+    localStorage.setItem("checkoutProduct", JSON.stringify(checkoutData));
+
+    window.location.href = "checkout.html";
+});
+
+function goBack(){
+    window.location.href = "index.html"; 
+}
