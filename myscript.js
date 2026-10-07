@@ -631,3 +631,62 @@ document.querySelector(".checkout-btn").addEventListener("click", function(){
 function goBack(){
     window.location.href = "index.html"; 
 }
+
+// checkout
+
+document.getElementById("checkoutForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const fullname = document.getElementById("fullname").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const city = document.getElementById("city").value.trim();
+    const pincode = document.getElementById("pincode").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const namePattern = /^[A-Za-z ]+$/;
+    const phonePattern = /^[0-9]{10}$/;
+    const pinPattern = /^[0-9]{6}$/;
+
+    if(!email || !fullname || !address || !city || !pincode || !phone){
+        alert("Please fill all fields.");
+        return;
+    }
+
+    if(!emailPattern.test(email)){
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    if(!namePattern.test(fullname)){
+        alert("Full name should contain letters only.");
+        return;
+    }
+
+    if(!pinPattern.test(pincode)){
+        alert("PIN Code must be 6 digits.");
+        return;
+    }
+
+    if(!phonePattern.test(phone)){
+        alert("Phone number must be 10 digits.");
+        return;
+    }
+
+    alert("Payment Successful! 🎉");
+});
+function goBackToProduct(){
+    window.history.back();
+}
+
+const data = JSON.parse(localStorage.getItem("checkoutProduct"));
+
+if(data){
+    document.getElementById("summaryImage").src = data.image;
+    document.getElementById("summaryName").innerText = data.name;
+    document.getElementById("summarySize").innerText = "Size: " + data.size;
+    document.getElementById("summaryPrice").innerText = data.price;
+    document.getElementById("summaryTotal").innerText = data.price;
+}
