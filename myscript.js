@@ -269,201 +269,272 @@
 
 
     // =========================================================
-    // WISHLIST
-    // =========================================================
+// WISHLIST
+// =========================================================
 
-    let wishlistItems = getStoredJSON("footraWishlist", []) || [];
+let wishlist = getStoredJSON("footraWishlist", []) || [];
 
-    if (!Array.isArray(wishlistItems)) {
-        wishlistItems = [];
+if (!Array.isArray(wishlist)) {
+    wishlist = [];
+}
+
+
+function saveWishlist() {
+    setStoredJSON("footraWishlist", wishlist);
+}
+
+
+// ---------------------------------------------------------
+// RENDER WISHLIST
+// ---------------------------------------------------------
+
+function renderWishlist() {
+
+    const container = $("wishlistItems");
+
+    if (!container) return;
+
+    if (wishlist.length === 0) {
+        container.innerHTML = `
+            <p class="wishlist-empty">
+                Your wishlist is empty.
+            </p>
+        `;
+        return;
     }
 
+    container.innerHTML = wishlist.map((item, index) => `
+        <div class="wishlist-item" data-index="${index}">
 
-    function saveWishlist() {
-        setStoredJSON("footraWishlist", wishlistItems);
-    }
+            <img
+                src="${item.image || ""}"
+                alt="${item.name || "Product"}"
+            >
 
-
-    function renderWishlist() {
-        const wishlistDiv = $("wishlistItems");
-
-        if (!wishlistDiv) return;
-
-        if (wishlistItems.length === 0) {
-            wishlistDiv.innerHTML = "<p>Your wishlist is empty.</p>";
-            return;
-        }
-
-        wishlistDiv.innerHTML = wishlistItems.map((item, index) => `
-            <div class="wishlist-item" data-name="${item.name}">
-                <img
-                    src="${item.image || ""}"
-                    alt="${item.name || "Wishlist product"}"
-                >
-
-                <div>
-                    <h5>${item.name}</h5>
-                    <p>₹${Number(item.price).toLocaleString("en-IN")}</p>
-                </div>
-
-                <button
-                    type="button"
-                    class="remove-wishlist"
-                    data-index="${index}"
-                    aria-label="Remove ${item.name} from wishlist"
-                >
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+            <div class="wishlist-info">
+                <h5>${item.name || ""}</h5>
+                <p>${item.price || ""}</p>
             </div>
-        `).join("");
+
+            <button
+                type="button"
+                class="remove-wishlist"
+                data-index="${index}"
+                aria-label="Remove ${item.name || "item"}"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+    `).join("");
+
+    updateWishlistHearts();
+}
+
+
+// ---------------------------------------------------------
+// OPEN WISHLIST
+// ---------------------------------------------------------
+
+window.openWishlist = function () {
+
+    const wishlistDrawer = $("wishlistDrawer");
+    const wishlistOverlay = $("wishlistOverlay");
+
+    if (!wishlistDrawer || !wishlistOverlay) return;
+
+    closeCart();
+
+    renderWishlist();
+
+    wishlistDrawer.classList.add("active");
+    wishlistOverlay.classList.add("active");
+};
+
+
+// ---------------------------------------------------------
+// CLOSE WISHLIST
+// ---------------------------------------------------------
+
+window.closeWishlist = function () {
+
+    const wishlistDrawer = $("wishlistDrawer");
+    const wishlistOverlay = $("wishlistOverlay");
+
+    if (wishlistDrawer) {
+        wishlistDrawer.classList.remove("active");
     }
 
-
-    window.openWishlist = function () {
-        const wishlistDrawer = $("wishlistDrawer");
-        const wishlistOverlay = $("wishlistOverlay");
-
-        if (!wishlistDrawer || !wishlistOverlay) return;
-
-        closeCart();
-
-        renderWishlist();
-
-        wishlistDrawer.classList.add("active");
-        wishlistOverlay.classList.add("active");
-    };
+    if (wishlistOverlay) {
+        wishlistOverlay.classList.remove("active");
+    }
+};
 
 
-    window.closeWishlist = function () {
-        const wishlistDrawer = $("wishlistDrawer");
-        const wishlistOverlay = $("wishlistOverlay");
+// ---------------------------------------------------------
+// UPDATE HEART ICONS
+// ---------------------------------------------------------
 
-        if (wishlistDrawer) {
-            wishlistDrawer.classList.remove("active");
+function updateWishlistHearts() {
+
+    document.querySelectorAll(".shoe-card").forEach(card => {
+
+        const nameElement = card.querySelector("h4");
+        const heart = card.querySelector(".wishlist-icon");
+
+        if (!nameElement || !heart) return;
+
+        const name = nameElement.textContent.trim();
+
+        const exists = wishlist.some(
+            item => item.name === name
+        );
+
+        if (exists) {
+
+            heart.classList.remove("fa-regular");
+            heart.classList.add("fa-solid", "active");
+
+        } else {
+
+            heart.classList.remove("fa-solid", "active");
+            heart.classList.add("fa-regular");
         }
-
-        if (wishlistOverlay) {
-            wishlistOverlay.classList.remove("active");
-        }
-    };
+    });
+}
 
 
-    function initializeWishlistButtons() {
+// ---------------------------------------------------------
+// WISHLIST BUTTONS
+// ---------------------------------------------------------
 
-        document.querySelectorAll(".wishlist-icon").forEach(icon => {
+function initializeWishlistButtons() {
 
-            const card = icon.closest(".shoe-card");
+    document.querySelectorAll(".wishlist-icon").forEach(icon => {
+
+        icon.addEventListener("click", function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            const card = this.closest(".shoe-card");
 
             if (!card) return;
 
-            const nameElement = card.querySelector("h4");
+            const nameElement =
+                card.querySelector("h4");
 
-            if (!nameElement) return;
+            const priceElement =
+                card.querySelector("p");
 
-            const productName = nameElement.textContent.trim();
+            const imageElement =
+                card.querySelector(".img-default");
 
-            // Restore saved wishlist state
-            const alreadySaved = wishlistItems.some(
-                item => item.name === productName
-            );
-
-            if (alreadySaved) {
-                icon.classList.remove("fa-regular");
-                icon.classList.add("fa-solid", "active");
+            if (
+                !nameElement ||
+                !priceElement ||
+                !imageElement
+            ) {
+                return;
             }
 
-            icon.addEventListener("click", function (event) {
+            const item = {
+                name: nameElement.textContent.trim(),
+                price: priceElement.textContent.trim(),
+                image: imageElement.src
+            };
 
-                event.preventDefault();
-                event.stopPropagation();
 
-                const name = card.querySelector("h4")?.textContent.trim();
-                const price = card.querySelector("p")?.textContent.trim();
-                const image = card.querySelector(".img-default")?.src;
+            const existingIndex = wishlist.findIndex(
+                product => product.name === item.name
+            );
 
-                if (!name || !price) return;
 
-                const existingIndex = wishlistItems.findIndex(
-                    item => item.name === name
+            // REMOVE
+            if (existingIndex !== -1) {
+
+                wishlist.splice(existingIndex, 1);
+
+                this.classList.remove(
+                    "fa-solid",
+                    "active"
                 );
 
-                // Remove
-                if (existingIndex !== -1) {
+                this.classList.add(
+                    "fa-regular"
+                );
 
-                    wishlistItems.splice(existingIndex, 1);
+            }
 
-                    icon.classList.remove("fa-solid", "active");
-                    icon.classList.add("fa-regular");
+            // ADD
+            else {
 
-                }
+                wishlist.push(item);
 
-                // Add
-                else {
+                this.classList.remove(
+                    "fa-regular"
+                );
 
-                    const numericPrice = Number(
-                        price.replace(/[₹,\s]/g, "")
-                    );
+                this.classList.add(
+                    "fa-solid",
+                    "active"
+                );
+            }
 
-                    wishlistItems.push({
-                        name: name,
-                        price: numericPrice,
-                        image: image || ""
-                    });
 
-                    icon.classList.remove("fa-regular");
-                    icon.classList.add("fa-solid", "active");
+            saveWishlist();
 
-                    openWishlist();
-                }
+            renderWishlist();
 
-                saveWishlist();
-                renderWishlist();
-            });
+            openWishlist();
         });
-    }
+    });
+}
 
 
-    function initializeWishlistRemove() {
+// ---------------------------------------------------------
+// REMOVE WISHLIST ITEM
+// ---------------------------------------------------------
 
-        const wishlistDiv = $("wishlistItems");
+function initializeWishlistRemove() {
 
-        if (!wishlistDiv) return;
+    const container = $("wishlistItems");
 
-        wishlistDiv.addEventListener("click", function (event) {
+    if (!container) return;
 
-            const removeButton = event.target.closest(".remove-wishlist");
+    container.addEventListener(
+        "click",
+        function (event) {
+
+            const removeButton =
+                event.target.closest(".remove-wishlist");
 
             if (!removeButton) return;
 
-            const index = Number(removeButton.dataset.index);
+            event.preventDefault();
+            event.stopPropagation();
 
-            if (index < 0 || index >= wishlistItems.length) return;
+            const index =
+                Number(removeButton.dataset.index);
 
-            const removedItem = wishlistItems[index];
+            if (
+                Number.isNaN(index) ||
+                index < 0 ||
+                index >= wishlist.length
+            ) {
+                return;
+            }
 
-            wishlistItems.splice(index, 1);
+            wishlist.splice(index, 1);
 
             saveWishlist();
+
             renderWishlist();
 
-            // Remove active heart from product card
-            document.querySelectorAll(".shoe-card").forEach(card => {
-
-                const name = card.querySelector("h4")?.textContent.trim();
-
-                if (name === removedItem.name) {
-
-                    const heart = card.querySelector(".wishlist-icon");
-
-                    if (heart) {
-                        heart.classList.remove("fa-solid", "active");
-                        heart.classList.add("fa-regular");
-                    }
-                }
-            });
-        });
-    }
-
+            updateWishlistHearts();
+        }
+    );
+}
 
     // =========================================================
     // SEARCH
