@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FOOTRA | Premium Footwear</title>
+
+    <meta
+        name="description"
+        content="FOOTRA - Premium footwear designed for confidence, comfort and timeless style."
+    >
+
+    <!-- =========================
+         FONT AWESOME
+    ========================== -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <!-- =========================
+         GOOGLE FONT
+    ========================== -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- =========================
+         BOOTSTRAP
+    ========================== -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    >
+
+    <!-- =========================
+         FOOTRA CSS
+    ========================== -->
+    <link
+        rel="stylesheet"
+        href="mystyle.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- =========================
+         MOBILE MENU OVERLAY
+    ========================== -->
+    <div
+        class="mobile-menu-overlay"
+        id="mobileMenuOverlay"
+        onclick="toggleMobileMenu()"
+        aria-hidden="true">
+    </div>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+    <header class="navbar">
+
+        <!-- LOGO -->
+        <a
+            href="index.html"
+            aria-label="FOOTRA Home">
+
+            <img
+                src="LOGO.png"
+                id="logo"
+                alt="FOOTRA">
+
+        </a>
+
+
+        <!-- NAVIGATION -->
+        <nav aria-label="Main navigation">
+
+            <ul
+                class="menu"
+                id="mainMenu">
+
+                <li>
+                    <a
+                        href="#home"
+                        class="active">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#shop">
+                        Shop
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        About
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+
+        <!-- NAV RIGHT -->
+        <div class="nav-right">
+
+            <!-- SEARCH -->
+            <button
+                type="button"
+                class="nav-icon"
+                onclick="toggleSearch()"
+                aria-label="Open search">
+
+                <i
+                    class="fa-solid fa-magnifying-glass"
+                    aria-hidden="true">
+                </i>
+
+            </button>
+
+
+            <!-- USER -->
+            <div class="user-dropdown">
+
+                <button
+                    type="button"
+                    class="nav-icon"
+                    onclick="toggleUserMenu(event)"
+                    aria-label="Open account menu">
+
+                    <i
+                        class="fa-regular fa-user"
+                        aria-hidden="true">
+                    </i>
+
+                </button>
+
+
+                <div
+                    class="user-menu"
+                    id="userMenu">
+
+                    <a
+                        href="#"
+                        onclick="openLogin(); return false;">
+                        Login
+                    </a>
+
+                    <a
+                        href="#"
+                        onclick="openRegister(); return false;">
+                        Register
+                    </a>
+
+                    <a
+                        href="#"
+                        onclick="openAccount(); return false;">
+                        My Account
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- CART -->
+            <button
+                type="button"
+                class="nav-icon"
+                onclick="openCart()"
+                aria-label="Open shopping cart">
+
+                <i
+                    class="fa-solid fa-cart-shopping"
+                    aria-hidden="true">
+                </i>
+
+            </button>
+
+
+            <!-- WISHLIST -->
+            <button
+                type="button"
+                class="nav-icon"
+                onclick="openWishlist()"
+                aria-label="Open wishlist">
+
+                <i
+                    class="fa-solid fa-heart"
+                    aria-hidden="true">
+                </i>
+
+            </button>
+
+
+            <!-- MOBILE MENU -->
+            <button
+                type="button"
+                class="nav-icon menu-toggle"
+                onclick="toggleMobileMenu()"
+                aria-label="Open mobile menu">
+
+                <i
+                    class="fa-solid fa-bars"
+                    aria-hidden="true">
+                </i>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         SEARCH BAR
+    ========================== -->
+    <div
+        class="search-bar"
+        id="searchBar">
+
+        <input
+            type="search"
+            id="siteSearch"
+            placeholder="Search for boots, shoes..."
+            aria-label="Search products">
+
+        <button
+            type="button"
+            class="close-search"
+            onclick="toggleSearch()"
+            aria-label="Close search">
+
+            ✕
+
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         CART OVERLAY
+    ========================== -->
+    <div
+        class="cart-overlay"
+        id="cartOverlay"
+        onclick="closeCart()"
+        aria-hidden="true">
+    </div>
+
+
+    <!-- =========================
+         CART DRAWER
+    ========================== -->
+    <aside
+        class="cart-drawer"
+        id="cartDrawer"
+        aria-label="Shopping cart">
+
+        <div class="cart-header">
+
+            <h3>
+                Your Cart
+
+                <span
+                    class="cart-count"
+                    id="cartCount">
+                    0
+                </span>
+            </h3>
+
+            <button
+                type="button"
+                class="close-cart"
+                onclick="closeCart()"
+                aria-label="Close cart">
+
+                ✕
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="cart-body"
+            id="cartItems">
+
+            <p>Your cart is empty.</p>
+
+        </div>
+
+
+        <div class="cart-footer">
+
+            <h3>
+                Total:
+                ₹<span id="cartTotal">0</span>
+            </h3>
+
+            <button
+                type="button"
+                class="checkout-btn"
+                id="cartCheckoutBtn"
+                onclick="checkout()">
+
+                Checkout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         WISHLIST OVERLAY
+    ========================== -->
+    <div
+        class="cart-overlay"
+        id="wishlistOverlay"
+        onclick="closeWishlist()"
+        aria-hidden="true">
+    </div>
+
+
+    <!-- =========================
+         WISHLIST DRAWER
+    ========================== -->
+    <aside
+        class="wishlist-drawer"
+        id="wishlistDrawer"
+        aria-label="Wishlist">
+
+        <div class="wishlist-header">
+
+            <h3>
+                Your Wishlist
+            </h3>
+
+            <button
+                type="button"
+                class="close-cart"
+                onclick="closeWishlist()"
+                aria-label="Close wishlist">
+
+                ✕
+
+            </button>
+
+        </div>
+
+
+        <div id="wishlistItems">
+
+            <p>
+                Your wishlist is empty.
+            </p>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <main>
+
+        <section id="home">
+
+            <div class="webbnr">
+
+                <img
+                    src="boots.png"
+                    alt="Titan-X Men's Black Boots"
+                    loading="eager">
+
+
+                <div class="webbnr-content">
+
+                    <h1>
+                        Bold Steps
+                        <br>
+                        After Dark
+                    </h1>
+
+                    <p>
+                        Own every stride with the
+                        Titan-X Men's Black Boots
+                    </p>
+
+                    <a href="#shop">
+
+                        <button
+                            type="button"
+                            class="btn-shop">
+
+                            Shop Now
+
+                        </button>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FEATURES
+        ========================== -->
+        <section
+            class="box1"
+            aria-label="FOOTRA benefits">
+
+            <div class="feature">
+
+                <i
+                    class="fa-solid fa-truck-fast"
+                    aria-hidden="true">
+                </i>
+
+                <h2>Free Delivery</h2>
+
+                <p>
+                    Free shipping
+                </p>
+
+            </div>
+
+
+            <div class="vertical-line"></div>
+
+
+            <div class="feature">
+
+                <i
+                    class="fa-solid fa-arrow-rotate-left"
+                    aria-hidden="true">
+                </i>
+
+                <h2>Return Policy</h2>
+
+                <p>
+                    30-day return
+                </p>
+
+            </div>
+
+
+            <div class="vertical-line"></div>
+
+
+            <div class="feature">
+
+                <i
+                    class="fa-solid fa-headset"
+                    aria-hidden="true">
+                </i>
+
+                <h2>24/7 Support</h2>
+
+                <p>
+                    Always here
+                </p>
+
+            </div>
+
+
+            <div class="vertical-line"></div>
+
+
+            <div class="feature">
+
+                <i
+                    class="fa-solid fa-coins"
+                    aria-hidden="true">
+                </i>
+
+                <h2>Secure Payment</h2>
+
+                <p>
+                    100% secure
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SHOE GALLERY
+        ========================== -->
+        <section
+            class="shoe-gallery"
+            aria-label="FOOTRA footwear">
+
+            <img
+                src="boots1.jpg"
+                class="img img1"
+                alt="FOOTRA boots"
+                loading="lazy">
+
+            <img
+                src="boots3.jpg"
+                class="img img2"
+                alt="FOOTRA boots"
+                loading="lazy">
+
+            <img
+                src="boots12.jpg"
+                class="img img3"
+                alt="FOOTRA boots"
+                loading="lazy">
+
+            <img
+                src="boots5.jpg"
+                class="img img4"
+                alt="FOOTRA boots"
+                loading="lazy">
+
+            <img
+                src="boots6.jpg"
+                class="img img5"
+                alt="FOOTRA boots"
+                loading="lazy">
+
+        </section>
+
+
+        <!-- =========================
+             PRODUCT COLLECTION
+        ========================== -->
+        <section
+            id="shop"
+            class="gallery-section">
+
+            <h2 class="gallery-title">
+                Our Collection
+            </h2>
+
+
+            <div
+                class="gallery-grid"
+                id="productGrid">
+
+
+                <!-- PRODUCT 1 -->
+                <article
+                    class="shoe-card"
+                    data-name="Leather Brown Boots"
+                    data-price="1499">
+
+                    <div class="img-container">
+
+                        <img
+                            src="bt1.jpg"
+                            class="img-default"
+                            alt="Leather Brown Boots"
+                            loading="lazy">
+
+                        <img
+                            src="bt11.jpg"
+                            class="img-hover"
+                            alt="Leather Brown Boots alternate view"
+                            loading="lazy">
+
+
+                        <button
+                            type="button"
+                            class="cart-icon"
+                            aria-label="Add Leather Brown Boots to cart">
+
+                            <i
+                                class="fa-solid fa-cart-shopping"
+                                aria-hidden="true">
+                            </i>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="wishlist-icon"
+                            aria-label="Add Leather Brown Boots to wishlist">
+
+                            <i
+                                class="fa-regular fa-heart"
+                                aria-hidden="true">
+                            </i>
+
+                        </button>
+
+                    </div>
+
+
+                    <h3>
+                        Leather Brown Boots
+                    </h3>
+
+                    <p>
+                        ₹1499
+                    </p>
+
+                    <button
+                        type="button"
+                        class="buy-btn">
+
+                        Buy Now
+
+                    </button>
+
+                </article>
+
+
+                <!-- PRODUCT 2 -->
+                <article
+                    class="shoe-card"
+                    data-name="Black Loafers"
+                    data-price="1199">
+
+                    <div class="img-container">
+
+                        <img
+                            src="bt2.jpg"
+                            class="img-default"
+                            alt="Black Loafers"
+                            loading="lazy">
+
+                        <img
+                            src="bt22.jpg"
+                            class="img-hover"
+                            alt="Black Loafers alternate view"
+                            loading="lazy">
+
+
+                        <button
+                            type="button"
+                            class="cart-icon"
+                            aria-label="Add Black Loafers to cart">
+
+                            <i
+                                class="fa-solid fa-cart-shopping"
+                                aria-hidden="true">
+                            </i>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="wishlist-icon"
+                            aria-label="Add Black Loafers to wishlist">
+
+                            <i
+                                class="fa-regular fa-heart"
+                                aria-hidden="true">
+                            </i>
+
+                        </button>
+
+                    </div>
+
+
+                    <h3>
+                        Black Loafers
+                    </h3>
+
+                    <p>
+                        ₹1199
+                    </p>
+
+                    <button
+                        type="button"
+                        class="buy-btn">
+
+                        Buy Now
+
+                    </button>
+
+                </article>
+
+
+                <!-- PRODUCT 3 -->
+                <article
+                    class="shoe-card"
+                    data-name="Classic Boots"
+                    data-price="1099">
+
+                    <div class="img-container">
+
+                        <img
+                            src="bt3.jpg"
+                            class="img-default"
+                            alt="Classic Boots"
+                            loading="lazy">
+
+                        <img
+                            src="bt33.jpg"
+                            class="img-hover"
+                            alt="Classic Boots alternate view"
+                            loading="lazy">
+
+
+                        <button
+                            type="button"
+                            class="cart-icon"
+                            aria-label="Add Classic Boots to cart">
+
+                            <i
+                                class="fa-solid fa-cart-shopping"
+                                aria-hidden="true">
+                            </i>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="wishlist-icon"
+                            aria-label="Add Classic Boots to wishlist">
+
+                            <i
+                                class="fa-regular fa-heart"
+                                aria-hidden="true">
+                            </i>
+
+                        </button>
+
+                    </div>
+
+
+                    <h3>
+                        Classic Boots
+                    </h3>
+
+                    <p>
+                        ₹1099
+                    </p>
+
+                    <button
+                        type="button"
+                        class="buy-btn">
+
+                        Buy Now
+
+                    </button>
+
+                </article>
+
+
+                <!-- PRODUCT 4 -->
+                <article
+                    class="shoe-card"
+                    data-name="Chelsea Boots"
+                    data-price="999">
+
+                    <div class="img-container">
+
+                        <img
+                            src="bt4.jpg"
+                            class="img-default"
+                            alt="Chelsea Boots"
+                            loading="lazy">
+
+                        <img
+                            src="bt44.jpg"
+                            class="img-hover"
+                            alt="Chelsea Boots alternate view"
+                            loading="lazy">
+
+
+                        <button
+                            type="button"
+                            class="cart-icon"
+                            aria-label="Add Chelsea Boots to cart">
+
+                            <i
+                                class="fa-solid fa-cart-shopping"
+                                aria-hidden="true">
+                            </i>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="wishlist-icon"
+                            aria-label="Add Chelsea Boots to wishlist">
+
+                            <i
+                                class="fa-regular fa-heart"
+                                aria-hidden="true">
+                            </i>
+
+                        </button>
+
+                    </div>
+
+
+                    <h3>
+                        Chelsea Boots
+                    </h3>
+
+                    <p>
+                        ₹999
+                    </p>
+
+                    <button
+                        type="button"
+                        class="buy-btn">
+
+                        Buy Now
+
+                    </button>
+
+                </article>
+
+
+                <!-- PRODUCT 5 -->
+                <article
+                    class="shoe-card"
+                    data-name="Black Point Toe Boots"
+                    data-price="1349">
+
+                    <div class="img-container">
+
+                        <img
+                            src="bt5.jpg"
+                            class="img-default"
+                            alt="Black Point Toe Boots"
+                            loading="lazy">
+
+                        <img
+                            src="bt55.jpg"
+                            class="img-hover"
+                            alt="Black Point Toe Boots alternate view"
+                            loading="lazy">
+
+
+                        <button
+                            type="button"
+                            class="cart-icon"
+                            aria-label="Add Black Point Toe Boots to cart">
+
+                            <i
+                                class="fa-solid fa-cart-shopping"
+                                aria-hidden="true">
+                            </i>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="wishlist-icon"
+                            aria-label="Add Black Point Toe Boots to wishlist">
+
+                            <i
+                                class="fa-regular fa-heart"
+                                aria-hidden="true">
+                            </i>
+
+                        </button>
+
+                    </div>
+
+
+                    <h3>
+                        Black Point Toe Boots
+                    </h3>
+
+                    <p>
+                        ₹1349
+                    </p>
+
+                    <button
+                        type="button"
+                        class="buy-btn">
+
+                        Buy Now
+
+                    </button>
+
+                </article>
+
+
+                <!-- PRODUCT 6 -->
+                <article
+                    class="shoe-card"
+                    data-name="Formal Leather Boots"
+                    data-price="1199">
+
+                    <div class="img-container">
+
+                        <img
+                            src="bt6.jpg"
+                            class="img-default"
+                            alt="Formal Leather Boots"
+                            loading="lazy">
+
+                        <img
+                            src="bt66.jpg"
+                            class="img-hover"
+                            alt="Formal Leather Boots alternate view"
+                            loading="lazy">
+
+
+                        <button
+                            type="button"
+                            class="cart-icon"
+                            aria-label="Add Formal Leather Boots to cart">
+
+                            <i
+                                class="fa-solid fa-cart-shopping"
+                                aria-hidden="true">
+                            </i>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="wishlist-icon"
+                            aria-label="Add Formal Leather Boots to wishlist">
+
+                            <i
+                                class="fa-regular fa-heart"
+                                aria-hidden="true">
+                            </i>
+
+                        </button>
+
+                    </div>
+
+
+                    <h3>
+                        Formal Leather Boots
+                    </h3>
+
+                    <p>
+                        ₹1199
+                    </p>
+
+                    <button
+                        type="button"
+                        class="buy-btn">
+
+                        Buy Now
+
+                    </button>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EXCLUSIVE OFFER
+        ========================== -->
+        <section class="exclusive-wrapper">
+
+            <img
+                src="exclusive.png"
+                alt="FOOTRA exclusive footwear offer"
+                loading="lazy">
+
+
+            <div class="exclusive-content">
+
+                <h2 class="offer-title">
+                    Limited Time Exclusive
+                </h2>
+
+                <p class="offer-text">
+                    Don't miss your chance to elevate your style.
+                    Unlock premium footwear with exclusive savings —
+                    once it's gone, it's gone.
+                </p>
+
+
+                <div class="countdown-box">
+
+                    <h3>
+                        Offer Ends In
+                    </h3>
+
+                    <div
+                        id="countdown"
+                        aria-live="polite">
+                        24:00:00
+                    </div>
+
+                </div>
+
+
+                <a href="#shop">
+
+                    <button
+                        type="button"
+                        class="btn-shop">
+
+                        SHOP NOW
+
+                    </button>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+
+            <!-- BRAND -->
+            <div class="footer-col">
+
+                <h2 class="footer-logo">
+                    FOOTRA
+                </h2>
+
+                <p class="footer-text">
+                    Elevate your style with premium footwear
+                    crafted for confidence, comfort, and
+                    timeless design.
+                </p>
+
+            </div>
+
+
+            <!-- QUICK LINKS -->
+            <div class="footer-col">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#home">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#shop">
+                            Shop
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- SUPPORT -->
+            <div class="footer-col">
+
+                <h3>
+                    Support
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#">
+                            Help Center
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Returns
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Shipping
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Track Order
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- SOCIAL -->
+            <div class="footer-col">
+
+                <h3>
+                    Follow Us
+                </h3>
+
+                <div class="footer-social">
+
+                    <a
+                        href="#"
+                        aria-label="Instagram">
+
+                        <i
+                            class="fa-brands fa-instagram"
+                            aria-hidden="true">
+                        </i>
+
+                    </a>
+
+
+                    <a
+                        href="#"
+                        aria-label="Facebook">
+
+                        <i
+                            class="fa-brands fa-facebook"
+                            aria-hidden="true">
+                        </i>
+
+                    </a>
+
+
+                    <a
+                        href="#"
+                        aria-label="Twitter">
+
+                        <i
+                            class="fa-brands fa-twitter"
+                            aria-hidden="true">
+                        </i>
+
+                    </a>
+
+
+                    <a
+                        href="#"
+                        aria-label="YouTube">
+
+                        <i
+                            class="fa-brands fa-youtube"
+                            aria-hidden="true">
+                        </i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            © 2026 FOOTRA. All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         AUTH MODAL
+    ========================== -->
+    <div
+        id="authModal"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="loginTitle">
+
+        <div class="modal-content">
+
+
+            <!-- LOGIN -->
+            <section id="loginSection">
+
+                <h2 id="loginTitle">
+                    Login
+                </h2>
+
+
+                <label
+                    for="loginEmail"
+                    class="sr-only">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Email"
+                    autocomplete="email">
+
+
+                <label
+                    for="loginPassword"
+                    class="sr-only">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Password"
+                    autocomplete="current-password">
+
+
+                <button type="button">
+                    Login
+                </button>
+
+
+                <p>
+                    Don't have an account?
+
+                    <button
+                        type="button"
+                        class="link"
+                        onclick="showRegister()">
+
+                        Register
+
+                    </button>
+
+                </p>
+
+            </section>
+
+
+            <!-- REGISTER -->
+            <section
+                id="registerSection"
+                style="display: none;">
+
+                <h2>
+                    Register
+                </h2>
+
+
+                <label
+                    for="registerName"
+                    class="sr-only">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="registerName"
+                    placeholder="Full Name"
+                    autocomplete="name">
+
+
+                <label
+                    for="registerEmail"
+                    class="sr-only">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="registerEmail"
+                    placeholder="Email"
+                    autocomplete="email">
+
+
+                <label
+                    for="registerPassword"
+                    class="sr-only">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Password"
+                    autocomplete="new-password">
+
+
+                <button type="button">
+                    Register
+                </button>
+
+
+                <p>
+                    Already have an account?
+
+                    <button
+                        type="button"
+                        class="link"
+                        onclick="showLogin()">
+
+                        Login
+
+                    </button>
+
+                </p>
+
+            </section>
+
+
+            <!-- ACCOUNT -->
+            <section
+                id="accountSection"
+                style="display: none;">
+
+                <h2>
+                    My Account
+                </h2>
+
+                <p>
+                    Welcome back!
+                </p>
+
+                <button
+                    type="button"
+                    onclick="logout()">
+
+                    Logout
+
+                </button>
+
+            </section>
+
+
+            <!-- CLOSE MODAL -->
+            <button
+                type="button"
+                class="close-btn"
+                onclick="closeModal()"
+                aria-label="Close account window">
+
+                <i
+                    class="fa-solid fa-xmark"
+                    aria-hidden="true">
+                </i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js">
+    </script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script src="myscript.js"></script>
+
+</body>
+
+</html>
