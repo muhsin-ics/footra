@@ -203,7 +203,7 @@
 
                 if (!card) return;
 
-                const nameElement = card.querySelector("h4");
+                const nameElement = card.querySelector("h4, h3");
                 const priceElement = card.querySelector("p");
                 const imageElement = card.querySelector(".img-default");
 
@@ -213,7 +213,7 @@
 
                 addToCart(
                     nameElement.textContent.trim(),
-                    priceElement.textContent.trim(),
+                    card.dataset.price || priceElement.textContent.trim(),
                     imageElement.src
                 );
             });
@@ -379,7 +379,7 @@ function updateWishlistHearts() {
 
     document.querySelectorAll(".shoe-card").forEach(card => {
 
-        const nameElement = card.querySelector("h4");
+        const nameElement = card.querySelector("h4, h3");
         const heart = card.querySelector(".wishlist-icon");
 
         if (!nameElement || !heart) return;
@@ -422,7 +422,7 @@ function initializeWishlistButtons() {
             if (!card) return;
 
             const nameElement =
-                card.querySelector("h4");
+                card.querySelector("h4, h3");
 
             const priceElement =
                 card.querySelector("p");
@@ -847,10 +847,10 @@ function initializeWishlistRemove() {
                 if (!card) return;
 
                 const name =
-                    card.querySelector("h4")?.textContent.trim();
+                    card.querySelector("h4, h3")?.textContent.trim();
 
                 const price =
-                    card.querySelector("p")?.textContent.trim();
+                    card.dataset.price || card.querySelector("p")?.textContent.trim();
 
                 const image =
                     card.querySelector(".img-default")?.src;
