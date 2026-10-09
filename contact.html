@@ -3,166 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - FOOTRA | Premium Footwear</title>
+    <meta name="theme-color" content="#173d2b">
+    <title>Contact | FOOTRA Premium Footwear</title>
 
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mystyle.css">
+
+    <style>
+        :root {
+            --footra-green: #17452f;
+            --footra-green-dark: #102d20;
+            --footra-green-light: #eaf1ec;
+            --footra-ink: #171a18;
+            --footra-muted: #69736c;
+            --footra-border: #e1e6e2;
+            --footra-bg: #f5f6f4;
+            --footra-white: #fff;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            color: var(--footra-ink);
+            background: var(--footra-bg);
+            font-family: "Manrope", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: inherit; }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1200;
+            min-height: 78px;
+            padding: 0 clamp(20px, 5vw, 76px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 26px;
+            background: linear-gradient(110deg, #101311, #294b37);
+            box-shadow: 0 4px 18px rgba(0,0,0,.12);
+        }
+        #logo { width: 100px; max-height: 54px; object-fit: contain; cursor: pointer; }
+        .navbar .menu { display: flex; align-items: center; gap: clamp(20px, 3vw, 42px); margin: 0; padding: 0; list-style: none; }
+        .navbar .menu a { color: #f5f7f5; text-decoration: none; font-weight: 700; font-size: .91rem; transition: color .2s; }
+        .navbar .menu a:hover, .navbar .menu a.active { color: #b9d4c1; }
+        .nav-right { display: flex; align-items: center; gap: 22px; color: white; }
+        .nav-right > i, .user-dropdown > i { cursor: pointer; font-size: 1.05rem; transition: color .2s; }
+        .nav-right > i:hover, .user-dropdown > i:hover { color: #b9d4c1; }
+        .user-dropdown { position: relative; }
+        .user-menu { display: none; position: absolute; top: 32px; right: -15px; min-width: 160px; padding: 9px; background: #fff; border: 1px solid var(--footra-border); border-radius: 12px; box-shadow: 0 12px 32px #0002; }
+        .user-menu.show { display: grid; }
+        .user-menu a { padding: 10px; color: var(--footra-ink); text-decoration: none; border-radius: 7px; font-size: .86rem; }
+        .user-menu a:hover { background: var(--footra-green-light); }
+        .menu-toggle { display: none; }
+
+        .search-bar { display: none; position: relative; padding: 14px 5%; background: #fff; border-bottom: 1px solid var(--footra-border); }
+        .search-bar.active { display: flex; align-items: center; gap: 12px; }
+        .search-bar input { flex: 1; min-width: 0; padding: 12px 14px; border: 1px solid var(--footra-border); border-radius: 8px; font: inherit; }
+        .close-search { cursor: pointer; font-size: 1.2rem; }
+
+        .mobile-menu-overlay { display: none; }
+        .cart-overlay { display: none; position: fixed; inset: 0; z-index: 1990; background: rgba(10,16,12,.55); }
+        .cart-overlay.active, .cart-overlay.show { display: block; }
+        .cart-drawer, .wishlist-drawer { position: fixed; z-index: 2000; top: 0; right: 0; width: min(420px, 92vw); height: 100dvh; overflow-y: auto; background: #fff; box-shadow: -15px 0 40px #0002; transform: translateX(105%); transition: transform .28s ease; }
+        .cart-drawer.open, .wishlist-drawer.open, .cart-drawer.active, .wishlist-drawer.active { transform: translateX(0); }
+        .cart-header, .wishlist-header { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 22px; color: #fff; background: var(--footra-green); }
+        .cart-header h3, .wishlist-header h3 { margin: 0; }
+        .close-cart { cursor: pointer; font-size: 1.3rem; }
+        .cart-body, #wishlistItems { padding: 22px; }
+        .cart-footer { padding: 20px 22px; border-top: 1px solid var(--footra-border); }
+        .checkout-btn, .newsletter-form button { padding: 12px 20px; color: #fff; background: var(--footra-green); border: 0; border-radius: 9px; font-weight: 800; cursor: pointer; }
+        .checkout-btn { width: 100%; }
+        .cart-footer h3 { margin-top: 0; }
+
+        .contact-hero {
+            position: relative;
+            min-height: clamp(300px, 39vw, 470px);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: #1a2d21;
+            isolation: isolate;
+        }
+        .contact-hero > img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
+        .contact-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10,20,13,.82), rgba(10,20,13,.48) 55%, rgba(10,20,13,.16)); }
+        .hero-text { width: min(1180px, 100%); margin: 0 auto; padding: 55px 28px; color: #fff; }
+        .hero-kicker { display: block; margin-bottom: 14px; color: #c8ddce; font-size: .75rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+        .hero-text h1 { max-width: 700px; margin: 0 0 18px; font-size: clamp(2.5rem, 6vw, 4.7rem); line-height: 1.02; letter-spacing: -.055em; }
+        .hero-text p { max-width: 610px; margin: 0; color: #edf1ed; font-size: clamp(.95rem, 1.5vw, 1.1rem); line-height: 1.8; }
+
+        .contact-info { width: min(1120px, calc(100% - 40px)); margin: -36px auto 0; position: relative; z-index: 2; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: #fff; border: 1px solid var(--footra-border); border-radius: 16px; box-shadow: 0 16px 45px #122d1b12; }
+        .info-box { display: flex; align-items: center; gap: 15px; padding: 25px; min-width: 0; }
+        .info-box + .info-box { border-left: 1px solid var(--footra-border); }
+        .info-box > i { flex: 0 0 44px; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px; color: var(--footra-green); background: var(--footra-green-light); font-size: 1.1rem; }
+        .info-box p { margin: 0 0 6px; font-weight: 800; font-size: .9rem; }
+        .info-box small { color: var(--footra-muted); line-height: 1.6; overflow-wrap: anywhere; }
+
+        .contact-main { width: min(1120px, calc(100% - 40px)); margin: 74px auto 80px; display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
+        .contact-copy { padding-top: 10px; }
+        .section-kicker { color: var(--footra-green); font-size: .74rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+        .contact-copy h2 { margin: 12px 0 16px; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -.045em; }
+        .contact-copy > p { color: var(--footra-muted); line-height: 1.85; }
+        .contact-promise { display: flex; gap: 12px; margin-top: 26px; align-items: flex-start; color: #455249; font-size: .88rem; line-height: 1.7; }
+        .contact-promise i { margin-top: 4px; color: var(--footra-green); }
+
+        .contact-form { padding: clamp(22px, 4vw, 38px); background: #fff; border: 1px solid var(--footra-border); border-radius: 18px; box-shadow: 0 12px 36px rgba(21,43,29,.045); }
+        .contact-form form { display: grid; gap: 16px; }
+        .form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+        .contact-form input, .contact-form textarea { width: 100%; min-width: 0; padding: 14px 15px; color: var(--footra-ink); background: #fff; border: 1px solid #dce2dd; border-radius: 9px; font: inherit; font-size: .9rem; outline: none; transition: border-color .2s, box-shadow .2s; }
+        .contact-form input:focus, .contact-form textarea:focus, .newsletter-form input:focus { border-color: var(--footra-green); box-shadow: 0 0 0 3px rgba(23,69,47,.1); }
+        .contact-form textarea { resize: vertical; min-height: 145px; }
+        .contact-form button { min-height: 50px; padding: 13px 20px; color: #fff; background: var(--footra-green); border: 0; border-radius: 9px; font: inherit; font-weight: 800; cursor: pointer; transition: background .2s, transform .2s; }
+        .contact-form button:hover, .newsletter-form button:hover { background: var(--footra-green-dark); transform: translateY(-1px); }
+        .success-message { display: none; margin-bottom: 18px; padding: 13px 15px; color: #17452f; background: var(--footra-green-light); border: 1px solid #cfe0d3; border-radius: 9px; font-size: .88rem; line-height: 1.6; }
+        .success-message.show { display: block; }
+
+        .map-section { width: min(1120px, calc(100% - 40px)); margin: 0 auto 78px; overflow: hidden; background: #e7ece8; border-radius: 16px; border: 1px solid var(--footra-border); }
+        .map-heading { padding: 25px 28px 18px; background: #fff; }
+        .map-heading h2 { margin: 8px 0 5px; font-size: 1.5rem; }
+        .map-heading p { margin: 0; color: var(--footra-muted); font-size: .88rem; }
+        .map-section iframe { display: block; width: 100%; height: 350px; border: 0; }
+
+        .newsletter { padding: 56px 24px; text-align: center; color: #fff; background: linear-gradient(120deg, #102d20, #1d4b32); }
+        .newsletter h3 { margin: 0 0 10px; font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -.03em; }
+        .newsletter > p { margin: 0 auto 24px; color: #dce7df; line-height: 1.7; }
+        .newsletter-form { width: min(700px, 100%); margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr auto; gap: 10px; }
+        .newsletter-form input { min-width: 0; padding: 13px 14px; border: 1px solid #ffffff4a; border-radius: 8px; outline: none; font: inherit; font-size: .87rem; }
+        .newsletter-form button { background: #fff; color: var(--footra-green); white-space: nowrap; }
+        .newsletter-form button:hover { background: #eaf1ec; }
+
+        .footer { padding: 54px clamp(20px, 5vw, 76px) 0; color: #e9eeea; background: #101512; }
+        .footer-container { width: min(1180px, 100%); margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 38px; padding-bottom: 42px; }
+        .footer-logo { margin: 0 0 16px; color: #fff; letter-spacing: .2em; }
+        .footer-text { max-width: 300px; color: #aeb9b1; line-height: 1.8; font-size: .88rem; }
+        .footer-col h3 { margin: 4px 0 18px; color: #fff; font-size: .95rem; }
+        .footer-col ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+        .footer-col a { color: #aeb9b1; text-decoration: none; font-size: .86rem; }
+        .footer-col a:hover { color: #d0e2d5; }
+        .footer-social { display: flex; gap: 12px; flex-wrap: wrap; }
+        .footer-social a { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid #3b463e; border-radius: 50%; color: #e9eeea; }
+        .footer-social a:hover { background: var(--footra-green); }
+        .footer-bottom { padding: 19px 0; border-top: 1px solid #303832; text-align: center; color: #9eaaa1; font-size: .77rem; line-height: 1.8; }
+        .footer-bottom a { color: #b9c5bc; text-decoration: none; }
+
+        #authModal { z-index: 5000; }
+        #authModal .auth-card { width: min(400px, calc(100% - 32px)); padding: 36px 28px; background: #fff; border-radius: 18px; position: relative; text-align: center; }
+        #authModal input { width: 100%; padding: 12px; margin-bottom: 13px; border-radius: 8px; border: 1px solid var(--footra-border); font: inherit; }
+        #authModal button { width: 100%; padding: 13px; background: var(--footra-green); color: #fff; border: 0; border-radius: 8px; font-weight: 800; cursor: pointer; }
+        #authModal .auth-close { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: #eef1ee; cursor: pointer; }
+
+        @media (max-width: 900px) {
+            .navbar { gap: 16px; }
+            .navbar .menu { gap: 18px; }
+            .nav-right { gap: 16px; }
+            .info-box { padding: 19px 15px; gap: 10px; }
+            .info-box > i { flex-basis: 38px; width: 38px; height: 38px; }
+            .contact-main { gap: 30px; }
+            .footer-container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 680px) {
+            .navbar { min-height: 68px; padding: 0 18px; }
+            #logo { width: 82px; }
+            .navbar .menu { display: none; position: absolute; top: 68px; left: 0; right: 0; padding: 18px 22px 22px; background: #15251b; align-items: stretch; flex-direction: column; gap: 0; }
+            .navbar .menu.open { display: flex; }
+            .navbar .menu li a { display: block; padding: 13px 4px; }
+            .nav-right { gap: 15px; }
+            .nav-right > i, .user-dropdown > i { font-size: .98rem; }
+            .menu-toggle { display: inline-block; }
+            .contact-hero { min-height: 340px; }
+            .hero-text { padding: 42px 23px 58px; }
+            .contact-info { grid-template-columns: 1fr; margin-top: -24px; width: calc(100% - 28px); }
+            .info-box { padding: 17px 20px; }
+            .info-box + .info-box { border-left: 0; border-top: 1px solid var(--footra-border); }
+            .contact-main { grid-template-columns: 1fr; width: calc(100% - 28px); margin: 52px auto 58px; }
+            .contact-copy h2 { max-width: 460px; }
+            .map-section { width: calc(100% - 28px); margin-bottom: 55px; }
+            .map-section iframe { height: 290px; }
+            .newsletter-form { grid-template-columns: 1fr; }
+            .newsletter-form button { min-height: 46px; }
+            .footer-container { gap: 30px 22px; }
+        }
+        @media (max-width: 420px) {
+            .nav-right { gap: 12px; }
+            .nav-right > i:first-child { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-
-    <!-- MOBILE OVERLAY -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="toggleMobileMenu()"></div>
 
-    <!-- NAVBAR -->
-    <div class="navbar">
-        <img src="LOGO.png" id="logo" alt="FOOTRA" onclick="window.location.href='index.html'">
+    <header class="navbar">
+        <a href="index.html" aria-label="FOOTRA home"><img src="LOGO.png" id="logo" alt="FOOTRA"></a>
 
         <ul class="menu" id="mainMenu">
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#shop">Shop</a></li>
-            <li><a href="contact.html" class="active">Contact</a></li>
+            <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
 
         <div class="nav-right">
-            <i class="fa-solid fa-magnifying-glass" onclick="toggleSearch()"></i>
-
+            <i class="fa-solid fa-magnifying-glass" role="button" tabindex="0" aria-label="Open search" onclick="toggleSearch()"></i>
             <div class="user-dropdown">
-                <i class="fa-regular fa-user" onclick="toggleUserMenu(event)"></i>
+                <i class="fa-regular fa-user" role="button" tabindex="0" aria-label="Account menu" onclick="toggleUserMenu(event)"></i>
                 <div class="user-menu" id="userMenu">
                     <a href="#" onclick="openLogin(); return false;">Login</a>
                     <a href="#" onclick="openRegister(); return false;">Register</a>
                     <a href="#" onclick="openAccount(); return false;">My Account</a>
                 </div>
             </div>
-
-            <i class="fa-solid fa-cart-shopping" onclick="openCart()"></i>
-            <i class="fa-solid fa-heart" onclick="openWishlist()"></i>
-            <i class="fa-solid fa-bars menu-toggle" onclick="toggleMobileMenu()"></i>
+            <i class="fa-solid fa-cart-shopping" role="button" tabindex="0" aria-label="Open cart" onclick="openCart()"></i>
+            <i class="fa-solid fa-heart" role="button" tabindex="0" aria-label="Open wishlist" onclick="openWishlist()"></i>
+            <i class="fa-solid fa-bars menu-toggle" role="button" tabindex="0" aria-label="Toggle navigation" onclick="toggleMobileMenu()"></i>
         </div>
-    </div>
+    </header>
 
-    <!-- SEARCH BAR -->
     <div class="search-bar" id="searchBar">
-        <input type="text" placeholder="Search for boots, shoes...">
-        <span class="close-search" onclick="toggleSearch()">✕</span>
+        <input type="search" id="siteSearchInput" placeholder="Search for boots, shoes..." aria-label="Search products">
+        <span class="close-search" role="button" tabindex="0" aria-label="Close search" onclick="toggleSearch()">✕</span>
     </div>
 
-    <!-- CART DRAWER -->
     <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-    <div class="cart-drawer" id="cartDrawer">
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
         <div class="cart-header">
             <h3>Your Cart <span class="cart-count" id="cartCount">0</span></h3>
-            <span class="close-cart" onclick="closeCart()">✕</span>
+            <span class="close-cart" role="button" tabindex="0" aria-label="Close cart" onclick="closeCart()">✕</span>
         </div>
         <div class="cart-body" id="cartItems"><p>Your cart is empty.</p></div>
         <div class="cart-footer">
             <h3>Total: ₹<span id="cartTotal">0</span></h3>
-            <button class="checkout-btn" onclick="checkout()">Checkout</button>
+            <button class="checkout-btn" type="button" onclick="checkout()">Checkout</button>
         </div>
-    </div>
+    </aside>
 
-    <!-- WISHLIST DRAWER -->
     <div class="cart-overlay" id="wishlistOverlay" onclick="closeWishlist()"></div>
-    <div class="wishlist-drawer" id="wishlistDrawer">
+    <aside class="wishlist-drawer" id="wishlistDrawer" aria-label="Wishlist">
         <div class="wishlist-header">
             <h3>Your Wishlist</h3>
-            <span class="close-cart" onclick="closeWishlist()">✕</span>
+            <span class="close-cart" role="button" tabindex="0" aria-label="Close wishlist" onclick="closeWishlist()">✕</span>
         </div>
         <div id="wishlistItems"><p>Your wishlist is empty.</p></div>
-    </div>
+    </aside>
 
-    <!-- HERO SECTION -->
-    <div class="hero">
-        <img src="contact.jpg" alt="Contact FOOTRA">
-        <div class="hero-text">
-            <h1>Contact Us</h1>
-            <p>We'd love to hear from you. Whether you have questions about our products, need styling advice, or require support — our team is here to help.</p>
-        </div>
-    </div>
-
-    <!-- CONTACT INFO CARDS -->
-    <div class="contact-info">
-        <div class="info-box">
-            <i class="fa-solid fa-location-dot"></i>
-            <div>
-                <p>Visit Our Store</p>
-                <small>123 Fashion Street, Mumbai - 400001</small>
+    <main>
+        <section class="contact-hero">
+            <img src="contact.jpg" alt="" onerror="this.style.display='none'">
+            <div class="hero-text">
+                <span class="hero-kicker">We're here to help</span>
+                <h1>Let's talk about your next step.</h1>
+                <p>Questions about your order, a product, or finding the right fit? Get in touch with the FOOTRA team. We're happy to help.</p>
             </div>
-        </div>
+        </section>
 
-        <div class="info-box">
-            <i class="fa-solid fa-envelope"></i>
-            <div>
-                <p>Email Us</p>
-                <small>support@footra.com</small>
+        <section class="contact-info" aria-label="Contact information">
+            <div class="info-box">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                <div><p>Visit Our Store</p><small>123 Fashion Street, Mumbai - 400001</small></div>
             </div>
-        </div>
-
-        <div class="info-box">
-            <i class="fa-solid fa-phone"></i>
-            <div>
-                <p>Call Us</p>
-                <small>+91 98765 43210</small>
+            <div class="info-box">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                <div><p>Email Us</p><small><a href="mailto:support@footra.com">support@footra.com</a></small></div>
             </div>
-        </div>
-    </div>
-
-    <!-- CONTACT FORM -->
-    <div class="contact-form">
-        <div class="success-message" id="successMessage">
-            <i class="fa-solid fa-circle-check"></i> Thank you! Your message has been sent successfully.
-        </div>
-
-        <form id="contactForm">
-            <div class="form-row">
-                <input type="text" placeholder="First Name" required>
-                <input type="text" placeholder="Last Name" required>
+            <div class="info-box">
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                <div><p>Call Us</p><small><a href="tel:+919876543210">+91 98765 43210</a></small></div>
             </div>
-            
-            <input type="email" placeholder="Email Address" required>
-            <input type="tel" placeholder="Phone Number (optional)">
-            <textarea rows="5" placeholder="How can we help you?" required></textarea>
-            
-            <button type="submit">
-                <i class="fa-regular fa-paper-plane" style="margin-right: 8px;"></i>
-                Send Message
-            </button>
-        </form>
-    </div>
+        </section>
 
-    <!-- MAP SECTION -->
-    <div class="map-section">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.555751234567!2d72.123456!3d19.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA3JzI0LjQiTiA3MsKwMDcnMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
-    </div>
+        <section class="contact-main">
+            <div class="contact-copy">
+                <span class="section-kicker">Contact FOOTRA</span>
+                <h2>Every great step starts with a conversation.</h2>
+                <p>Tell us how we can help. Whether it's product information, sizing, delivery, or after-sales support, send us a message and we'll be glad to hear from you.</p>
+                <div class="contact-promise"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span>Friendly support for product, sizing, and order questions.</span></div>
+                <div class="contact-promise"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><span>Your contact details are only included to help us respond to your enquiry.</span></div>
+            </div>
 
-    <!-- NEWSLETTER SECTION -->
-    <div class="newsletter">
-        <h3>Join the FOOTRA Family</h3>
-        <p>Subscribe for exclusive offers, new arrivals, and styling tips</p>
-        
-        <div class="newsletter-form">
-            <input type="text" placeholder="Your Name" id="newsletterName">
-            <input type="email" placeholder="Your Email" id="newsletterEmail">
-            <button onclick="subscribeNewsletter()">
-                <i class="fa-regular fa-bell" style="margin-right: 8px;"></i>
-                Subscribe
-            </button>
-        </div>
-    </div>
+            <div class="contact-form">
+                <div class="success-message" id="successMessage" role="status" aria-live="polite">
+                    <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                    Thanks for your message. This demo form has validated your details, but a server or form service is needed to deliver it to the FOOTRA team.
+                </div>
 
-    <!-- FOOTER -->
+                <form id="contactForm">
+                    <div class="form-row">
+                        <input type="text" name="firstName" id="firstName" placeholder="First name" aria-label="First name" autocomplete="given-name" required>
+                        <input type="text" name="lastName" id="lastName" placeholder="Last name" aria-label="Last name" autocomplete="family-name" required>
+                    </div>
+                    <input type="email" name="email" id="contactEmail" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
+                    <input type="tel" name="phone" id="contactPhone" placeholder="Phone number (optional)" aria-label="Phone number" autocomplete="tel">
+                    <textarea name="message" id="contactMessage" rows="5" placeholder="How can we help you?" aria-label="Your message" required></textarea>
+                    <button type="submit"><i class="fa-regular fa-paper-plane" aria-hidden="true" style="margin-right:8px"></i>Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <div class="map-heading">
+                <span class="section-kicker">Find us</span>
+                <h2>Visit FOOTRA</h2>
+                <p>Check the store location before visiting.</p>
+            </div>
+            <iframe title="Map showing Mumbai" src="https://www.google.com/maps?q=Mumbai%2C%20India&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </section>
+
+        <section class="newsletter">
+            <h3>Join the FOOTRA Family</h3>
+            <p>Get updates on new arrivals, exclusive offers, and footwear styling tips.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="text" placeholder="Your name" id="newsletterName" name="newsletterName" aria-label="Your name" required>
+                <input type="email" placeholder="Your email" id="newsletterEmail" name="newsletterEmail" aria-label="Your email" required>
+                <button type="submit"><i class="fa-regular fa-bell" aria-hidden="true" style="margin-right:8px"></i>Subscribe</button>
+            </form>
+            <p id="newsletterMessage" role="status" aria-live="polite" style="margin-top:14px;font-size:.84rem"></p>
+        </section>
+    </main>
+
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-col">
                 <h2 class="footer-logo">FOOTRA</h2>
                 <p class="footer-text">Elevate your style with premium footwear crafted for confidence, comfort, and timeless design.</p>
             </div>
-
             <div class="footer-col">
                 <h3>Quick Links</h3>
                 <ul>
@@ -172,55 +338,141 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h3>Support</h3>
                 <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Returns</a></li>
-                    <li><a href="#">Shipping</a></li>
-                    <li><a href="#">Track Order</a></li>
+                    <li><a href="mailto:support@footra.com">Help Center</a></li>
+                    <li><a href="contact.html">Returns</a></li>
+                    <li><a href="contact.html">Shipping</a></li>
+                    <li><a href="contact.html">Track Order</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h3>Follow Us</h3>
                 <div class="footer-social">
-                    <i class="fa-brands fa-instagram"></i>
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-brands fa-twitter"></i>
-                    <i class="fa-brands fa-youtube"></i>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
-            © 2026 FOOTRA. All rights reserved. | <a href="#" style="color: #aaa; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: #aaa; text-decoration: none;">Terms of Service</a>
+            © 2026 FOOTRA. All rights reserved. &nbsp;|&nbsp;
+            <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a>
         </div>
     </footer>
 
-    <!-- AUTH MODAL (hidden by default) -->
-    <div id="authModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 5000; justify-content: center; align-items: center;">
-        <div style="background: white; padding: 40px; width: 400px; border-radius: 30px; position: relative; text-align: center;">
+    <div id="authModal" style="display:none;position:fixed;inset:0;width:100%;height:100%;background:rgba(0,0,0,.72);z-index:5000;justify-content:center;align-items:center;padding:16px">
+        <div class="auth-card">
             <div id="loginSection">
-                <h2 style="margin-bottom: 20px;">Login</h2>
-                <input type="email" placeholder="Email" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 30px; border: 1px solid #ddd;">
-                <input type="password" placeholder="Password" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 30px; border: 1px solid #ddd;">
-                <button style="width: 100%; padding: 14px; background: black; color: white; border: none; border-radius: 30px; font-weight: bold;">Login</button>
-                <p style="margin-top: 15px;">Don't have an account? <span onclick="showRegister()" style="color: #BB0000; cursor: pointer;">Register</span></p>
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <input type="email" id="loginEmail" placeholder="Email" aria-label="Login email" required>
+                    <input type="password" id="loginPassword" placeholder="Password" aria-label="Login password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <p>Don't have an account? <span onclick="showRegister()" style="color:#17452f;cursor:pointer;font-weight:700">Register</span></p>
             </div>
-            <div id="registerSection" style="display: none;">
-                <h2 style="margin-bottom: 20px;">Register</h2>
-                <input type="text" placeholder="Full Name" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 30px; border: 1px solid #ddd;">
-                <input type="email" placeholder="Email" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 30px; border: 1px solid #ddd;">
-                <input type="password" placeholder="Password" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 30px; border: 1px solid #ddd;">
-                <button style="width: 100%; padding: 14px; background: black; color: white; border: none; border-radius: 30px; font-weight: bold;">Register</button>
-                <p style="margin-top: 15px;">Already have an account? <span onclick="showLogin()" style="color: #BB0000; cursor: pointer;">Login</span></p>
+            <div id="registerSection" style="display:none">
+                <h2>Register</h2>
+                <form id="registerForm">
+                    <input type="text" id="registerName" placeholder="Full name" aria-label="Full name" required>
+                    <input type="email" id="registerEmail" placeholder="Email" aria-label="Register email" required>
+                    <input type="password" id="registerPassword" placeholder="Password (at least 8 characters)" aria-label="Register password" minlength="8" required>
+                    <button type="submit">Register</button>
+                </form>
+                <p>Already have an account? <span onclick="showLogin()" style="color:#17452f;cursor:pointer;font-weight:700">Login</span></p>
             </div>
-            <span onclick="closeModal()" style="position: absolute; top: 15px; right: 15px; width: 35px; height: 35px; background: #f1f1f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">✕</span>
+            <span class="auth-close" role="button" tabindex="0" aria-label="Close login dialog" onclick="closeModal()">✕</span>
         </div>
     </div>
 
-    <script type="text/javascript" src="myscript.js"></script>
+    <script src="myscript.js"></script>
+    <script>
+        // Keep the contact page usable even if these optional helpers are not in myscript.js.
+        window.toggleMobileMenu = window.toggleMobileMenu || function () {
+            var menu = document.getElementById("mainMenu");
+            if (menu) menu.classList.toggle("open");
+        };
+        window.toggleSearch = window.toggleSearch || function () {
+            var bar = document.getElementById("searchBar");
+            if (bar) {
+                bar.classList.toggle("active");
+                if (bar.classList.contains("active")) bar.querySelector("input")?.focus();
+            }
+        };
+        window.toggleUserMenu = window.toggleUserMenu || function (event) {
+            if (event) event.stopPropagation();
+            document.getElementById("userMenu")?.classList.toggle("show");
+        };
+        window.openLogin = window.openLogin || function () {
+            var modal = document.getElementById("authModal");
+            if (modal) modal.style.display = "flex";
+            window.showLogin();
+        };
+        window.openRegister = window.openRegister || function () {
+            var modal = document.getElementById("authModal");
+            if (modal) modal.style.display = "flex";
+            window.showRegister();
+        };
+        window.openAccount = window.openAccount || function () { window.openLogin(); };
+        window.showLogin = window.showLogin || function () {
+            document.getElementById("loginSection").style.display = "block";
+            document.getElementById("registerSection").style.display = "none";
+        };
+        window.showRegister = window.showRegister || function () {
+            document.getElementById("loginSection").style.display = "none";
+            document.getElementById("registerSection").style.display = "block";
+        };
+        window.closeModal = window.closeModal || function () {
+            var modal = document.getElementById("authModal");
+            if (modal) modal.style.display = "none";
+        };
+
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            if (!this.reportValidity()) return;
+            var success = document.getElementById("successMessage");
+            success.classList.add("show");
+            this.reset();
+        });
+
+        document.getElementById("newsletterForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            if (!this.reportValidity()) return;
+            document.getElementById("newsletterMessage").textContent =
+                "Thanks for subscribing! Connect a newsletter service to store subscriptions.";
+            this.reset();
+        });
+
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            alert("Login is a front-end demo. Connect an authentication service to enable accounts.");
+        });
+        document.getElementById("registerForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            alert("Registration is a front-end demo. Connect an authentication service to create accounts.");
+        });
+
+        document.addEventListener("click", function (event) {
+            var dropdown = document.querySelector(".user-dropdown");
+            if (dropdown && !dropdown.contains(event.target)) {
+                document.getElementById("userMenu")?.classList.remove("show");
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                document.getElementById("userMenu")?.classList.remove("show");
+                document.getElementById("searchBar")?.classList.remove("active");
+                window.closeModal();
+            }
+            if ((event.key === "Enter" || event.key === " ") && event.target.matches('[role="button"]')) {
+                event.preventDefault();
+                event.target.click();
+            }
+        });
+    </script>
 </body>
 </html>
