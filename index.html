@@ -13,7 +13,7 @@
 
     <meta
         name="description"
-        content="FOOTRA - Premium footwear designed for confidence, comfort and timeless style."
+        content="FOOTRA — premium footwear with modern design, confident steps, and timeless style."
     >
 
     <!-- =========================
@@ -47,6 +47,65 @@
         rel="stylesheet"
         href="mystyle.css"
     >
+
+    <!-- FOOTRA forest-green brand theme inspired by your mockup -->
+    <style>
+      :root { --footra-green:#075b3a; --footra-green-dark:#063d2b; --footra-green-soft:#eaf1e8; --footra-ink:#171a17; --footra-paper:#f8f8f5; --footra-muted:#6d746e; }
+      html { scroll-behavior:smooth; }
+      body { background:var(--footra-paper); color:var(--footra-ink); font-family:'Manrope',sans-serif; }
+      a { transition:color .2s ease, background .2s ease; }
+      .navbar { background:linear-gradient(110deg,#101512,#263b2d) !important; color:#fff; box-shadow:0 5px 22px #00000014; }
+      .navbar a, .navbar .nav-icon { color:#fff !important; }
+      .navbar .menu a.active, .navbar .menu a:hover { color:#a8d5b5 !important; }
+      .nav-icon:hover { color:#a8d5b5 !important; }
+      #logo { max-height:48px; object-fit:contain; }
+      .search-bar { background:#fff; border:1px solid #dce5dc; box-shadow:0 12px 35px #00000012; }
+      .search-bar input { border-color:#d7dfd7; border-radius:8px; }
+      .webbnr { position:relative; overflow:hidden; border-radius:0 0 24px 24px; background:#17251b; }
+      .webbnr:after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(5,28,18,.78),rgba(5,28,18,.32) 52%,rgba(5,28,18,.08)); pointer-events:none; }
+      .webbnr img { filter:saturate(.82); }
+      .webbnr-content { position:relative; z-index:1; }
+      .webbnr-content h1 { letter-spacing:-.045em; line-height:1.03; }
+      .webbnr-content p { max-width:520px; }
+      .btn-shop { background:var(--footra-green) !important; color:#fff !important; border:1px solid var(--footra-green) !important; border-radius:999px !important; padding:14px 30px !important; font-weight:800; box-shadow:0 8px 20px #063d2b20; transition:transform .2s,background .2s; }
+      .btn-shop:hover { background:var(--footra-green-dark) !important; transform:translateY(-2px); }
+      .box1 { background:#fff; border:1px solid #edf0ea; border-radius:22px; box-shadow:0 12px 40px #1a281b0a; }
+      .feature i { color:var(--footra-green) !important; }
+      .feature h2 { color:#1d2a20; }
+      .shoe-gallery { gap:16px; }
+      .shoe-gallery .img { border-radius:12px; }
+      .gallery-section { background:transparent; }
+      .gallery-title { color:var(--footra-ink); letter-spacing:-.04em; }
+      .gallery-title:after { content:''; display:block; width:54px; height:4px; margin:14px auto 0; background:var(--footra-green); border-radius:5px; }
+      .gallery-grid { gap:24px; }
+      .shoe-card { background:#fff; border:1px solid #e7ebe5; border-radius:14px; overflow:hidden; padding:14px; box-shadow:0 8px 28px #1623180a; transition:transform .25s,box-shadow .25s; }
+      .shoe-card:hover { transform:translateY(-5px); box-shadow:0 16px 38px #16231818; }
+      .shoe-card .img-container { border-radius:9px; overflow:hidden; background:#f0f1ed; }
+      .shoe-card h3 { color:#202720; font-size:1.05rem; font-weight:800; margin-top:16px; }
+      .shoe-card p { color:var(--footra-green); font-weight:800; }
+      .cart-icon, .wishlist-icon { background:#fff !important; color:var(--footra-green) !important; border:1px solid #e0e8df !important; }
+      .cart-icon:hover, .wishlist-icon:hover, .wishlist-icon.active { background:var(--footra-green) !important; color:#fff !important; }
+      .buy-btn, .checkout-btn { background:var(--footra-green) !important; color:#fff !important; border:0 !important; border-radius:999px !important; font-weight:800; }
+      .buy-btn:hover, .checkout-btn:hover { background:var(--footra-green-dark) !important; }
+      .exclusive-wrapper { border-radius:20px; overflow:hidden; background:#123d2b; }
+      .exclusive-content { color:#fff; }
+      .offer-title { color:#fff; }
+      .offer-text { color:#e1ebe3; }
+      .countdown-box { border-color:#8eb69a !important; }
+      .footer { background:#101713 !important; color:#f5f7f4; }
+      .footer-logo { color:#fff !important; letter-spacing:.12em; }
+      .footer-col h3:after { background:#23885a !important; }
+      .footer a { color:#c7d1c9 !important; }
+      .footer a:hover { color:#9ed8b1 !important; }
+      .footer-bottom { border-top:1px solid #344239 !important; color:#aab5ac; }
+      .cart-drawer, .wishlist-drawer, .modal-content { border-radius:16px 0 0 16px; }
+      .cart-header, .wishlist-header { background:var(--footra-green-dark) !important; color:#fff; }
+      .close-cart { color:inherit; }
+      .mobile-menu-overlay { background:#06190f99; }
+      @media (max-width:768px) { .webbnr { border-radius:0 0 16px 16px; } .shoe-card { padding:10px; } .gallery-grid { gap:14px; } }
+      @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*:before,*:after { transition:none !important; animation:none !important; } }
+    </style>
+
 </head>
 
 
@@ -1052,9 +1111,7 @@
                 </h2>
 
                 <p class="footer-text">
-                    Elevate your style with premium footwear
-                    crafted for confidence, comfort, and
-                    timeless design.
+                    Premium footwear with modern design, confident steps, and timeless style.
                 </p>
 
             </div>
