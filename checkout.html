@@ -1,62 +1,526 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Checkout</title>
-<link rel="stylesheet" type="text/css" href="mystyle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#173d2b">
+    <title>Checkout | FOOTRA</title>
+    <link rel="stylesheet" href="mystyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --footra-green: #17452f;
+            --footra-green-dark: #102f21;
+            --footra-green-light: #eaf1ec;
+            --footra-ink: #171a18;
+            --footra-muted: #707771;
+            --footra-border: #e1e6e2;
+            --footra-bg: #f5f6f4;
+            --footra-white: #fff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: var(--footra-bg);
+            color: var(--footra-ink);
+            font-family: "Manrope", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button, input { font: inherit; }
+
+        .checkout-header {
+            min-height: 76px;
+            padding: 0 clamp(20px, 5vw, 76px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            background: linear-gradient(110deg, #101311, #254b35);
+            color: #fff;
+        }
+
+        .checkout-brand {
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: .22em;
+            text-decoration: none;
+        }
+
+        .checkout-brand span {
+            display: block;
+            margin-top: 3px;
+            color: #c7d7cb;
+            font-size: .58rem;
+            font-weight: 600;
+            letter-spacing: .19em;
+        }
+
+        .secure-note {
+            color: #e4ece6;
+            font-size: .82rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .top-bar {
+            max-width: 1180px;
+            margin: 26px auto 0;
+            padding: 0 24px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 10px 0;
+            color: var(--footra-green);
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+            font-weight: 700;
+            transition: opacity .2s ease;
+        }
+
+        .back-btn:hover { opacity: .72; }
+
+        .checkout-intro {
+            max-width: 1180px;
+            margin: 20px auto 24px;
+            padding: 0 24px;
+        }
+
+        .eyebrow {
+            color: var(--footra-green);
+            font-size: .74rem;
+            font-weight: 800;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .checkout-intro h1 {
+            margin: 7px 0 8px;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.12;
+            letter-spacing: -.045em;
+        }
+
+        .checkout-intro p {
+            margin: 0;
+            color: var(--footra-muted);
+            font-size: .96rem;
+        }
+
+        .checkout-container {
+            width: min(1132px, calc(100% - 48px));
+            margin: 0 auto 64px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(300px, .85fr);
+            gap: 28px;
+            align-items: start;
+        }
+
+        .form-section, .summary-section {
+            background: var(--footra-white);
+            border: 1px solid var(--footra-border);
+            border-radius: 18px;
+            box-shadow: 0 12px 36px rgba(21, 43, 29, .045);
+        }
+
+        .form-section { padding: clamp(22px, 4vw, 38px); }
+
+        .form-heading {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 20px;
+        }
+
+        .form-heading:not(:first-child) { margin-top: 32px; }
+
+        .step-number {
+            width: 32px;
+            height: 32px;
+            display: inline-grid;
+            place-items: center;
+            flex: 0 0 32px;
+            border-radius: 50%;
+            background: var(--footra-green-light);
+            color: var(--footra-green);
+            font-size: .82rem;
+            font-weight: 800;
+        }
+
+        .form-heading h2 {
+            margin: 0;
+            font-size: 1.08rem;
+            font-weight: 800;
+        }
+
+        .field-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .field { min-width: 0; }
+        .field.full-width { grid-column: 1 / -1; }
+
+        .field label {
+            display: block;
+            margin: 0 0 7px;
+            color: #363d38;
+            font-size: .82rem;
+            font-weight: 700;
+        }
+
+        .field input {
+            width: 100%;
+            min-height: 49px;
+            padding: 12px 14px;
+            color: var(--footra-ink);
+            background: #fff;
+            border: 1px solid #dce2dd;
+            border-radius: 9px;
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        .field input::placeholder { color: #9aa19c; }
+        .field input:focus {
+            border-color: var(--footra-green);
+            box-shadow: 0 0 0 3px rgba(23, 69, 47, .1);
+        }
+
+        .payment-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px;
+            background: #f5f8f5;
+            border: 1px solid #e1e9e2;
+            border-radius: 10px;
+            color: #566158;
+            font-size: .84rem;
+            line-height: 1.6;
+        }
+
+        .payment-info i {
+            margin-top: 3px;
+            color: var(--footra-green);
+        }
+
+        .payment-method {
+            margin-top: 14px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid var(--footra-green);
+            border-radius: 10px;
+            background: #fbfdfb;
+        }
+
+        .payment-method i { color: var(--footra-green); font-size: 1.1rem; }
+        .payment-method strong { display: block; font-size: .88rem; }
+        .payment-method small { color: var(--footra-muted); }
+
+        .pay-btn {
+            width: 100%;
+            min-height: 54px;
+            margin-top: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 0;
+            border-radius: 10px;
+            background: var(--footra-green);
+            color: #fff;
+            cursor: pointer;
+            font-weight: 800;
+            transition: background .2s, transform .2s;
+        }
+
+        .pay-btn:hover { background: var(--footra-green-dark); transform: translateY(-1px); }
+        .pay-btn:focus-visible, .back-btn:focus-visible { outline: 3px solid #91b49d; outline-offset: 3px; }
+
+        .form-footnote {
+            margin: 13px 0 0;
+            text-align: center;
+            color: var(--footra-muted);
+            font-size: .75rem;
+        }
+
+        .summary-section {
+            padding: 26px;
+            position: sticky;
+            top: 24px;
+        }
+
+        .summary-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--footra-border);
+        }
+
+        .summary-title-row h2 {
+            margin: 0;
+            font-size: 1.08rem;
+            font-weight: 800;
+        }
+
+        .summary-label {
+            padding: 5px 9px;
+            border-radius: 999px;
+            background: var(--footra-green-light);
+            color: var(--footra-green);
+            font-size: .7rem;
+            font-weight: 800;
+        }
+
+        .summary-product {
+            display: grid;
+            grid-template-columns: 94px minmax(0, 1fr);
+            gap: 15px;
+            padding: 22px 0;
+            align-items: center;
+        }
+
+        #summaryImage {
+            width: 94px;
+            height: 100px;
+            object-fit: contain;
+            padding: 7px;
+            background: #f3f4f2;
+            border-radius: 10px;
+        }
+
+        .summary-details { min-width: 0; }
+        #summaryName { margin: 0 0 7px; font-size: .91rem; font-weight: 800; overflow-wrap: anywhere; }
+        #summarySize { margin: 0 0 7px; color: var(--footra-muted); font-size: .78rem; }
+        .summary-price { color: var(--footra-green); font-size: .95rem; font-weight: 800; }
+
+        .summary-divider { height: 1px; background: var(--footra-border); }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding-top: 20px;
+            font-weight: 800;
+        }
+
+        .summary-total span:first-child { color: #4c554e; font-size: .9rem; }
+        #summaryTotal { color: var(--footra-green); font-size: 1.25rem; }
+
+        .summary-shipping {
+            margin-top: 18px;
+            padding: 12px;
+            display: flex;
+            gap: 9px;
+            align-items: center;
+            border-radius: 9px;
+            background: #f5f8f5;
+            color: #536257;
+            font-size: .76rem;
+            line-height: 1.5;
+        }
+
+        .summary-shipping i { color: var(--footra-green); }
+
+        .checkout-footer {
+            padding: 22px 24px;
+            text-align: center;
+            color: #d7dfd9;
+            background: #111713;
+            font-size: .78rem;
+        }
+
+        .checkout-footer strong { color: #fff; letter-spacing: .15em; }
+
+        @media (max-width: 760px) {
+            .checkout-header { min-height: 68px; padding: 0 20px; }
+            .secure-note { font-size: .72rem; }
+            .checkout-container {
+                grid-template-columns: 1fr;
+                width: min(100% - 28px, 560px);
+                gap: 18px;
+            }
+            .top-bar, .checkout-intro { padding: 0 16px; }
+            .summary-section { position: static; grid-row: 1; }
+            .form-section { grid-row: 2; }
+            .summary-section { padding: 21px; }
+        }
+
+        @media (max-width: 460px) {
+            .checkout-brand { font-size: 1.05rem; }
+            .secure-note span { display: none; }
+            .field-grid { grid-template-columns: 1fr; gap: 13px; }
+            .field.full-width { grid-column: auto; }
+            .form-section { padding: 22px 18px; }
+            .checkout-intro { margin-top: 16px; }
+        }
+    </style>
 </head>
 <body>
+    <header class="checkout-header">
+        <a class="checkout-brand" href="index.html" aria-label="FOOTRA home">
+            FOOTRA
+            <span>PREMIUM FOOTWEAR</span>
+        </a>
+        <div class="secure-note">
+            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+            <span>Secure checkout</span>
+        </div>
+    </header>
 
     <div class="top-bar">
-    <button class="back-btn" onclick="goBackToProduct()">
-        ← Back to Product
-    </button>
-</div>
-
-<div class="checkout-container">
-
-<form class="form-section" id="checkoutForm">
-
-<h2>Contact</h2>
-<input type="email" id="email" placeholder="Email">
-
-<h2>Delivery</h2>
-<input type="text" id="fullname" placeholder="Full Name">
-<input type="text" id="address" placeholder="Address">
-<input type="text" id="city" placeholder="City">
-<input type="text" id="pincode" placeholder="PIN Code">
-<input type="text" id="phone" placeholder="Phone">
-
-<h2>Payment</h2>
-<p>All transactions are secure and encrypted.</p>
-
-<button type="submit">Pay Now</button>
-
-</form>
-
-<div class="summary-section">
-    <h3>Order Summary</h3>
-
-    <div class="summary-product">
-        <img id="summaryImage">
-        <div class="summary-details">
-            <p id="summaryName"></p>
-            <p id="summarySize"></p>
-            <div class="summary-price" id="summaryPrice"></div>
-        </div>
+        <button class="back-btn" type="button" onclick="goBackToProduct()">
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+            Back to Product
+        </button>
     </div>
 
-    <div class="summary-divider"></div>
+    <section class="checkout-intro">
+        <div class="eyebrow">FOOTRA / Checkout</div>
+        <h1>Complete your order.</h1>
+        <p>Almost yours. Add your delivery details to continue.</p>
+    </section>
 
-    <div class="summary-total">
-        <span>Total</span>
-        <span id="summaryTotal"></span>
-    </div>
-</div>
+    <main class="checkout-container">
+        <form class="form-section" id="checkoutForm">
+            <div class="form-heading">
+                <span class="step-number">1</span>
+                <h2>Contact information</h2>
+            </div>
 
-</div>
+            <div class="field-grid">
+                <div class="field full-width">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com"
+                           autocomplete="email" required>
+                </div>
+            </div>
 
-<script type="text/javascript" src="myscript.js"></script>
+            <div class="form-heading">
+                <span class="step-number">2</span>
+                <h2>Delivery details</h2>
+            </div>
 
+            <div class="field-grid">
+                <div class="field full-width">
+                    <label for="fullname">Full name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Full name"
+                           autocomplete="name" required>
+                </div>
+                <div class="field full-width">
+                    <label for="address">Street address</label>
+                    <input type="text" id="address" name="address" placeholder="House number and street"
+                           autocomplete="street-address" required>
+                </div>
+                <div class="field">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" placeholder="City" autocomplete="address-level2" required>
+                </div>
+                <div class="field">
+                    <label for="pincode">PIN code</label>
+                    <input type="text" id="pincode" name="pincode" placeholder="6-digit PIN code"
+                           inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{6}" maxlength="6" required>
+                </div>
+                <div class="field full-width">
+                    <label for="phone">Phone number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Phone number"
+                           inputmode="tel" autocomplete="tel" pattern="[0-9+() -]{10,15}" required>
+                </div>
+            </div>
+
+            <div class="form-heading">
+                <span class="step-number">3</span>
+                <h2>Payment</h2>
+            </div>
+
+            <div class="payment-info">
+                <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                <div>
+                    <strong>Safe and secure checkout</strong><br>
+                    Your order details are ready. Payment options will be confirmed at the next step.
+                </div>
+            </div>
+
+            <div class="payment-method">
+                <i class="fa-regular fa-credit-card" aria-hidden="true"></i>
+                <div>
+                    <strong>Continue to payment</strong>
+                    <small>Payment processing must be configured by the store.</small>
+                </div>
+            </div>
+
+            <button class="pay-btn" type="submit">
+                Continue <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </button>
+            <p class="form-footnote"><i class="fa-solid fa-lock" aria-hidden="true"></i> Your information is used to process your order.</p>
+        </form>
+
+        <aside class="summary-section" aria-labelledby="summaryHeading">
+            <div class="summary-title-row">
+                <h2 id="summaryHeading">Order summary</h2>
+                <span class="summary-label">YOUR ORDER</span>
+            </div>
+
+            <div class="summary-product">
+                <img id="summaryImage" src="boots.png" alt="Selected footwear">
+                <div class="summary-details">
+                    <p id="summaryName">Your selected footwear</p>
+                    <p id="summarySize">Size and product details</p>
+                    <div class="summary-price" id="summaryPrice">₹0</div>
+                </div>
+            </div>
+
+            <div class="summary-divider"></div>
+
+            <div class="summary-total">
+                <span>Total</span>
+                <span id="summaryTotal">₹0</span>
+            </div>
+
+            <div class="summary-shipping">
+                <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+                <span>Delivery details will be used to arrange your shipment.</span>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="checkout-footer">
+        <strong>FOOTRA</strong> &nbsp; · &nbsp; Premium footwear, made for every step.
+    </footer>
+
+    <script src="myscript.js"></script>
+    <script>
+        // Fallback navigation in case the main script does not define this function.
+        if (typeof window.goBackToProduct !== "function") {
+            window.goBackToProduct = function () {
+                if (window.history.length > 1) window.history.back();
+                else window.location.href = "index.html#shop";
+            };
+        }
+
+        // Do not pretend to take payment: this static page has no payment gateway.
+        document.getElementById("checkoutForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            if (!this.reportValidity()) return;
+            alert("Your delivery details are valid. To accept payments, connect a payment gateway before launching checkout.");
+        });
+    </script>
 </body>
 </html>
