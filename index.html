@@ -3,1540 +3,1614 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FOOTRA | Premium Footwear</title>
+    <meta name="description" content="FOOTRA — premium footwear with modern design, confident steps, and timeless style.">
 
-    <meta
-        name="description"
-        content="FOOTRA — premium footwear with modern design, confident steps, and timeless style."
-    >
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- FOOTRA CSS -->
+    <link rel="stylesheet" href="mystyle.css">
 
-    <!-- =========================
-         FONT AWESOME
-    ========================== -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    >
-
-    <!-- =========================
-         GOOGLE FONT
-    ========================== -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- =========================
-         BOOTSTRAP
-    ========================== -->
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-    >
-
-    <!-- =========================
-         FOOTRA CSS
-    ========================== -->
-    <link
-        rel="stylesheet"
-        href="mystyle.css"
-    >
-
-    <!-- FOOTRA forest-green brand theme inspired by your mockup -->
     <style>
-      :root { --footra-green:#075b3a; --footra-green-dark:#063d2b; --footra-green-soft:#eaf1e8; --footra-ink:#171a17; --footra-paper:#f8f8f5; --footra-muted:#6d746e; }
-      html { scroll-behavior:smooth; }
-      body { background:var(--footra-paper); color:var(--footra-ink); font-family:'Manrope',sans-serif; }
-      a { transition:color .2s ease, background .2s ease; }
-     /* =========================================
-   FOOTRA — PREMIUM WHITE NAVBAR
-   Add at the END of the existing style block
-========================================= */
+        :root {
+            --footra-green: #075b3a;
+            --footra-green-dark: #063d2b;
+            --footra-green-soft: #eaf1e8;
+            --footra-ink: #171a17;
+            --footra-paper: #f8f8f5;
+            --footra-muted: #6d746e;
+            --footra-gold: #c6a15b;
+        }
 
-header.navbar {
-    background: #ffffff !important;
-    color: #171a17 !important;
-    box-shadow: 0 3px 20px rgba(15, 35, 23, 0.07);
-    border-bottom: 1px solid #edf0ec;
-    backdrop-filter: blur(12px);
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-/* Brand logo */
-header.navbar #logo {
-    max-height: 52px;
-    width: auto;
-    object-fit: contain;
-    transition: transform 0.25s ease;
-}
+        body {
+            background: var(--footra-paper);
+            color: var(--footra-ink);
+            font-family: 'Manrope', sans-serif;
+        }
 
-header.navbar .brand-logo:hover #logo {
-    transform: scale(1.04);
-}
+        a {
+            transition: color .2s ease, background .2s ease;
+        }
 
-/* Navigation links */
-header.navbar .main-navigation .menu a {
-    color: #252b26 !important;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    text-decoration: none;
-    transition: color 0.25s ease;
-    position: relative;
-}
+        /* =========================================
+           FOOTRA — PREMIUM NAVBAR (with dropdown menu)
+        ========================================= */
+        header.navbar {
+            background: #ffffff !important;
+            color: #171a17 !important;
+            box-shadow: 0 3px 20px rgba(15, 35, 23, 0.07);
+            border-bottom: 1px solid #edf0ec;
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            height: 86px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-/* Elegant green underline */
-header.navbar .main-navigation .menu a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 20px;
-    width: 0;
-    height: 2px;
-    background: #075b3a;
-    border-radius: 2px;
-    transition: width 0.25s ease;
-}
+        header.navbar #logo {
+            max-height: 52px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.25s ease;
+        }
 
-header.navbar .main-navigation .menu a:hover,
-header.navbar .main-navigation .menu a.active {
-    color: #075b3a !important;
-}
+        header.navbar .brand-logo:hover #logo {
+            transform: scale(1.04);
+        }
 
-header.navbar .main-navigation .menu a:hover::after,
-header.navbar .main-navigation .menu a.active::after {
-    width: 100%;
-}
+        /* ----- DROPDOWN MENU (replaces horizontal menu) ----- */
+        .dropdown-nav {
+            position: relative;
+            display: inline-block;
+            margin-left: 30px;
+        }
 
-/* Search, account, cart, wishlist and menu icons */
-header.navbar .nav-icon {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent !important;
-    color: #202820 !important;
-    border: 1px solid transparent;
-    border-radius: 50%;
-    font-size: 17px;
-    cursor: pointer;
-    transition: background 0.25s ease,
-                color 0.25s ease,
-                border-color 0.25s ease,
-                transform 0.25s ease;
-}
+        .dropdown-nav .dropbtn {
+            background: transparent;
+            border: none;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            color: #252b26;
+            padding: 12px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.25s, color 0.25s;
+        }
 
-header.navbar .nav-icon:hover {
-    background: #edf5ef !important;
-    color: #075b3a !important;
-    border-color: #dce9df;
-    transform: translateY(-1px);
-}
+        .dropdown-nav .dropbtn i {
+            font-size: 13px;
+            color: var(--footra-green);
+            transition: transform 0.25s;
+        }
 
-/* Cart and wishlist number badges */
-header.navbar .nav-count {
-    position: absolute;
-    top: -2px;
-    right: -3px;
-    min-width: 17px;
-    height: 17px;
-    padding: 0 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #075b3a;
-    color: #ffffff;
-    border: 2px solid #ffffff;
-    border-radius: 50px;
-    font-size: 10px;
-    font-weight: 800;
-    line-height: 1;
-}
+        .dropdown-nav:hover .dropbtn {
+            background: #edf5ef;
+            color: var(--footra-green);
+        }
 
-/* Account dropdown */
-header.navbar .user-menu {
-    background: #ffffff;
-    border: 1px solid #e8eee8;
-    border-radius: 12px;
-    box-shadow: 0 12px 32px rgba(15, 35, 23, 0.12);
-    padding: 6px;
-}
+        .dropdown-nav:hover .dropbtn i {
+            transform: rotate(180deg);
+        }
 
-header.navbar .user-menu a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 14px;
-    color: #252b26 !important;
-    font-size: 13px;
-    font-weight: 600;
-    border-radius: 8px;
-    text-decoration: none;
-}
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 46px;
+            background: #ffffff;
+            min-width: 210px;
+            border-radius: 16px;
+            box-shadow: 0 18px 40px rgba(15, 35, 23, 0.12);
+            border: 1px solid #e8eee8;
+            padding: 10px 6px;
+            z-index: 1001;
+            animation: dropFade 0.2s ease;
+        }
 
-header.navbar .user-menu a:hover {
-    background: #edf5ef;
-    color: #075b3a !important;
-}
+        @keyframes dropFade {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-/* Mobile menu icon */
-header.navbar .menu-toggle {
-    color: #202820 !important;
-}
+        .dropdown-nav:hover .dropdown-content {
+            display: block;
+        }
 
-/* Keep navbar tidy on smaller screens */
-@media (max-width: 992px) {
-    header.navbar {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+        .dropdown-content a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 18px;
+            color: #252b26 !important;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background 0.2s, color 0.2s;
+        }
 
-    header.navbar #logo {
-        max-height: 46px;
-    }
+        .dropdown-content a i {
+            width: 18px;
+            color: var(--footra-green);
+            font-size: 14px;
+        }
 
-    header.navbar .nav-right {
-        gap: 8px;
-    }
-}
+        .dropdown-content a:hover {
+            background: #edf5ef;
+            color: var(--footra-green) !important;
+        }
 
-@media (max-width: 576px) {
-    header.navbar {
-        height: 76px;
-        padding-left: 12px;
-        padding-right: 12px;
-    }
+        /* ----- Right side actions (unchanged) ----- */
+        header.navbar .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    header.navbar #logo {
-        max-height: 42px;
-    }
+        header.navbar .nav-icon {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent !important;
+            color: #202820 !important;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            font-size: 17px;
+            cursor: pointer;
+            transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+        }
 
-    header.navbar .nav-icon {
-        width: 35px;
-        height: 35px;
-        font-size: 15px;
-    }
-}
-      #logo { max-height:48px; object-fit:contain; }
-      .search-bar { background:#fff; border:1px solid #dce5dc; box-shadow:0 12px 35px #00000012; }
-      .search-bar input { border-color:#d7dfd7; border-radius:8px; }
-      .webbnr { position:relative; overflow:hidden; border-radius:0 0 24px 24px; background:#17251b; }
-      .webbnr:after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(5,28,18,.78),rgba(5,28,18,.32) 52%,rgba(5,28,18,.08)); pointer-events:none; }
-      .webbnr img { filter:saturate(.82); }
-      .webbnr-content { position:relative; z-index:1; }
-      .webbnr-content h1 { letter-spacing:-.045em; line-height:1.03; }
-      .webbnr-content p { max-width:520px; }
-      .btn-shop { background:var(--footra-green) !important; color:#fff !important; border:1px solid var(--footra-green) !important; border-radius:999px !important; padding:14px 30px !important; font-weight:800; box-shadow:0 8px 20px #063d2b20; transition:transform .2s,background .2s; }
-      .btn-shop:hover { background:var(--footra-green-dark) !important; transform:translateY(-2px); }
-      .box1 { background:#fff; border:1px solid #edf0ea; border-radius:22px; box-shadow:0 12px 40px #1a281b0a; }
-      .feature i { color:var(--footra-green) !important; }
-      .feature h2 { color:#1d2a20; }
-      .shoe-gallery { gap:16px; }
-      .shoe-gallery .img { border-radius:12px; }
-      .gallery-section { background:transparent; }
-      .gallery-title { color:var(--footra-ink); letter-spacing:-.04em; }
-      .gallery-title:after { content:''; display:block; width:54px; height:4px; margin:14px auto 0; background:var(--footra-green); border-radius:5px; }
-      .gallery-grid { gap:24px; }
-      .shoe-card { background:#fff; border:1px solid #e7ebe5; border-radius:14px; overflow:hidden; padding:14px; box-shadow:0 8px 28px #1623180a; transition:transform .25s,box-shadow .25s; }
-      .shoe-card:hover { transform:translateY(-5px); box-shadow:0 16px 38px #16231818; }
-      .shoe-card .img-container { border-radius:9px; overflow:hidden; background:#f0f1ed; }
-      .shoe-card h3 { color:#202720; font-size:1.05rem; font-weight:800; margin-top:16px; }
-      .shoe-card p { color:var(--footra-green); font-weight:800; }
-      .cart-icon, .wishlist-icon { background:#fff !important; color:var(--footra-green) !important; border:1px solid #e0e8df !important; }
-      .cart-icon:hover, .wishlist-icon:hover, .wishlist-icon.active { background:var(--footra-green) !important; color:#fff !important; }
-      .buy-btn, .checkout-btn { background:var(--footra-green) !important; color:#fff !important; border:0 !important; border-radius:999px !important; font-weight:800; }
-      .buy-btn:hover, .checkout-btn:hover { background:var(--footra-green-dark) !important; }
-      .exclusive-wrapper { border-radius:20px; overflow:hidden; background:#123d2b; }
-      .exclusive-content { color:#fff; }
-      .offer-title { color:#fff; }
-      .offer-text { color:#e1ebe3; }
-      .countdown-box { border-color:#8eb69a !important; }
-      .footer { background:#101713 !important; color:#f5f7f4; }
-      .footer-logo { color:#fff !important; letter-spacing:.12em; }
-      .footer-col h3:after { background:#23885a !important; }
-      .footer a { color:#c7d1c9 !important; }
-      .footer a:hover { color:#9ed8b1 !important; }
-      .footer-bottom { border-top:1px solid #344239 !important; color:#aab5ac; }
-      .cart-drawer, .wishlist-drawer, .modal-content { border-radius:16px 0 0 16px; }
-      .cart-header, .wishlist-header { background:var(--footra-green-dark) !important; color:#fff; }
-      .close-cart { color:inherit; }
-      .mobile-menu-overlay { background:#06190f99; }
-      @media (max-width:768px) { .webbnr { border-radius:0 0 16px 16px; } .shoe-card { padding:10px; } .gallery-grid { gap:14px; } }
-      @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*:before,*:after { transition:none !important; animation:none !important; } }
+        header.navbar .nav-icon:hover {
+            background: #edf5ef !important;
+            color: #075b3a !important;
+            border-color: #dce9df;
+            transform: translateY(-1px);
+        }
+
+        header.navbar .nav-count {
+            position: absolute;
+            top: -2px;
+            right: -3px;
+            min-width: 17px;
+            height: 17px;
+            padding: 0 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #075b3a;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            border-radius: 50px;
+            font-size: 10px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        /* Account dropdown (still works) */
+        .user-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .user-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background: #ffffff;
+            border: 1px solid #e8eee8;
+            border-radius: 12px;
+            box-shadow: 0 12px 32px rgba(15, 35, 23, 0.12);
+            padding: 6px;
+            min-width: 190px;
+            z-index: 1001;
+        }
+
+        .user-menu.show {
+            display: block;
+        }
+
+        .user-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            color: #252b26 !important;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .user-menu a:hover {
+            background: #edf5ef;
+            color: #075b3a !important;
+        }
+
+        /* Search panel */
+        .search-bar {
+            display: none;
+            position: fixed;
+            top: 86px;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-bottom: 1px solid #dce5dc;
+            box-shadow: 0 12px 35px #00000012;
+            padding: 16px 40px;
+            z-index: 999;
+        }
+
+        .search-bar.open {
+            display: block;
+        }
+
+        .search-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-inner i {
+            color: var(--footra-green);
+            font-size: 18px;
+        }
+
+        .search-inner input {
+            flex: 1;
+            padding: 12px 18px;
+            border: 1px solid #d7dfd7;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .search-inner input:focus {
+            border-color: var(--footra-green);
+        }
+
+        .close-search {
+            background: transparent;
+            border: none;
+            font-size: 22px;
+            color: #6d746e;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+
+        .close-search:hover {
+            color: var(--footra-green);
+        }
+
+        /* ---- Cart / Wishlist drawers (unchanged) ---- */
+        .cart-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(6, 25, 15, 0.6);
+            z-index: 1100;
+        }
+
+        .cart-overlay.show {
+            display: block;
+        }
+
+        .cart-drawer,
+        .wishlist-drawer {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 380px;
+            max-width: 92vw;
+            height: 100vh;
+            background: #fff;
+            z-index: 1200;
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.08);
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-radius: 16px 0 0 16px;
+            overflow: hidden;
+        }
+
+        .cart-drawer.open,
+        .wishlist-drawer.open {
+            right: 0;
+        }
+
+        .cart-header,
+        .wishlist-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            background: var(--footra-green-dark) !important;
+            color: #fff;
+        }
+
+        .cart-header h3,
+        .wishlist-header h3 {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cart-count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 10px;
+            border-radius: 40px;
+            font-size: 14px;
+        }
+
+        .close-cart {
+            background: transparent;
+            border: none;
+            color: inherit;
+            font-size: 24px;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0 6px;
+        }
+
+        .cart-body,
+        .wishlist-drawer>#wishlistItems {
+            flex: 1;
+            padding: 20px 24px;
+            overflow-y: auto;
+        }
+
+        .cart-footer {
+            padding: 18px 24px;
+            border-top: 1px solid #edf0ec;
+            background: #fafcfa;
+        }
+
+        .cart-footer h3 {
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--footra-green) !important;
+            color: #fff !important;
+            border: 0 !important;
+            border-radius: 999px !important;
+            font-weight: 800;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .checkout-btn:hover {
+            background: var(--footra-green-dark) !important;
+        }
+
+        /* Mobile menu overlay (hidden by default, used by JS) */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #06190f99;
+            z-index: 1050;
+        }
+
+        .mobile-menu-overlay.show {
+            display: block;
+        }
+
+        /* ---- PREMIUM HERO ---- */
+        .webbnr {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 24px 24px;
+            background: #17251b;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+        }
+
+        .webbnr:after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(5, 28, 18, .82), rgba(5, 28, 18, .35) 52%, rgba(5, 28, 18, .08));
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .webbnr img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(.82);
+        }
+
+        .webbnr-content {
+            position: relative;
+            z-index: 2;
+            padding: 80px 60px;
+            max-width: 680px;
+            color: #fff;
+        }
+
+        .webbnr-content h1 {
+            font-size: clamp(2.6rem, 6vw, 4.2rem);
+            font-weight: 800;
+            letter-spacing: -.045em;
+            line-height: 1.03;
+            color: #fff;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .webbnr-content p {
+            font-size: 1.15rem;
+            max-width: 520px;
+            color: #e4ede6;
+            margin: 18px 0 28px;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .btn-shop {
+            background: var(--footra-green) !important;
+            color: #fff !important;
+            border: 1px solid var(--footra-green) !important;
+            border-radius: 999px !important;
+            padding: 14px 36px !important;
+            font-weight: 800;
+            font-size: 15px;
+            box-shadow: 0 8px 20px #063d2b20;
+            transition: transform .2s, background .2s;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-shop:hover {
+            background: var(--footra-green-dark) !important;
+            transform: translateY(-2px);
+        }
+
+        /* ---- FEATURES ---- */
+        .box1 {
+            background: #fff;
+            border: 1px solid #edf0ea;
+            border-radius: 22px;
+            box-shadow: 0 12px 40px #1a281b0a;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 34px 28px;
+            margin: 40px 40px 10px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .feature {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .feature i {
+            font-size: 28px;
+            color: var(--footra-green) !important;
+            margin-bottom: 10px;
+        }
+
+        .feature h2 {
+            font-size: 15px;
+            font-weight: 800;
+            color: #1d2a20;
+            margin-bottom: 4px;
+        }
+
+        .feature p {
+            font-size: 13px;
+            color: var(--footra-muted);
+            margin: 0;
+        }
+
+        .vertical-line {
+            width: 1px;
+            height: 44px;
+            background: #e2e8e0;
+        }
+
+        /* ---- SHOE GALLERY ---- */
+        .shoe-gallery {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            padding: 28px 40px;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .shoe-gallery .img {
+            border-radius: 12px;
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .shoe-gallery .img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10);
+        }
+
+        /* ---- PRODUCT COLLECTION ---- */
+        .gallery-section {
+            padding: 60px 40px 40px;
+        }
+
+        .gallery-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--footra-ink);
+            letter-spacing: -.04em;
+            margin-bottom: 50px;
+        }
+
+        .gallery-title:after {
+            content: '';
+            display: block;
+            width: 54px;
+            height: 4px;
+            margin: 14px auto 0;
+            background: var(--footra-green);
+            border-radius: 5px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .shoe-card {
+            background: #fff;
+            border: 1px solid #e7ebe5;
+            border-radius: 14px;
+            overflow: hidden;
+            padding: 14px;
+            box-shadow: 0 8px 28px #1623180a;
+            transition: transform .25s, box-shadow .25s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shoe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 38px #16231818;
+        }
+
+        .shoe-card .img-container {
+            position: relative;
+            border-radius: 9px;
+            overflow: hidden;
+            background: #f0f1ed;
+            aspect-ratio: 1/1;
+        }
+
+        .shoe-card .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s;
+        }
+
+        .shoe-card .img-container .img-hover {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+
+        .shoe-card .img-container:hover .img-hover {
+            opacity: 1;
+        }
+
+        .shoe-card .img-container:hover .img-default {
+            opacity: 0;
+        }
+
+        .cart-icon,
+        .wishlist-icon {
+            position: absolute;
+            background: #fff !important;
+            color: var(--footra-green) !important;
+            border: 1px solid #e0e8df !important;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.25s, color 0.25s;
+            font-size: 15px;
+            z-index: 2;
+        }
+
+        .cart-icon {
+            bottom: 12px;
+            right: 12px;
+        }
+
+        .wishlist-icon {
+            bottom: 12px;
+            left: 12px;
+        }
+
+        .cart-icon:hover,
+        .wishlist-icon:hover,
+        .wishlist-icon.active {
+            background: var(--footra-green) !important;
+            color: #fff !important;
+        }
+
+        .shoe-card h3 {
+            color: #202720;
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin: 16px 0 4px;
+        }
+
+        .shoe-card p {
+            color: var(--footra-green);
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 14px;
+        }
+
+        .buy-btn {
+            background: var(--footra-green) !important;
+            color: #fff !important;
+            border: 0 !important;
+            border-radius: 999px !important;
+            font-weight: 800;
+            padding: 12px;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: auto;
+        }
+
+        .buy-btn:hover {
+            background: var(--footra-green-dark) !important;
+        }
+
+        /* ---- EXCLUSIVE OFFER ---- */
+        .exclusive-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 60px auto 60px;
+            padding: 0 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #123d2b;
+        }
+
+        .exclusive-wrapper img {
+            width: 45%;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 20px 0 0 20px;
+        }
+
+        .exclusive-content {
+            color: #fff;
+            padding: 30px 40px 30px 0;
+            flex: 1;
+        }
+
+        .offer-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -.03em;
+            margin-bottom: 12px;
+        }
+
+        .offer-text {
+            color: #e1ebe3;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 22px;
+            max-width: 420px;
+        }
+
+        .countdown-box {
+            display: inline-block;
+            border: 1px solid #8eb69a !important;
+            border-radius: 14px;
+            padding: 14px 26px;
+            text-align: center;
+            margin-bottom: 26px;
+        }
+
+        .countdown-box h3 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #b8d4c2;
+            margin-bottom: 6px;
+        }
+
+        #countdown {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            background: #101713 !important;
+            color: #f5f7f4;
+            padding: 60px 40px 24px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+            color: #fff !important;
+            margin-bottom: 12px;
+        }
+
+        .footer-text {
+            color: #b0bdb3;
+            font-size: 14px;
+            line-height: 1.7;
+            max-width: 300px;
+        }
+
+        .footer-col h3 {
+            font-size: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 18px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 3px;
+            background: #23885a !important;
+            border-radius: 3px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: #c7d1c9 !important;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #9ed8b1 !important;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 14px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff !important;
+            font-size: 18px;
+            transition: background 0.25s;
+        }
+
+        .footer-social a:hover {
+            background: var(--footra-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 28px;
+            margin-top: 40px;
+            border-top: 1px solid #344239 !important;
+            color: #aab5ac;
+            font-size: 13px;
+        }
+
+        /* ---- AUTH MODAL ---- */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #fff;
+            border-radius: 16px;
+            padding: 36px 32px 28px;
+            max-width: 420px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h2 {
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--footra-ink);
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1px solid #dce5dc;
+            border-radius: 10px;
+            margin-bottom: 14px;
+            font-size: 14px;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .modal-content input:focus {
+            border-color: var(--footra-green);
+        }
+
+        .modal-content button[type="button"]:not(.link):not(.close-btn) {
+            width: 100%;
+            padding: 14px;
+            background: var(--footra-green);
+            color: #fff;
+            border: none;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 6px;
+        }
+
+        .modal-content button[type="button"]:not(.link):not(.close-btn):hover {
+            background: var(--footra-green-dark);
+        }
+
+        .modal-content p {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 14px;
+            color: var(--footra-muted);
+        }
+
+        .link {
+            background: none;
+            border: none;
+            color: var(--footra-green);
+            font-weight: 800;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: underline;
+            padding: 0 4px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #888;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            header.navbar {
+                padding: 0 20px;
+                height: 76px;
+            }
+            header.navbar #logo {
+                max-height: 46px;
+            }
+            .dropdown-nav {
+                margin-left: 12px;
+            }
+            .dropdown-nav .dropbtn {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            .exclusive-wrapper {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+            .exclusive-wrapper img {
+                width: 100%;
+                height: 220px;
+                border-radius: 20px 20px 0 0;
+            }
+            .exclusive-content {
+                padding: 24px 0 30px;
+            }
+            .shoe-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                padding: 20px;
+            }
+            .webbnr-content {
+                padding: 60px 30px;
+            }
+            .box1 {
+                margin: 30px 20px 10px;
+                padding: 24px 16px;
+            }
+            .gallery-section {
+                padding: 40px 20px 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header.navbar {
+                height: 70px;
+                padding: 0 12px;
+            }
+            header.navbar #logo {
+                max-height: 40px;
+            }
+            .dropdown-nav .dropbtn {
+                font-size: 13px;
+                padding: 8px 10px;
+            }
+            .dropdown-nav .dropbtn i {
+                display: none;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-title {
+                font-size: 1.7rem;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            .shoe-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 16px;
+                gap: 10px;
+            }
+            .shoe-gallery .img {
+                height: 110px;
+            }
+            .webbnr-content {
+                padding: 40px 20px;
+            }
+            .webbnr-content h1 {
+                font-size: 2.2rem;
+            }
+            .webbnr-content p {
+                font-size: 1rem;
+            }
+            .exclusive-wrapper {
+                margin: 30px 16px;
+            }
+            .box1 {
+                margin: 20px 12px;
+                padding: 18px 10px;
+                gap: 12px;
+            }
+            .vertical-line {
+                display: none;
+            }
+            .feature {
+                min-width: 80px;
+                flex: 1 1 40%;
+            }
+            .cart-drawer,
+            .wishlist-drawer {
+                width: 100vw;
+                max-width: 100vw;
+                border-radius: 0;
+            }
+        }
     </style>
-
 </head>
-
 
 <body>
 
+    <!-- Mobile menu overlay (hidden by default) -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="toggleMobileMenu()" aria-hidden="true"></div>
+
     <!-- =========================
-         MOBILE MENU OVERLAY
+         PREMIUM FOOTRA NAVBAR with DROPDOWN
     ========================== -->
-    <div
-        class="mobile-menu-overlay"
-        id="mobileMenuOverlay"
-        onclick="toggleMobileMenu()"
-        aria-hidden="true">
-    </div>
+    <header class="navbar">
 
+        <!-- BRAND LOGO -->
+        <a href="index.html" class="brand-logo" aria-label="FOOTRA Home">
+            <img src="LOGO.png" id="logo" alt="FOOTRA">
+        </a>
 
-<!-- =========================
-     PREMIUM FOOTRA NAVBAR
-========================== -->
-<header class="navbar">
-
-    <!-- BRAND LOGO -->
-    <a href="index.html" class="brand-logo" aria-label="FOOTRA Home">
-        <img src="LOGO.png" id="logo" alt="FOOTRA">
-    </a>
-
-    <!-- MAIN NAVIGATION -->
-    <nav class="main-navigation" aria-label="Main navigation">
-        <ul class="menu" id="mainMenu">
-            <li>
-                <a href="#home" class="active">Home</a>
-            </li>
-            <li>
-                <a href="#shop">Shop</a>
-            </li>
-            <li>
-                <a href="contact.html">Contact</a>
-            </li>
-            <li>
-                <a href="about.html">About</a>
-            </li>
-        </ul>
-    </nav>
-
-    <!-- RIGHT-SIDE ACTIONS -->
-    <div class="nav-right">
-
-        <!-- SEARCH -->
-        <button type="button" class="nav-icon"
-                onclick="toggleSearch()"
-                aria-label="Toggle search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-
-        <!-- ACCOUNT -->
-        <div class="user-dropdown">
-            <button type="button" class="nav-icon"
-                    onclick="toggleUserMenu(event)"
-                    aria-label="Account menu">
-                <i class="fa-regular fa-user"></i>
+        <!-- DROPDOWN NAVIGATION (replaces horizontal menu) -->
+        <div class="dropdown-nav">
+            <button class="dropbtn" aria-haspopup="true" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i> Menu <i class="fa-solid fa-chevron-down"></i>
             </button>
-
-            <div class="user-menu" id="userMenu">
-                <a href="#" onclick="openLogin(); return false;">
-                    <i class="fa-solid fa-right-to-bracket"></i> Login
-                </a>
-                <a href="#" onclick="openRegister(); return false;">
-                    <i class="fa-solid fa-user-plus"></i> Register
-                </a>
-                <a href="#" onclick="openAccount(); return false;">
-                    <i class="fa-regular fa-circle-user"></i> My Account
-                </a>
+            <div class="dropdown-content">
+                <a href="#home"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#shop"><i class="fa-solid fa-store"></i> Shop</a>
+                <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+                <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
             </div>
         </div>
 
-        <!-- CART -->
-        <button type="button" class="nav-icon"
-                onclick="openCart()"
-                aria-label="Open shopping cart">
-            <i class="fa-solid fa-bag-shopping"></i>
-            <span class="nav-count" id="cartCount">0</span>
-        </button>
+        <!-- RIGHT-SIDE ACTIONS (all preserved) -->
+        <div class="nav-right">
 
-        <!-- WISHLIST -->
-        <button type="button" class="nav-icon"
-                onclick="openWishlist()"
-                aria-label="Open wishlist">
-            <i class="fa-regular fa-heart"></i>
-            <span class="nav-count" id="wishlistCount">0</span>
-        </button>
+            <!-- SEARCH -->
+            <button type="button" class="nav-icon" onclick="toggleSearch()" aria-label="Toggle search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
 
-        <!-- MOBILE MENU -->
-        <button type="button" class="nav-icon menu-toggle"
-                onclick="toggleMobileMenu()"
-                aria-label="Toggle mobile menu">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+            <!-- ACCOUNT -->
+            <div class="user-dropdown">
+                <button type="button" class="nav-icon" onclick="toggleUserMenu(event)" aria-label="Account menu">
+                    <i class="fa-regular fa-user"></i>
+                </button>
+                <div class="user-menu" id="userMenu">
+                    <a href="#" onclick="openLogin(); return false;"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                    <a href="#" onclick="openRegister(); return false;"><i class="fa-solid fa-user-plus"></i> Register</a>
+                    <a href="#" onclick="openAccount(); return false;"><i class="fa-regular fa-circle-user"></i> My Account</a>
+                </div>
+            </div>
 
-    </div>
-</header>
+            <!-- CART -->
+            <button type="button" class="nav-icon" onclick="openCart()" aria-label="Open shopping cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="nav-count" id="cartCount">0</span>
+            </button>
 
-<!-- SEARCH PANEL -->
-<div class="search-bar" id="searchBar">
-    <div class="search-inner">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="search" id="siteSearch"
-               placeholder="Search your next favourite pair..."
-               aria-label="Search products">
-        <button type="button" class="close-search"
-                onclick="toggleSearch()"
-                aria-label="Close search">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-    </div>
-</div>
+            <!-- WISHLIST -->
+            <button type="button" class="nav-icon" onclick="openWishlist()" aria-label="Open wishlist">
+                <i class="fa-regular fa-heart"></i>
+                <span class="nav-count" id="wishlistCount">0</span>
+            </button>
 
+            <!-- MOBILE MENU (kept for compatibility) -->
+            <button type="button" class="nav-icon menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
+        </div>
+    </header>
 
-    <!-- =========================
-         CART OVERLAY
-    ========================== -->
-    <div
-        class="cart-overlay"
-        id="cartOverlay"
-        onclick="closeCart()"
-        aria-hidden="true">
+    <!-- SEARCH PANEL -->
+    <div class="search-bar" id="searchBar">
+        <div class="search-inner">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="siteSearch" placeholder="Search your next favourite pair..." aria-label="Search products">
+            <button type="button" class="close-search" onclick="toggleSearch()" aria-label="Close search">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
     </div>
 
+    <!-- CART OVERLAY -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()" aria-hidden="true"></div>
 
-    <!-- =========================
-         CART DRAWER
-    ========================== -->
-    <aside
-        class="cart-drawer"
-        id="cartDrawer"
-        aria-label="Shopping cart">
-
+    <!-- CART DRAWER -->
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
         <div class="cart-header">
-
-            <h3>
-                Your Cart
-
-                <span
-                    class="cart-count"
-                    id="cartCount">
-                    0
-                </span>
-            </h3>
-
-            <button
-                type="button"
-                class="close-cart"
-                onclick="closeCart()"
-                aria-label="Close cart">
-
-                ✕
-
-            </button>
-
+            <h3>Your Cart <span class="cart-count" id="cartCountDrawer">0</span></h3>
+            <button type="button" class="close-cart" onclick="closeCart()" aria-label="Close cart">✕</button>
         </div>
-
-
-        <div
-            class="cart-body"
-            id="cartItems">
-
+        <div class="cart-body" id="cartItems">
             <p>Your cart is empty.</p>
-
         </div>
-
-
         <div class="cart-footer">
-
-            <h3>
-                Total:
-                ₹<span id="cartTotal">0</span>
-            </h3>
-
-            <button
-                type="button"
-                class="checkout-btn"
-                id="cartCheckoutBtn"
-                onclick="checkout()">
-
-                Checkout
-
-            </button>
-
+            <h3>Total: ₹<span id="cartTotal">0</span></h3>
+            <button type="button" class="checkout-btn" id="cartCheckoutBtn" onclick="checkout()">Checkout</button>
         </div>
-
     </aside>
 
+    <!-- WISHLIST OVERLAY -->
+    <div class="cart-overlay" id="wishlistOverlay" onclick="closeWishlist()" aria-hidden="true"></div>
 
-    <!-- =========================
-         WISHLIST OVERLAY
-    ========================== -->
-    <div
-        class="cart-overlay"
-        id="wishlistOverlay"
-        onclick="closeWishlist()"
-        aria-hidden="true">
-    </div>
-
-
-    <!-- =========================
-         WISHLIST DRAWER
-    ========================== -->
-    <aside
-        class="wishlist-drawer"
-        id="wishlistDrawer"
-        aria-label="Wishlist">
-
+    <!-- WISHLIST DRAWER -->
+    <aside class="wishlist-drawer" id="wishlistDrawer" aria-label="Wishlist">
         <div class="wishlist-header">
-
-            <h3>
-                Your Wishlist
-            </h3>
-
-            <button
-                type="button"
-                class="close-cart"
-                onclick="closeWishlist()"
-                aria-label="Close wishlist">
-
-                ✕
-
-            </button>
-
+            <h3>Your Wishlist</h3>
+            <button type="button" class="close-cart" onclick="closeWishlist()" aria-label="Close wishlist">✕</button>
         </div>
-
-
         <div id="wishlistItems">
-
-            <p>
-                Your wishlist is empty.
-            </p>
-
+            <p>Your wishlist is empty.</p>
         </div>
-
     </aside>
 
-
-    <!-- =========================
-         HERO
-    ========================== -->
+    <!-- MAIN CONTENT -->
     <main>
 
+        <!-- HERO -->
         <section id="home">
-
             <div class="webbnr">
-
-                <img
-                    src="boots.png"
-                    alt="Titan-X Men's Black Boots"
-                    loading="eager">
-
-
+                <img src="boots.png" alt="Titan-X Men's Black Boots" loading="eager">
                 <div class="webbnr-content">
-
-                    <h1>
-                        Bold Steps
-                        <br>
-                        After Dark
-                    </h1>
-
-                    <p>
-                        Own every stride with the
-                        Titan-X Men's Black Boots
-                    </p>
-
+                    <h1>Bold Steps<br>After Dark</h1>
+                    <p>Own every stride with the Titan-X Men's Black Boots</p>
                     <a href="#shop">
-
-                        <button
-                            type="button"
-                            class="btn-shop">
-
-                            Shop Now
-
-                        </button>
-
+                        <button type="button" class="btn-shop">Shop Now</button>
                     </a>
-
                 </div>
-
             </div>
-
         </section>
 
-
-        <!-- =========================
-             FEATURES
-        ========================== -->
-        <section
-            class="box1"
-            aria-label="FOOTRA benefits">
-
+        <!-- FEATURES -->
+        <section class="box1" aria-label="FOOTRA benefits">
             <div class="feature">
-
-                <i
-                    class="fa-solid fa-truck-fast"
-                    aria-hidden="true">
-                </i>
-
+                <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
                 <h2>Free Delivery</h2>
-
-                <p>
-                    Free shipping
-                </p>
-
+                <p>Free shipping</p>
             </div>
-
-
             <div class="vertical-line"></div>
-
-
             <div class="feature">
-
-                <i
-                    class="fa-solid fa-arrow-rotate-left"
-                    aria-hidden="true">
-                </i>
-
+                <i class="fa-solid fa-arrow-rotate-left" aria-hidden="true"></i>
                 <h2>Return Policy</h2>
-
-                <p>
-                    30-day return
-                </p>
-
+                <p>30-day return</p>
             </div>
-
-
             <div class="vertical-line"></div>
-
-
             <div class="feature">
-
-                <i
-                    class="fa-solid fa-headset"
-                    aria-hidden="true">
-                </i>
-
+                <i class="fa-solid fa-headset" aria-hidden="true"></i>
                 <h2>24/7 Support</h2>
-
-                <p>
-                    Always here
-                </p>
-
+                <p>Always here</p>
             </div>
-
-
             <div class="vertical-line"></div>
-
-
             <div class="feature">
-
-                <i
-                    class="fa-solid fa-coins"
-                    aria-hidden="true">
-                </i>
-
+                <i class="fa-solid fa-coins" aria-hidden="true"></i>
                 <h2>Secure Payment</h2>
-
-                <p>
-                    100% secure
-                </p>
-
+                <p>100% secure</p>
             </div>
-
         </section>
 
-
-        <!-- =========================
-             SHOE GALLERY
-        ========================== -->
-        <section
-            class="shoe-gallery"
-            aria-label="FOOTRA footwear">
-
-            <img
-                src="boots1.jpg"
-                class="img img1"
-                alt="FOOTRA boots"
-                loading="lazy">
-
-            <img
-                src="boots3.jpg"
-                class="img img2"
-                alt="FOOTRA boots"
-                loading="lazy">
-
-            <img
-                src="boots12.jpg"
-                class="img img3"
-                alt="FOOTRA boots"
-                loading="lazy">
-
-            <img
-                src="boots5.jpg"
-                class="img img4"
-                alt="FOOTRA boots"
-                loading="lazy">
-
-            <img
-                src="boots6.jpg"
-                class="img img5"
-                alt="FOOTRA boots"
-                loading="lazy">
-
+        <!-- SHOE GALLERY -->
+        <section class="shoe-gallery" aria-label="FOOTRA footwear">
+            <img src="boots1.jpg" class="img img1" alt="FOOTRA boots" loading="lazy">
+            <img src="boots3.jpg" class="img img2" alt="FOOTRA boots" loading="lazy">
+            <img src="boots12.jpg" class="img img3" alt="FOOTRA boots" loading="lazy">
+            <img src="boots5.jpg" class="img img4" alt="FOOTRA boots" loading="lazy">
+            <img src="boots6.jpg" class="img img5" alt="FOOTRA boots" loading="lazy">
         </section>
 
-
-        <!-- =========================
-             PRODUCT COLLECTION
-        ========================== -->
-        <section
-            id="shop"
-            class="gallery-section">
-
-            <h2 class="gallery-title">
-                Our Collection
-            </h2>
-
-
-            <div
-                class="gallery-grid"
-                id="productGrid">
-
+        <!-- PRODUCT COLLECTION -->
+        <section id="shop" class="gallery-section">
+            <h2 class="gallery-title">Our Collection</h2>
+            <div class="gallery-grid" id="productGrid">
 
                 <!-- PRODUCT 1 -->
-                <article
-                    class="shoe-card"
-                    data-name="Leather Brown Boots"
-                    data-price="1499">
-
+                <article class="shoe-card" data-name="Leather Brown Boots" data-price="1499">
                     <div class="img-container">
-
-                        <img
-                            src="bt1.jpg"
-                            class="img-default"
-                            alt="Leather Brown Boots"
-                            loading="lazy">
-
-                        <img
-                            src="bt11.jpg"
-                            class="img-hover"
-                            alt="Leather Brown Boots alternate view"
-                            loading="lazy">
-
-
-                        <button
-                            type="button"
-                            class="cart-icon"
-                            aria-label="Add Leather Brown Boots to cart">
-
-                            <i
-                                class="fa-solid fa-cart-shopping"
-                                aria-hidden="true">
-                            </i>
-
-                        </button>
-
-
-                        <button
-                            type="button"
-                            class="wishlist-icon"
-                            aria-label="Add Leather Brown Boots to wishlist">
-
-                            <i
-                                class="fa-regular fa-heart"
-                                aria-hidden="true">
-                            </i>
-
-                        </button>
-
+                        <img src="bt1.jpg" class="img-default" alt="Leather Brown Boots" loading="lazy">
+                        <img src="bt11.jpg" class="img-hover" alt="Leather Brown Boots alternate view" loading="lazy">
+                        <button type="button" class="cart-icon" aria-label="Add Leather Brown Boots to cart"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></button>
+                        <button type="button" class="wishlist-icon" aria-label="Add Leather Brown Boots to wishlist"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
                     </div>
-
-
-                    <h3>
-                        Leather Brown Boots
-                    </h3>
-
-                    <p>
-                        ₹1499
-                    </p>
-
-                    <button
-                        type="button"
-                        class="buy-btn">
-
-                        Buy Now
-
-                    </button>
-
+                    <h3>Leather Brown Boots</h3>
+                    <p>₹1499</p>
+                    <button type="button" class="buy-btn">Buy Now</button>
                 </article>
-
 
                 <!-- PRODUCT 2 -->
-                <article
-                    class="shoe-card"
-                    data-name="Black Loafers"
-                    data-price="1199">
-
+                <article class="shoe-card" data-name="Black Loafers" data-price="1199">
                     <div class="img-container">
-
-                        <img
-                            src="bt2.jpg"
-                            class="img-default"
-                            alt="Black Loafers"
-                            loading="lazy">
-
-                        <img
-                            src="bt22.jpg"
-                            class="img-hover"
-                            alt="Black Loafers alternate view"
-                            loading="lazy">
-
-
-                        <button
-                            type="button"
-                            class="cart-icon"
-                            aria-label="Add Black Loafers to cart">
-
-                            <i
-                                class="fa-solid fa-cart-shopping"
-                                aria-hidden="true">
-                            </i>
-
-                        </button>
-
-
-                        <button
-                            type="button"
-                            class="wishlist-icon"
-                            aria-label="Add Black Loafers to wishlist">
-
-                            <i
-                                class="fa-regular fa-heart"
-                                aria-hidden="true">
-                            </i>
-
-                        </button>
-
+                        <img src="bt2.jpg" class="img-default" alt="Black Loafers" loading="lazy">
+                        <img src="bt22.jpg" class="img-hover" alt="Black Loafers alternate view" loading="lazy">
+                        <button type="button" class="cart-icon" aria-label="Add Black Loafers to cart"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></button>
+                        <button type="button" class="wishlist-icon" aria-label="Add Black Loafers to wishlist"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
                     </div>
-
-
-                    <h3>
-                        Black Loafers
-                    </h3>
-
-                    <p>
-                        ₹1199
-                    </p>
-
-                    <button
-                        type="button"
-                        class="buy-btn">
-
-                        Buy Now
-
-                    </button>
-
+                    <h3>Black Loafers</h3>
+                    <p>₹1199</p>
+                    <button type="button" class="buy-btn">Buy Now</button>
                 </article>
-
 
                 <!-- PRODUCT 3 -->
-                <article
-                    class="shoe-card"
-                    data-name="Classic Boots"
-                    data-price="1099">
-
+                <article class="shoe-card" data-name="Classic Boots" data-price="1099">
                     <div class="img-container">
-
-                        <img
-                            src="bt3.jpg"
-                            class="img-default"
-                            alt="Classic Boots"
-                            loading="lazy">
-
-                        <img
-                            src="bt33.jpg"
-                            class="img-hover"
-                            alt="Classic Boots alternate view"
-                            loading="lazy">
-
-
-                        <button
-                            type="button"
-                            class="cart-icon"
-                            aria-label="Add Classic Boots to cart">
-
-                            <i
-                                class="fa-solid fa-cart-shopping"
-                                aria-hidden="true">
-                            </i>
-
-                        </button>
-
-
-                        <button
-                            type="button"
-                            class="wishlist-icon"
-                            aria-label="Add Classic Boots to wishlist">
-
-                            <i
-                                class="fa-regular fa-heart"
-                                aria-hidden="true">
-                            </i>
-
-                        </button>
-
+                        <img src="bt3.jpg" class="img-default" alt="Classic Boots" loading="lazy">
+                        <img src="bt33.jpg" class="img-hover" alt="Classic Boots alternate view" loading="lazy">
+                        <button type="button" class="cart-icon" aria-label="Add Classic Boots to cart"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></button>
+                        <button type="button" class="wishlist-icon" aria-label="Add Classic Boots to wishlist"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
                     </div>
-
-
-                    <h3>
-                        Classic Boots
-                    </h3>
-
-                    <p>
-                        ₹1099
-                    </p>
-
-                    <button
-                        type="button"
-                        class="buy-btn">
-
-                        Buy Now
-
-                    </button>
-
+                    <h3>Classic Boots</h3>
+                    <p>₹1099</p>
+                    <button type="button" class="buy-btn">Buy Now</button>
                 </article>
-
 
                 <!-- PRODUCT 4 -->
-                <article
-                    class="shoe-card"
-                    data-name="Chelsea Boots"
-                    data-price="999">
-
+                <article class="shoe-card" data-name="Chelsea Boots" data-price="999">
                     <div class="img-container">
-
-                        <img
-                            src="bt4.jpg"
-                            class="img-default"
-                            alt="Chelsea Boots"
-                            loading="lazy">
-
-                        <img
-                            src="bt44.jpg"
-                            class="img-hover"
-                            alt="Chelsea Boots alternate view"
-                            loading="lazy">
-
-
-                        <button
-                            type="button"
-                            class="cart-icon"
-                            aria-label="Add Chelsea Boots to cart">
-
-                            <i
-                                class="fa-solid fa-cart-shopping"
-                                aria-hidden="true">
-                            </i>
-
-                        </button>
-
-
-                        <button
-                            type="button"
-                            class="wishlist-icon"
-                            aria-label="Add Chelsea Boots to wishlist">
-
-                            <i
-                                class="fa-regular fa-heart"
-                                aria-hidden="true">
-                            </i>
-
-                        </button>
-
+                        <img src="bt4.jpg" class="img-default" alt="Chelsea Boots" loading="lazy">
+                        <img src="bt44.jpg" class="img-hover" alt="Chelsea Boots alternate view" loading="lazy">
+                        <button type="button" class="cart-icon" aria-label="Add Chelsea Boots to cart"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></button>
+                        <button type="button" class="wishlist-icon" aria-label="Add Chelsea Boots to wishlist"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
                     </div>
-
-
-                    <h3>
-                        Chelsea Boots
-                    </h3>
-
-                    <p>
-                        ₹999
-                    </p>
-
-                    <button
-                        type="button"
-                        class="buy-btn">
-
-                        Buy Now
-
-                    </button>
-
+                    <h3>Chelsea Boots</h3>
+                    <p>₹999</p>
+                    <button type="button" class="buy-btn">Buy Now</button>
                 </article>
-
 
                 <!-- PRODUCT 5 -->
-                <article
-                    class="shoe-card"
-                    data-name="Black Point Toe Boots"
-                    data-price="1349">
-
+                <article class="shoe-card" data-name="Black Point Toe Boots" data-price="1349">
                     <div class="img-container">
-
-                        <img
-                            src="bt5.jpg"
-                            class="img-default"
-                            alt="Black Point Toe Boots"
-                            loading="lazy">
-
-                        <img
-                            src="bt55.jpg"
-                            class="img-hover"
-                            alt="Black Point Toe Boots alternate view"
-                            loading="lazy">
-
-
-                        <button
-                            type="button"
-                            class="cart-icon"
-                            aria-label="Add Black Point Toe Boots to cart">
-
-                            <i
-                                class="fa-solid fa-cart-shopping"
-                                aria-hidden="true">
-                            </i>
-
-                        </button>
-
-
-                        <button
-                            type="button"
-                            class="wishlist-icon"
-                            aria-label="Add Black Point Toe Boots to wishlist">
-
-                            <i
-                                class="fa-regular fa-heart"
-                                aria-hidden="true">
-                            </i>
-
-                        </button>
-
+                        <img src="bt5.jpg" class="img-default" alt="Black Point Toe Boots" loading="lazy">
+                        <img src="bt55.jpg" class="img-hover" alt="Black Point Toe Boots alternate view" loading="lazy">
+                        <button type="button" class="cart-icon" aria-label="Add Black Point Toe Boots to cart"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></button>
+                        <button type="button" class="wishlist-icon" aria-label="Add Black Point Toe Boots to wishlist"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
                     </div>
-
-
-                    <h3>
-                        Black Point Toe Boots
-                    </h3>
-
-                    <p>
-                        ₹1349
-                    </p>
-
-                    <button
-                        type="button"
-                        class="buy-btn">
-
-                        Buy Now
-
-                    </button>
-
+                    <h3>Black Point Toe Boots</h3>
+                    <p>₹1349</p>
+                    <button type="button" class="buy-btn">Buy Now</button>
                 </article>
-
 
                 <!-- PRODUCT 6 -->
-                <article
-                    class="shoe-card"
-                    data-name="Formal Leather Boots"
-                    data-price="1199">
-
+                <article class="shoe-card" data-name="Formal Leather Boots" data-price="1199">
                     <div class="img-container">
-
-                        <img
-                            src="bt6.jpg"
-                            class="img-default"
-                            alt="Formal Leather Boots"
-                            loading="lazy">
-
-                        <img
-                            src="bt66.jpg"
-                            class="img-hover"
-                            alt="Formal Leather Boots alternate view"
-                            loading="lazy">
-
-
-                        <button
-                            type="button"
-                            class="cart-icon"
-                            aria-label="Add Formal Leather Boots to cart">
-
-                            <i
-                                class="fa-solid fa-cart-shopping"
-                                aria-hidden="true">
-                            </i>
-
-                        </button>
-
-
-                        <button
-                            type="button"
-                            class="wishlist-icon"
-                            aria-label="Add Formal Leather Boots to wishlist">
-
-                            <i
-                                class="fa-regular fa-heart"
-                                aria-hidden="true">
-                            </i>
-
-                        </button>
-
+                        <img src="bt6.jpg" class="img-default" alt="Formal Leather Boots" loading="lazy">
+                        <img src="bt66.jpg" class="img-hover" alt="Formal Leather Boots alternate view" loading="lazy">
+                        <button type="button" class="cart-icon" aria-label="Add Formal Leather Boots to cart"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></button>
+                        <button type="button" class="wishlist-icon" aria-label="Add Formal Leather Boots to wishlist"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
                     </div>
-
-
-                    <h3>
-                        Formal Leather Boots
-                    </h3>
-
-                    <p>
-                        ₹1199
-                    </p>
-
-                    <button
-                        type="button"
-                        class="buy-btn">
-
-                        Buy Now
-
-                    </button>
-
+                    <h3>Formal Leather Boots</h3>
+                    <p>₹1199</p>
+                    <button type="button" class="buy-btn">Buy Now</button>
                 </article>
 
             </div>
-
         </section>
 
-
-        <!-- =========================
-             EXCLUSIVE OFFER
-        ========================== -->
+        <!-- EXCLUSIVE OFFER -->
         <section class="exclusive-wrapper">
-
-            <img
-                src="exclusive.png"
-                alt="FOOTRA exclusive footwear offer"
-                loading="lazy">
-
-
+            <img src="exclusive.png" alt="FOOTRA exclusive footwear offer" loading="lazy">
             <div class="exclusive-content">
-
-                <h2 class="offer-title">
-                    Limited Time Exclusive
-                </h2>
-
-                <p class="offer-text">
-                    Don't miss your chance to elevate your style.
-                    Unlock premium footwear with exclusive savings —
-                    once it's gone, it's gone.
-                </p>
-
-
+                <h2 class="offer-title">Limited Time Exclusive</h2>
+                <p class="offer-text">Don't miss your chance to elevate your style. Unlock premium footwear with exclusive savings — once it's gone, it's gone.</p>
                 <div class="countdown-box">
-
-                    <h3>
-                        Offer Ends In
-                    </h3>
-
-                    <div
-                        id="countdown"
-                        aria-live="polite">
-                        24:00:00
-                    </div>
-
+                    <h3>Offer Ends In</h3>
+                    <div id="countdown" aria-live="polite">24:00:00</div>
                 </div>
-
-
                 <a href="#shop">
-
-                    <button
-                        type="button"
-                        class="btn-shop">
-
-                        SHOP NOW
-
-                    </button>
-
+                    <button type="button" class="btn-shop">SHOP NOW</button>
                 </a>
-
             </div>
-
         </section>
 
     </main>
 
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
+    <!-- FOOTER -->
     <footer class="footer">
-
         <div class="footer-container">
-
-
-            <!-- BRAND -->
             <div class="footer-col">
-
-                <h2 class="footer-logo">
-                    FOOTRA
-                </h2>
-
-                <p class="footer-text">
-                    Premium footwear with modern design, confident steps, and timeless style.
-                </p>
-
+                <h2 class="footer-logo">FOOTRA</h2>
+                <p class="footer-text">Premium footwear with modern design, confident steps, and timeless style.</p>
             </div>
-
-
-            <!-- QUICK LINKS -->
             <div class="footer-col">
-
-                <h3>
-                    Quick Links
-                </h3>
-
+                <h3>Quick Links</h3>
                 <ul>
-
-                    <li>
-                        <a href="#home">
-                            Home
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#shop">
-                            Shop
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="about.html">
-                            About
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="contact.html">
-                            Contact
-                        </a>
-                    </li>
-
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
-
             </div>
-
-
-            <!-- SUPPORT -->
             <div class="footer-col">
-
-                <h3>
-                    Support
-                </h3>
-
+                <h3>Support</h3>
                 <ul>
-
-                    <li>
-                        <a href="#">
-                            Help Center
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            Returns
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            Shipping
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            Track Order
-                        </a>
-                    </li>
-
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Track Order</a></li>
                 </ul>
-
             </div>
-
-
-            <!-- SOCIAL -->
             <div class="footer-col">
-
-                <h3>
-                    Follow Us
-                </h3>
-
+                <h3>Follow Us</h3>
                 <div class="footer-social">
-
-                    <a
-                        href="#"
-                        aria-label="Instagram">
-
-                        <i
-                            class="fa-brands fa-instagram"
-                            aria-hidden="true">
-                        </i>
-
-                    </a>
-
-
-                    <a
-                        href="#"
-                        aria-label="Facebook">
-
-                        <i
-                            class="fa-brands fa-facebook"
-                            aria-hidden="true">
-                        </i>
-
-                    </a>
-
-
-                    <a
-                        href="#"
-                        aria-label="Twitter">
-
-                        <i
-                            class="fa-brands fa-twitter"
-                            aria-hidden="true">
-                        </i>
-
-                    </a>
-
-
-                    <a
-                        href="#"
-                        aria-label="YouTube">
-
-                        <i
-                            class="fa-brands fa-youtube"
-                            aria-hidden="true">
-                        </i>
-
-                    </a>
-
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
                 </div>
-
             </div>
-
         </div>
-
-
         <div class="footer-bottom">
-
             © 2026 FOOTRA. All rights reserved.
-
         </div>
-
     </footer>
 
-
-    <!-- =========================
-         AUTH MODAL
-    ========================== -->
-    <div
-        id="authModal"
-        class="modal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="loginTitle">
-
+    <!-- AUTH MODAL -->
+    <div id="authModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
         <div class="modal-content">
-
 
             <!-- LOGIN -->
             <section id="loginSection">
-
-                <h2 id="loginTitle">
-                    Login
-                </h2>
-
-
-                <label
-                    for="loginEmail"
-                    class="sr-only">
-                    Email
-                </label>
-
-                <input
-                    type="email"
-                    id="loginEmail"
-                    placeholder="Email"
-                    autocomplete="email">
-
-
-                <label
-                    for="loginPassword"
-                    class="sr-only">
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    id="loginPassword"
-                    placeholder="Password"
-                    autocomplete="current-password">
-
-
-                <button type="button">
-                    Login
-                </button>
-
-
-                <p>
-                    Don't have an account?
-
-                    <button
-                        type="button"
-                        class="link"
-                        onclick="showRegister()">
-
-                        Register
-
-                    </button>
-
-                </p>
-
+                <h2 id="loginTitle">Login</h2>
+                <label for="loginEmail" class="sr-only">Email</label>
+                <input type="email" id="loginEmail" placeholder="Email" autocomplete="email">
+                <label for="loginPassword" class="sr-only">Password</label>
+                <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password">
+                <button type="button">Login</button>
+                <p>Don't have an account? <button type="button" class="link" onclick="showRegister()">Register</button></p>
             </section>
-
 
             <!-- REGISTER -->
-            <section
-                id="registerSection"
-                style="display: none;">
-
-                <h2>
-                    Register
-                </h2>
-
-
-                <label
-                    for="registerName"
-                    class="sr-only">
-                    Full Name
-                </label>
-
-                <input
-                    type="text"
-                    id="registerName"
-                    placeholder="Full Name"
-                    autocomplete="name">
-
-
-                <label
-                    for="registerEmail"
-                    class="sr-only">
-                    Email
-                </label>
-
-                <input
-                    type="email"
-                    id="registerEmail"
-                    placeholder="Email"
-                    autocomplete="email">
-
-
-                <label
-                    for="registerPassword"
-                    class="sr-only">
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    id="registerPassword"
-                    placeholder="Password"
-                    autocomplete="new-password">
-
-
-                <button type="button">
-                    Register
-                </button>
-
-
-                <p>
-                    Already have an account?
-
-                    <button
-                        type="button"
-                        class="link"
-                        onclick="showLogin()">
-
-                        Login
-
-                    </button>
-
-                </p>
-
+            <section id="registerSection" style="display: none;">
+                <h2>Register</h2>
+                <label for="registerName" class="sr-only">Full Name</label>
+                <input type="text" id="registerName" placeholder="Full Name" autocomplete="name">
+                <label for="registerEmail" class="sr-only">Email</label>
+                <input type="email" id="registerEmail" placeholder="Email" autocomplete="email">
+                <label for="registerPassword" class="sr-only">Password</label>
+                <input type="password" id="registerPassword" placeholder="Password" autocomplete="new-password">
+                <button type="button">Register</button>
+                <p>Already have an account? <button type="button" class="link" onclick="showLogin()">Login</button></p>
             </section>
-
 
             <!-- ACCOUNT -->
-            <section
-                id="accountSection"
-                style="display: none;">
-
-                <h2>
-                    My Account
-                </h2>
-
-                <p>
-                    Welcome back!
-                </p>
-
-                <button
-                    type="button"
-                    onclick="logout()">
-
-                    Logout
-
-                </button>
-
+            <section id="accountSection" style="display: none;">
+                <h2>My Account</h2>
+                <p>Welcome back!</p>
+                <button type="button" onclick="logout()">Logout</button>
             </section>
 
-
             <!-- CLOSE MODAL -->
-            <button
-                type="button"
-                class="close-btn"
-                onclick="closeModal()"
-                aria-label="Close account window">
-
-                <i
-                    class="fa-solid fa-xmark"
-                    aria-hidden="true">
-                </i>
-
+            <button type="button" class="close-btn" onclick="closeModal()" aria-label="Close account window">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
-
         </div>
-
     </div>
 
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
-    <script
-        src="https://code.jquery.com/jquery-3.6.0.min.js">
-    </script>
-
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js">
-    </script>
-
+    <!-- JAVASCRIPT -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="myscript.js"></script>
 
+    <!-- Inline helpers for dropdown & interactive elements that already exist in myscript.js -->
+    <script>
+        // Toggle user menu (account dropdown)
+        function toggleUserMenu(event) {
+            if (event) event.stopPropagation();
+            const menu = document.getElementById('userMenu');
+            if (menu) menu.classList.toggle('show');
+        }
+
+        // Close user menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const userMenu = document.getElementById('userMenu');
+            const userBtn = document.querySelector('.user-dropdown .nav-icon');
+            if (userMenu && userMenu.classList.contains('show')) {
+                if (!userMenu.contains(event.target) && event.target !== userBtn && !userBtn.contains(event.target)) {
+                    userMenu.classList.remove('show');
+                }
+            }
+        });
+
+        // Toggle search bar
+        function toggleSearch() {
+            const bar = document.getElementById('searchBar');
+            if (bar) bar.classList.toggle('open');
+        }
+
+        // Mobile menu overlay (kept from original, used by menu-toggle button)
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileMenuOverlay');
+            if (overlay) overlay.classList.toggle('show');
+        }
+
+        // Cart drawer open/close
+        function openCart() {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('cartOverlay');
+            if (drawer) drawer.classList.add('open');
+            if (overlay) overlay.classList.add('show');
+            // Close user menu if open
+            const um = document.getElementById('userMenu');
+            if (um) um.classList.remove('show');
+        }
+
+        function closeCart() {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('cartOverlay');
+            if (drawer) drawer.classList.remove('open');
+            if (overlay) overlay.classList.remove('show');
+        }
+
+        // Wishlist drawer open/close
+        function openWishlist() {
+            const drawer = document.getElementById('wishlistDrawer');
+            const overlay = document.getElementById('wishlistOverlay');
+            if (drawer) drawer.classList.add('open');
+            if (overlay) overlay.classList.add('show');
+            const um = document.getElementById('userMenu');
+            if (um) um.classList.remove('show');
+        }
+
+        function closeWishlist() {
+            const drawer = document.getElementById('wishlistDrawer');
+            const overlay = document.getElementById('wishlistOverlay');
+            if (drawer) drawer.classList.remove('open');
+            if (overlay) overlay.classList.remove('show');
+        }
+
+        // Modal open/close (auth)
+        function openLogin() {
+            document.getElementById('authModal').classList.add('show');
+            document.getElementById('loginSection').style.display = 'block';
+            document.getElementById('registerSection').style.display = 'none';
+            document.getElementById('accountSection').style.display = 'none';
+        }
+
+        function openRegister() {
+            document.getElementById('authModal').classList.add('show');
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('registerSection').style.display = 'block';
+            document.getElementById('accountSection').style.display = 'none';
+        }
+
+        function openAccount() {
+            document.getElementById('authModal').classList.add('show');
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('registerSection').style.display = 'none';
+            document.getElementById('accountSection').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('authModal').classList.remove('show');
+        }
+
+        function showRegister() {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('registerSection').style.display = 'block';
+            document.getElementById('accountSection').style.display = 'none';
+        }
+
+        function showLogin() {
+            document.getElementById('loginSection').style.display = 'block';
+            document.getElementById('registerSection').style.display = 'none';
+            document.getElementById('accountSection').style.display = 'none';
+        }
+
+        function logout() {
+            closeModal();
+        }
+
+        // Countdown timer (simple demo)
+        function startCountdown() {
+            const el = document.getElementById('countdown');
+            if (!el) return;
+            let totalSeconds = 24 * 60 * 60;
+            setInterval(() => {
+                if (totalSeconds <= 0) return;
+                totalSeconds--;
+                const h = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+                const m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+                const s = String(totalSeconds % 60).padStart(2, '0');
+                el.textContent = `${h}:${m}:${s}`;
+            }, 1000);
+        }
+        startCountdown();
+
+        // Ensure dropdown works smoothly and user menu closes on scroll
+        window.addEventListener('scroll', function() {
+            const um = document.getElementById('userMenu');
+            if (um) um.classList.remove('show');
+        });
+
+        // Checkout placeholder
+        function checkout() {
+            alert('Proceeding to checkout — thank you for shopping with FOOTRA!');
+        }
+    </script>
 </body>
 
 </html>
