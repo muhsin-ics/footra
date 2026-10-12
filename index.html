@@ -54,10 +54,176 @@
       html { scroll-behavior:smooth; }
       body { background:var(--footra-paper); color:var(--footra-ink); font-family:'Manrope',sans-serif; }
       a { transition:color .2s ease, background .2s ease; }
-      .navbar { background:linear-gradient(110deg,#101512,#263b2d) !important; color:#fff; box-shadow:0 5px 22px #00000014; }
-      .navbar a, .navbar .nav-icon { color:#fff !important; }
-      .navbar .menu a.active, .navbar .menu a:hover { color:#a8d5b5 !important; }
-      .nav-icon:hover { color:#a8d5b5 !important; }
+     /* =========================================
+   FOOTRA — PREMIUM WHITE NAVBAR
+   Add at the END of the existing style block
+========================================= */
+
+header.navbar {
+    background: #ffffff !important;
+    color: #171a17 !important;
+    box-shadow: 0 3px 20px rgba(15, 35, 23, 0.07);
+    border-bottom: 1px solid #edf0ec;
+    backdrop-filter: blur(12px);
+}
+
+/* Brand logo */
+header.navbar #logo {
+    max-height: 52px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.25s ease;
+}
+
+header.navbar .brand-logo:hover #logo {
+    transform: scale(1.04);
+}
+
+/* Navigation links */
+header.navbar .main-navigation .menu a {
+    color: #252b26 !important;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    transition: color 0.25s ease;
+    position: relative;
+}
+
+/* Elegant green underline */
+header.navbar .main-navigation .menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    width: 0;
+    height: 2px;
+    background: #075b3a;
+    border-radius: 2px;
+    transition: width 0.25s ease;
+}
+
+header.navbar .main-navigation .menu a:hover,
+header.navbar .main-navigation .menu a.active {
+    color: #075b3a !important;
+}
+
+header.navbar .main-navigation .menu a:hover::after,
+header.navbar .main-navigation .menu a.active::after {
+    width: 100%;
+}
+
+/* Search, account, cart, wishlist and menu icons */
+header.navbar .nav-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+    color: #202820 !important;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background 0.25s ease,
+                color 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
+}
+
+header.navbar .nav-icon:hover {
+    background: #edf5ef !important;
+    color: #075b3a !important;
+    border-color: #dce9df;
+    transform: translateY(-1px);
+}
+
+/* Cart and wishlist number badges */
+header.navbar .nav-count {
+    position: absolute;
+    top: -2px;
+    right: -3px;
+    min-width: 17px;
+    height: 17px;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #075b3a;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 50px;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+/* Account dropdown */
+header.navbar .user-menu {
+    background: #ffffff;
+    border: 1px solid #e8eee8;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(15, 35, 23, 0.12);
+    padding: 6px;
+}
+
+header.navbar .user-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    color: #252b26 !important;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+header.navbar .user-menu a:hover {
+    background: #edf5ef;
+    color: #075b3a !important;
+}
+
+/* Mobile menu icon */
+header.navbar .menu-toggle {
+    color: #202820 !important;
+}
+
+/* Keep navbar tidy on smaller screens */
+@media (max-width: 992px) {
+    header.navbar {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    header.navbar #logo {
+        max-height: 46px;
+    }
+
+    header.navbar .nav-right {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    header.navbar {
+        height: 76px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    header.navbar #logo {
+        max-height: 42px;
+    }
+
+    header.navbar .nav-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 15px;
+    }
+}
       #logo { max-height:48px; object-fit:contain; }
       .search-bar { background:#fff; border:1px solid #dce5dc; box-shadow:0 12px 35px #00000012; }
       .search-bar input { border-color:#d7dfd7; border-radius:8px; }
