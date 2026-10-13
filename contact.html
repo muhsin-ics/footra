@@ -191,34 +191,541 @@
             .form-row { grid-template-columns: 1fr; }
             .footer-container { grid-template-columns: 1fr; }
         }
+
+        /* new */
+
+        /* =========================================
+   FOOTRA — PREMIUM WHITE NAVBAR
+========================================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1200;
+    width: 100%;
+    height: 73px;
+    min-height: 73px;
+    padding: 0 4%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+    background: #fff;
+    border-bottom: 1px solid #edf0ed;
+    box-shadow: 0 4px 20px rgba(20, 40, 28, 0.045);
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    justify-self: start;
+    text-decoration: none;
+}
+
+#logo {
+    display: block;
+    width: auto;
+    max-width: 100px;
+    height: 43px;
+    max-height: 43px;
+    object-fit: contain;
+}
+
+.navbar .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+}
+
+.navbar .menu > li {
+    position: relative;
+}
+
+.navbar .menu > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 12px;
+    color: #242b26;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .01em;
+    transition: color .2s ease;
+}
+
+.navbar .menu > li > a:hover,
+.navbar .menu > li > a.active {
+    color: #155b42;
+}
+
+.navbar .menu > li > a.active {
+    position: relative;
+}
+
+.navbar .menu > li > a.active::after {
+    position: absolute;
+    content: "";
+    left: 12px;
+    right: 12px;
+    bottom: 4px;
+    height: 2px;
+    border-radius: 2px;
+    background: #155b42;
+}
+
+.categories-link i {
+    font-size: 9px;
+    transition: transform .2s ease;
+}
+
+.nav-categories:hover .categories-link i {
+    transform: rotate(180deg);
+}
+
+.categories-dropdown {
+    position: absolute;
+    top: calc(100% + 3px);
+    left: 0;
+    z-index: 1500;
+    min-width: 190px;
+    padding: 8px;
+    display: none;
+    background: #fff;
+    border: 1px solid #e8ece9;
+    border-radius: 10px;
+    box-shadow: 0 14px 35px rgba(15, 40, 25, .12);
+}
+
+.nav-categories:hover .categories-dropdown,
+.nav-categories:focus-within .categories-dropdown {
+    display: grid;
+}
+
+.categories-dropdown a {
+    padding: 11px 12px;
+    color: #343b36;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.categories-dropdown a:hover {
+    color: #155b42;
+    background: #eaf3ee;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    gap: 10px;
+    color: #222b25;
+}
+
+.nav-right > i,
+.user-dropdown > i {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 36px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color .2s ease, background .2s ease;
+    border-radius: 8px;
+}
+
+.nav-right > i:hover,
+.user-dropdown > i:hover {
+    color: #155b42;
+    background: #eaf3ee;
+}
+
+.user-dropdown {
+    position: relative;
+}
+
+.user-menu {
+    top: calc(100% + 12px);
+    right: 0;
+    min-width: 175px;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #e7ece8;
+    border-radius: 10px;
+    box-shadow: 0 14px 35px rgba(15, 40, 25, .12);
+}
+
+.user-menu a {
+    padding: 11px 12px;
+    color: #242b26;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.user-menu a:hover {
+    color: #155b42;
+    background: #eaf3ee;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* =========================================
+   PREMIUM CONTACT PAGE FINISHING
+========================================= */
+
+.contact-hero {
+    min-height: clamp(330px, 37vw, 450px);
+    background: #14251a;
+}
+
+.contact-hero > img {
+    object-position: center 52%;
+}
+
+.contact-hero::after {
+    background: linear-gradient(
+        90deg,
+        rgba(9, 22, 14, .84) 0%,
+        rgba(9, 22, 14, .56) 52%,
+        rgba(9, 22, 14, .16) 100%
+    );
+}
+
+.hero-text {
+    padding: 65px 28px;
+}
+
+.hero-kicker {
+    letter-spacing: .22em;
+    font-size: 11px;
+}
+
+.hero-text h1 {
+    max-width: 650px;
+    font-weight: 800;
+    letter-spacing: -.055em;
+}
+
+.hero-text p {
+    max-width: 550px;
+    font-size: 15px;
+}
+
+.contact-info {
+    border-radius: 14px;
+    box-shadow: 0 16px 45px rgba(18, 45, 27, .075);
+}
+
+.info-box {
+    padding: 27px 23px;
+    transition: background .2s ease;
+}
+
+.info-box:hover {
+    background: #fbfcfb;
+}
+
+.info-box > i {
+    border-radius: 11px;
+}
+
+.contact-main {
+    margin-top: 82px;
+    margin-bottom: 88px;
+}
+
+.contact-copy h2 {
+    font-weight: 800;
+}
+
+.contact-copy > p {
+    font-size: 14px;
+}
+
+.contact-form {
+    padding: clamp(24px, 4vw, 40px);
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(21, 43, 29, .055);
+}
+
+.contact-form input,
+.contact-form textarea {
+    border-color: #e0e6e1;
+    border-radius: 8px;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #155b42;
+    box-shadow: 0 0 0 3px rgba(21, 91, 66, .09);
+}
+
+.contact-form button,
+.checkout-btn {
+    background: #155b42;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.contact-form button:hover,
+.checkout-btn:hover {
+    background: #103e2d;
+    transform: translateY(-1px);
+}
+
+.map-section {
+    border-radius: 14px;
+}
+
+.newsletter {
+    padding: 65px 24px;
+    background: linear-gradient(120deg, #102d20, #1d4b32);
+}
+
+.newsletter h3 {
+    font-weight: 800;
+}
+
+.newsletter-form input {
+    border-color: rgba(255,255,255,.22);
+}
+
+.footer {
+    background: #101512;
+}
+
+.footer-logo {
+    letter-spacing: .16em;
+    font-weight: 800;
+}
+
+.footer-social a {
+    transition: background .2s ease, border-color .2s ease;
+}
+
+.footer-social a:hover {
+    background: #155b42;
+    border-color: #155b42;
+}
+
+/* =========================================
+   TABLET NAVIGATION
+========================================= */
+
+@media (max-width: 1050px) {
+    .navbar {
+        padding: 0 3%;
+        gap: 10px;
+    }
+
+    .navbar .menu > li > a {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+
+    .nav-right {
+        gap: 5px;
+    }
+
+    #logo {
+        max-width: 90px;
+    }
+}
+
+/* =========================================
+   MOBILE NAVIGATION
+========================================= */
+
+@media (max-width: 760px) {
+    .navbar {
+        height: 70px;
+        min-height: 70px;
+        padding: 0 18px;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+    }
+
+    #logo {
+        height: 40px;
+        max-height: 40px;
+        max-width: 90px;
+    }
+
+    .navbar .menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 12px 20px 20px;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 2px;
+        white-space: normal;
+        background: #fff;
+        border-top: 1px solid #edf0ed;
+        border-bottom: 1px solid #e5eae6;
+        box-shadow: 0 14px 25px rgba(15, 40, 25, .09);
+    }
+
+    .navbar .menu.open {
+        display: flex;
+    }
+
+    .navbar .menu > li > a {
+        justify-content: flex-start;
+        padding: 14px 10px;
+        font-size: 13px;
+    }
+
+    .navbar .menu > li > a.active::after {
+        display: none;
+    }
+
+    .nav-categories .categories-dropdown {
+        position: static;
+        min-width: 0;
+        margin: 0 0 5px 10px;
+        padding: 4px 8px;
+        border: 0;
+        border-left: 2px solid #d7e7dc;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .nav-categories:hover .categories-dropdown,
+    .nav-categories:focus-within .categories-dropdown {
+        display: grid;
+    }
+
+    .nav-right {
+        gap: 4px;
+    }
+
+    .nav-right > i,
+    .user-dropdown > i {
+        width: 30px;
+        height: 34px;
+        font-size: 15px;
+    }
+
+    .menu-toggle {
+        display: grid;
+    }
+
+    .contact-hero {
+        min-height: 340px;
+    }
+
+    .hero-text {
+        padding: 45px 23px 55px;
+    }
+
+    .contact-main {
+        margin-top: 55px;
+    }
+}
+
+@media (max-width: 420px) {
+    .navbar {
+        padding: 0 12px;
+        gap: 5px;
+    }
+
+    #logo {
+        max-width: 78px;
+        height: 36px;
+    }
+
+    .nav-right {
+        gap: 1px;
+    }
+
+    .nav-right > i,
+    .user-dropdown > i {
+        width: 28px;
+        font-size: 14px;
+    }
+
+    .contact-info {
+        width: calc(100% - 28px);
+    }
+}
+        
     </style>
 </head>
 <body>
     <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="toggleMobileMenu()"></div>
 
+        <!-- PREMIUM WHITE NAVBAR -->
     <header class="navbar">
-        <a href="index.html" aria-label="FOOTRA home"><img src="LOGO.png" id="logo" alt="FOOTRA"></a>
+        <!-- Logo -->
+        <a href="index.html" class="nav-logo" aria-label="FOOTRA home">
+            <img src="LOGO.png" id="logo" alt="FOOTRA">
+        </a>
 
+        <!-- Center Navigation -->
         <ul class="menu" id="mainMenu">
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#shop">Shop</a></li>
-            <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+
+            <li class="nav-categories">
+                <a href="index.html#shop" class="categories-link">
+                    Categories <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                <div class="categories-dropdown">
+                    <a href="index.html#shop">Men's Footwear</a>
+                    <a href="index.html#shop">Women's Footwear</a>
+                    <a href="index.html#shop">Sneakers</a>
+                    <a href="index.html#shop">Formal Shoes</a>
+                </div>
+            </li>
+
+            <li>
+                <a href="contact.html" class="active" aria-current="page">Contact</a>
+            </li>
             <li><a href="about.html">About</a></li>
         </ul>
 
+        <!-- Right-side Icons -->
         <div class="nav-right">
-            <i class="fa-solid fa-magnifying-glass" role="button" tabindex="0" aria-label="Open search" onclick="toggleSearch()"></i>
+            <i class="fa-solid fa-magnifying-glass"
+               role="button" tabindex="0" aria-label="Open search"
+               onclick="toggleSearch()"></i>
+
             <div class="user-dropdown">
-                <i class="fa-regular fa-user" role="button" tabindex="0" aria-label="Account menu" onclick="toggleUserMenu(event)"></i>
+                <i class="fa-regular fa-user"
+                   role="button" tabindex="0" aria-label="Account menu"
+                   onclick="toggleUserMenu(event)"></i>
+
                 <div class="user-menu" id="userMenu">
                     <a href="#" onclick="openLogin(); return false;">Login</a>
                     <a href="#" onclick="openRegister(); return false;">Register</a>
                     <a href="#" onclick="openAccount(); return false;">My Account</a>
                 </div>
             </div>
-            <i class="fa-solid fa-cart-shopping" role="button" tabindex="0" aria-label="Open cart" onclick="openCart()"></i>
-            <i class="fa-solid fa-heart" role="button" tabindex="0" aria-label="Open wishlist" onclick="openWishlist()"></i>
-            <i class="fa-solid fa-bars menu-toggle" role="button" tabindex="0" aria-label="Toggle navigation" onclick="toggleMobileMenu()"></i>
+
+            <i class="fa-solid fa-bag-shopping"
+               role="button" tabindex="0" aria-label="Open cart"
+               onclick="openCart()"></i>
+
+            <i class="fa-regular fa-heart"
+               role="button" tabindex="0" aria-label="Open wishlist"
+               onclick="openWishlist()"></i>
+
+            <i class="fa-solid fa-bars menu-toggle"
+               role="button" tabindex="0" aria-label="Toggle navigation"
+               onclick="toggleMobileMenu()"></i>
         </div>
     </header>
 
