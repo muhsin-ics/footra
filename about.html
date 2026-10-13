@@ -12,6 +12,736 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="mystyle.css">
 
+    <style>
+        
+/* =========================================
+   FOOTRA ABOUT PAGE — PREMIUM STYLING
+   ========================================= */
+
+body {
+    font-family: 'Manrope', sans-serif;
+    color: #202722;
+    background: #ffffff;
+}
+
+/* PREMIUM WHITE NAVBAR */
+.premium-navbar {
+    position: relative;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    min-height: 82px;
+    margin: 0;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: #ffffff;
+    border-bottom: 1px solid #eeeeea;
+    box-shadow: 0 4px 20px rgba(20, 40, 30, 0.035);
+    box-sizing: border-box;
+}
+
+.premium-navbar .brand-logo {
+    flex: 0 0 150px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.premium-navbar #logo {
+    display: block;
+    width: auto;
+    max-width: 140px;
+    height: 52px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.premium-navbar .nav-center {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.premium-navbar .nav-link,
+.premium-navbar .cat-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 12px 14px;
+    border: 0;
+    border-radius: 30px;
+    background: transparent;
+    color: #303832;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.premium-navbar .nav-link i,
+.premium-navbar .cat-btn i {
+    color: #155b42;
+}
+
+.premium-navbar .nav-link:hover,
+.premium-navbar .cat-btn:hover,
+.premium-navbar .nav-link.active {
+    background: #eaf3ee;
+    color: #155b42;
+}
+
+.premium-navbar .cat-dropdown {
+    position: relative;
+}
+
+.premium-navbar .cat-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    min-width: 205px;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid #e9eee9;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.10);
+}
+
+.premium-navbar .cat-dropdown:hover .cat-menu,
+.premium-navbar .cat-dropdown:focus-within .cat-menu,
+.premium-navbar .cat-dropdown.open .cat-menu {
+    display: flex;
+}
+
+.premium-navbar .cat-menu a {
+    padding: 11px 13px;
+    border-radius: 8px;
+    color: #303832;
+    font-size: 13px;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.premium-navbar .cat-menu a:hover {
+    background: #edf5f0;
+    color: #155b42;
+}
+
+.premium-navbar .nav-right {
+    flex: 0 0 150px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 13px;
+}
+
+.premium-navbar .nav-icon {
+    position: relative;
+    width: 30px;
+    height: 36px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #26332b;
+    font-size: 17px;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.premium-navbar .nav-icon:hover {
+    background: #edf5f0;
+    color: #155b42;
+}
+
+.premium-navbar .user-dropdown {
+    position: relative;
+}
+
+.premium-navbar .user-menu {
+    position: absolute;
+    top: calc(100% + 14px);
+    right: 0;
+    min-width: 165px;
+    padding: 9px;
+    display: none;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid #e9eee9;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.10);
+}
+
+.premium-navbar .user-dropdown:hover .user-menu,
+.premium-navbar .user-dropdown:focus-within .user-menu,
+.premium-navbar .user-menu.show {
+    display: flex;
+}
+
+.premium-navbar .user-menu a {
+    padding: 11px;
+    border-radius: 7px;
+    color: #303832;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.premium-navbar .user-menu a:hover {
+    background: #edf5f0;
+    color: #155b42;
+}
+
+.premium-navbar .menu-toggle {
+    display: none;
+}
+
+/* SEARCH PANEL */
+.search-bar {
+    position: relative;
+    z-index: 900;
+    padding: 15px 5%;
+    background: #ffffff;
+    border-bottom: 1px solid #eeeeea;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid #e1e6e1;
+    border-radius: 10px;
+    outline: none;
+    font: inherit;
+}
+
+.search-bar input:focus {
+    border-color: #155b42;
+}
+
+/* ABOUT HERO */
+.hero {
+    position: relative;
+    min-height: 440px;
+    height: 58vh;
+    max-height: 620px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background: #14241b;
+}
+
+.hero > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(8, 24, 16, 0.84) 0%,
+        rgba(8, 24, 16, 0.56) 48%,
+        rgba(8, 24, 16, 0.12) 100%
+    );
+}
+
+.hero-text {
+    position: relative;
+    z-index: 1;
+    width: min(700px, 90%);
+    margin-left: 9%;
+    color: #ffffff;
+}
+
+.hero-text h1 {
+    margin: 0 0 18px;
+    font-size: clamp(42px, 6vw, 76px);
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -2.5px;
+}
+
+.hero-text p {
+    max-width: 530px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: clamp(15px, 1.5vw, 18px);
+    line-height: 1.9;
+}
+
+/* STORY SECTION */
+.about-section {
+    padding: 90px 7%;
+    background: #f8faf8;
+}
+
+.story-card {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: clamp(28px, 5vw, 65px);
+    background: #ffffff;
+    border: 1px solid #edf0eb;
+    border-radius: 22px;
+    box-shadow: 0 14px 45px rgba(26, 51, 35, 0.045);
+}
+
+.story-card h2 {
+    margin: 0 0 25px;
+    color: #173f2e;
+    font-size: clamp(28px, 3.5vw, 42px);
+    line-height: 1.25;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.story-card > p {
+    margin: 0 0 18px;
+    color: #606a62;
+    font-size: 15px;
+    line-height: 2;
+}
+
+.founder-note {
+    margin-top: 32px;
+    padding: 25px 28px;
+    background: #f0f6f1;
+    border-left: 4px solid #246847;
+    border-radius: 0 12px 12px 0;
+}
+
+.founder-note p {
+    margin: 0 0 14px;
+    color: #35473a;
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.9;
+}
+
+.founder-note span {
+    color: #155b42;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+/* STATISTICS */
+.stats-section {
+    padding: 65px 7%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    background: #153d2c;
+}
+
+.stat-item {
+    padding: 22px 10px;
+    text-align: center;
+}
+
+.stat-number {
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: clamp(30px, 4vw, 43px);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.stat-label {
+    color: #cbdacf;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* FEATURE CARDS */
+.features {
+    padding: 85px 7%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    background: #ffffff;
+}
+
+.feature-box {
+    padding: 38px 28px;
+    background: #ffffff;
+    border: 1px solid #e8eee8;
+    border-radius: 18px;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(22, 61, 42, 0.09);
+}
+
+.feature-box > i {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #edf5ef;
+    border-radius: 17px;
+    color: #155b42;
+    font-size: 24px;
+}
+
+.feature-box h3 {
+    margin: 0 0 13px;
+    color: #203c2b;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.feature-box p {
+    margin: 0;
+    color: #687269;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+/* NEWSLETTER */
+.newsletter {
+    padding: 75px 7%;
+    background: #f2f6f2;
+    text-align: center;
+}
+
+.newsletter h3 {
+    margin: 0 0 12px;
+    color: #173f2e;
+    font-size: clamp(27px, 3vw, 38px);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.newsletter > p {
+    margin: 0 auto 28px;
+    color: #687269;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.newsletter-form {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.newsletter-form input {
+    flex: 1 1 220px;
+    min-width: 0;
+    padding: 15px 17px;
+    background: #ffffff;
+    border: 1px solid #dfe7df;
+    border-radius: 10px;
+    outline: none;
+    font: inherit;
+    font-size: 13px;
+}
+
+.newsletter-form input:focus {
+    border-color: #246847;
+}
+
+.newsletter-form button {
+    padding: 15px 23px;
+    background: #173f2e;
+    border: 1px solid #173f2e;
+    border-radius: 10px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.newsletter-form button:hover {
+    background: #246847;
+}
+
+/* FOOTER */
+.footer {
+    padding: 60px 7% 0;
+    background: #101b14;
+    color: #ffffff;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-bottom: 45px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-logo {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.footer-text {
+    max-width: 330px;
+    margin: 0;
+    color: #b9c4bb;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.footer-col h3 {
+    margin: 0 0 20px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.footer-col ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 13px;
+}
+
+.footer-col ul a {
+    color: #b9c4bb;
+    font-size: 13px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-col ul a:hover,
+.footer-bottom a:hover {
+    color: #ffffff;
+}
+
+.footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-social a,
+.footer-social > i {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.footer-social a:hover {
+    background: #246847;
+}
+
+.footer-bottom {
+    padding: 22px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: #aeb9b0;
+    font-size: 12px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+.footer-bottom a {
+    color: #d6ded7;
+    text-decoration: none;
+}
+
+/* EXISTING DRAWERS */
+.cart-drawer,
+.wishlist-drawer {
+    background: #ffffff;
+    color: #202722;
+}
+
+.cart-header,
+.wishlist-header {
+    border-bottom: 1px solid #edf0eb;
+}
+
+.checkout-btn {
+    background: #173f2e;
+    color: #ffffff;
+}
+
+.checkout-btn:hover {
+    background: #246847;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1050px) {
+    .premium-navbar {
+        padding: 0 3%;
+        gap: 12px;
+    }
+
+    .premium-navbar .brand-logo {
+        flex-basis: 100px;
+    }
+
+    .premium-navbar #logo {
+        max-width: 100px;
+        height: 45px;
+    }
+
+    .premium-navbar .nav-center {
+        gap: 0;
+    }
+
+    .premium-navbar .nav-link,
+    .premium-navbar .cat-btn {
+        padding: 11px 9px;
+        font-size: 12px;
+    }
+
+    .premium-navbar .nav-right {
+        flex-basis: 125px;
+        gap: 7px;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .premium-navbar {
+        min-height: 72px;
+        padding: 0 18px;
+    }
+
+    .premium-navbar .brand-logo {
+        flex: 1;
+    }
+
+    .premium-navbar .nav-center {
+        display: none;
+    }
+
+    .premium-navbar .nav-right {
+        flex: initial;
+        gap: 7px;
+    }
+
+    .premium-navbar .menu-toggle {
+        display: inline-flex;
+    }
+
+    .hero {
+        min-height: 400px;
+        height: 52vh;
+    }
+
+    .hero-text {
+        margin-left: 7%;
+    }
+
+    .hero-text h1 {
+        letter-spacing: -1.5px;
+    }
+
+    .about-section {
+        padding: 55px 5%;
+    }
+
+    .stats-section {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 40px 5%;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        padding: 55px 5%;
+    }
+
+    .newsletter {
+        padding: 55px 5%;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .newsletter-form input,
+    .newsletter-form button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .footer {
+        padding: 45px 6% 0;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 20px;
+    }
+}
+
+@media (max-width: 420px) {
+    .premium-navbar {
+        padding: 0 12px;
+    }
+
+    .premium-navbar #logo {
+        max-width: 85px;
+        height: 40px;
+    }
+
+    .premium-navbar .nav-right {
+        gap: 3px;
+    }
+
+    .premium-navbar .nav-icon {
+        width: 28px;
+        font-size: 15px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+    </style>
+
    
 </head>
 <body>
@@ -19,64 +749,89 @@
     <!-- MOBILE OVERLAY -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="toggleMobileMenu()"></div>
 
-    <!-- NAVBAR (EXACTLY LIKE CONTACT PAGE) -->
-    <div class="navbar">
-        <img src="LOGO.png" id="logo" alt="FOOTRA" onclick="window.location.href='index.html'">
+   
+<!-- PREMIUM NAVBAR -->
+<header class="navbar premium-navbar">
 
-        <ul class="menu" id="mainMenu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#shop">Shop</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="about.html" class="active">About</a></li>
-        </ul>
+    <a href="index.html" class="brand-logo" aria-label="FOOTRA Home">
+        <img src="LOGO.png" id="logo" alt="FOOTRA">
+    </a>
 
-        <div class="nav-right">
-            <i class="fa-solid fa-magnifying-glass" onclick="toggleSearch()"></i>
+    <nav class="nav-center" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">
+            <i class="fa-solid fa-house"></i> Home
+        </a>
 
-            <div class="user-dropdown">
-                <i class="fa-regular fa-user" onclick="toggleUserMenu(event)"></i>
-                <div class="user-menu" id="userMenu">
-                    <a href="#" onclick="openLogin(); return false;">Login</a>
-                    <a href="#" onclick="openRegister(); return false;">Register</a>
-                    <a href="#" onclick="openAccount(); return false;">My Account</a>
-                </div>
+        <a href="index.html#shop" class="nav-link">
+            <i class="fa-solid fa-store"></i> Shop
+        </a>
+
+        <div class="cat-dropdown" id="catDropdown">
+            <button type="button" class="cat-btn"
+                    onclick="toggleCatMenu(event)"
+                    aria-haspopup="true" aria-expanded="false">
+                <i class="fa-solid fa-layer-group"></i>
+                Categories
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <div class="cat-menu">
+                <a href="index.html#shop" onclick="closeCatMenu()">All Footwear</a>
+                <a href="index.html#shop" onclick="closeCatMenu()">Boots</a>
+                <a href="index.html#shop" onclick="closeCatMenu()">Loafers</a>
+                <a href="index.html#shop" onclick="closeCatMenu()">Chelsea Boots</a>
+                <a href="index.html#shop" onclick="closeCatMenu()">Formal</a>
+                <a href="index.html#shop" onclick="closeCatMenu()">New Arrivals</a>
             </div>
-
-            <i class="fa-solid fa-cart-shopping" onclick="openCart()"></i>
-            <i class="fa-solid fa-heart" onclick="openWishlist()"></i>
-            <i class="fa-solid fa-bars menu-toggle" onclick="toggleMobileMenu()"></i>
         </div>
-    </div>
 
-    <!-- SEARCH BAR -->
-    <div class="search-bar" id="searchBar">
-        <input type="text" placeholder="Search for boots, shoes...">
-        <span class="close-search" onclick="toggleSearch()">✕</span>
-    </div>
+        <a href="contact.html" class="nav-link">
+            <i class="fa-solid fa-envelope"></i> Contact
+        </a>
 
-    <!-- CART DRAWER -->
-    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-    <div class="cart-drawer" id="cartDrawer">
-        <div class="cart-header">
-            <h3>Your Cart <span class="cart-count" id="cartCount">0</span></h3>
-            <span class="close-cart" onclick="closeCart()">✕</span>
-        </div>
-        <div class="cart-body" id="cartItems"><p>Your cart is empty.</p></div>
-        <div class="cart-footer">
-            <h3>Total: ₹<span id="cartTotal">0</span></h3>
-            <button class="checkout-btn" onclick="checkout()">Checkout</button>
-        </div>
-    </div>
+        <a href="about.html" class="nav-link active">
+            <i class="fa-solid fa-circle-info"></i> About
+        </a>
+    </nav>
 
-    <!-- WISHLIST DRAWER -->
-    <div class="cart-overlay" id="wishlistOverlay" onclick="closeWishlist()"></div>
-    <div class="wishlist-drawer" id="wishlistDrawer">
-        <div class="wishlist-header">
-            <h3>Your Wishlist</h3>
-            <span class="close-cart" onclick="closeWishlist()">✕</span>
+    <div class="nav-right">
+
+        <button type="button" class="nav-icon"
+                onclick="toggleSearch()" aria-label="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <div class="user-dropdown">
+            <button type="button" class="nav-icon"
+                    onclick="toggleUserMenu(event)" aria-label="Account">
+                <i class="fa-regular fa-user"></i>
+            </button>
+
+            <div class="user-menu" id="userMenu">
+                <a href="#" onclick="openLogin(); return false;">Login</a>
+                <a href="#" onclick="openRegister(); return false;">Register</a>
+                <a href="#" onclick="openAccount(); return false;">My Account</a>
+            </div>
         </div>
-        <div id="wishlistItems"><p>Your wishlist is empty.</p></div>
+
+        <button type="button" class="nav-icon"
+                onclick="openCart()" aria-label="Shopping cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+        </button>
+
+        <button type="button" class="nav-icon"
+                onclick="openWishlist()" aria-label="Wishlist">
+            <i class="fa-regular fa-heart"></i>
+        </button>
+
+        <button type="button" class="nav-icon menu-toggle"
+                onclick="toggleMobileMenu()" aria-label="Open mobile menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
     </div>
+</header>
+
 
     <!-- HERO SECTION -->
     <div class="hero">
