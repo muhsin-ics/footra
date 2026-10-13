@@ -978,5 +978,23 @@ body {
     </div>
 
     <script type="text/javascript" src="myscript.js"></script>
+    <scrpt>
+        
+function toggleSearch() {
+    const searchBar = document.getElementById("searchBar");
+    const searchInput = document.getElementById("siteSearch");
+
+    if (!searchBar) return;
+
+    const isOpening = !searchBar.classList.contains("active");
+
+    searchBar.classList.toggle("active", isOpening);
+
+    if (isOpening && searchInput) {
+        setTimeout(() => searchInput.focus(), 100);
+    }
+}
+
+    </scrpt>
 </body>
 </html>
