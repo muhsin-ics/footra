@@ -14,7 +14,6 @@
 
     <style>
         
-```css
 /* =========================================
    FOOTRA ABOUT PAGE — PREMIUM GREEN THEME
 ========================================= */
@@ -1220,7 +1219,216 @@ header.navbar.premium-navbar .menu-toggle {
         transition-duration: 0.01ms !important;
     }
 }
-```
+
+
+
+
+
+/* =========================================
+   FOOTRA ABOUT PAGE — TEXT CONTRAST FIX
+   Premium green + white theme
+========================================= */
+
+:root {
+    --footra-green: #155b42;
+    --footra-dark: #103d2e;
+    --footra-text: #26332b;
+    --footra-muted: #68756d;
+    --footra-sage: #eaf3ee;
+    --footra-border: #dce6df;
+}
+
+/* Base text */
+body {
+    color: var(--footra-text);
+    background: #ffffff;
+}
+
+/* Keep headings readable */
+.about-section h1,
+.about-section h2,
+.about-section h3,
+.story-card h2,
+.feature-box h3,
+.newsletter h3 {
+    color: var(--footra-dark);
+}
+
+/* Story content */
+.story-card,
+.story-card p {
+    color: var(--footra-muted);
+}
+
+.story-card h2 {
+    color: var(--footra-dark);
+}
+
+.founder-note {
+    background: #f4f7f4;
+    border-left: 4px solid var(--footra-green);
+}
+
+.founder-note p {
+    color: var(--footra-text);
+}
+
+.founder-note span {
+    color: var(--footra-green);
+}
+
+/* Feature cards */
+.feature-box {
+    background: #ffffff;
+    border: 1px solid var(--footra-border);
+}
+
+.feature-box h3 {
+    color: var(--footra-dark);
+}
+
+.feature-box p {
+    color: var(--footra-muted);
+}
+
+.feature-box > i {
+    color: var(--footra-green);
+    background: var(--footra-sage);
+}
+
+/* Statistics: intentionally dark background */
+.stats-section {
+    background: linear-gradient(135deg, #103d2e, #155b42);
+}
+
+.stat-number {
+    color: #ffffff;
+}
+
+.stat-label {
+    color: #e0ece4;
+}
+
+/* Newsletter: intentionally dark background */
+.newsletter {
+    background: linear-gradient(135deg, #103d2e, #155b42);
+}
+
+.newsletter h3 {
+    color: #ffffff;
+}
+
+.newsletter > p {
+    color: #e0ece4;
+}
+
+/* Newsletter fields */
+.newsletter-form input {
+    color: #26332b;
+    background: #ffffff;
+    border: 1px solid #dce6df;
+}
+
+.newsletter-form input::placeholder {
+    color: #68756d;
+    opacity: 1;
+}
+
+.newsletter-form button {
+    color: #155b42;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+/* Footer: intentionally dark background */
+.footer {
+    background: #0b2d22;
+    color: #e0e8e2;
+}
+
+.footer-logo,
+.footer-col h3 {
+    color: #ffffff;
+}
+
+.footer-text,
+.footer-col ul a {
+    color: #d0dbd3;
+}
+
+.footer-bottom {
+    color: #c4d0c8;
+}
+
+.footer-bottom a {
+    color: #e0e8e2;
+}
+
+/* Modal: readable text on white */
+#authModal > div {
+    background: #ffffff;
+    color: #26332b;
+}
+
+#authModal h2 {
+    color: #103d2e;
+}
+
+#authModal p {
+    color: #68756d;
+}
+
+#authModal input {
+    color: #26332b;
+    background: #ffffff;
+    border: 1px solid #dce6df;
+}
+
+#authModal input::placeholder {
+    color: #68756d;
+    opacity: 1;
+}
+
+/* Search panel */
+#searchBar {
+    background: #ffffff;
+}
+
+#searchBar input {
+    color: #26332b;
+    background: #f6f9f6;
+}
+
+#searchBar input::placeholder {
+    color: #68756d;
+    opacity: 1;
+}
+
+/* Prevent global white text from leaking onto white sections */
+.about-section,
+.story-card,
+.features {
+    color: #26332b;
+}
+
+.about-section p,
+.features p {
+    color: #68756d;
+}
+
+/* Consistent form focus */
+.newsletter-form input:focus,
+#searchBar input:focus,
+#authModal input:focus {
+    border-color: #155b42;
+    outline: none;
+}
+
+/* Preserve green hover states */
+.footer a:hover,
+.footer-bottom a:hover {
+    color: #a9d8bd;
+}
 
     </style>
 
