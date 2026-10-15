@@ -261,10 +261,9 @@ header.navbar.premium-navbar .menu-toggle {
 }
 
 
-```css
 /* =========================================
-   MOBILE NAVBAR — FOOTRA
-   Logo left | Icons center | Menu right
+   FOOTRA MOBILE NAVBAR — FINAL FIX
+   Logo LEFT | Icons CENTER | Hamburger RIGHT
 ========================================= */
 
 @media (max-width: 760px) {
@@ -273,6 +272,7 @@ header.navbar.premium-navbar .menu-toggle {
         position: fixed;
         top: 0;
         left: 0;
+        right: 0;
 
         width: 100%;
         height: 64px;
@@ -281,9 +281,8 @@ header.navbar.premium-navbar .menu-toggle {
         display: grid;
         grid-template-columns: 1fr auto 1fr;
         align-items: center;
-        column-gap: 0;
 
-        padding: 0 14px;
+        padding: 0 12px;
         margin: 0;
 
         background: #ffffff;
@@ -296,7 +295,7 @@ header.navbar.premium-navbar .menu-toggle {
         z-index: 2000;
     }
 
-    /* LOGO — LEFT */
+    /* LOGO — FAR LEFT */
     header.navbar.premium-navbar .brand-logo {
         grid-column: 1;
         grid-row: 1;
@@ -314,34 +313,31 @@ header.navbar.premium-navbar .menu-toggle {
 
     header.navbar.premium-navbar #logo {
         display: block;
-        width: 42px;
-        height: 42px;
-        max-width: 70px;
+        width: auto;
+        height: 40px;
+        max-width: 58px;
         margin: 0;
         object-fit: contain;
     }
 
-    /* Hide desktop navigation */
+    /* HIDE DESKTOP NAVIGATION */
     header.navbar.premium-navbar .nav-center {
         display: none !important;
     }
 
-    /* ICONS — CENTER */
+    /* SEARCH, ACCOUNT, BAG AND WISHLIST — CENTER */
     header.navbar.premium-navbar .nav-right {
-        grid-column: 2 / 4;
+        grid-column: 2;
         grid-row: 1;
+        justify-self: center;
 
-        justify-self: stretch;
-
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        display: flex;
         align-items: center;
-        justify-items: center;
+        justify-content: center;
 
-        width: 100%;
+        width: auto;
         min-width: 0;
-        gap: 0;
-
+        gap: 5px;
         margin: 0;
         padding: 0;
     }
@@ -353,19 +349,19 @@ header.navbar.premium-navbar .menu-toggle {
         align-items: center;
         justify-content: center;
 
-        width: 34px;
+        flex: 0 0 30px;
+        width: 30px;
         height: 36px;
-        min-width: 0;
-        padding: 0;
-        margin: 0;
 
-        flex: none;
+        margin: 0;
+        padding: 0;
+
         border: none;
         border-radius: 50%;
-
         background: transparent;
+
         color: #26332b;
-        font-size: 17px;
+        font-size: 16px;
         cursor: pointer;
     }
 
@@ -374,7 +370,7 @@ header.navbar.premium-navbar .menu-toggle {
         color: #155b42;
     }
 
-    /* Account dropdown stays attached to its icon */
+    /* ACCOUNT DROPDOWN */
     header.navbar.premium-navbar .user-dropdown {
         position: relative;
 
@@ -382,65 +378,91 @@ header.navbar.premium-navbar .menu-toggle {
         align-items: center;
         justify-content: center;
 
-        width: 34px;
+        flex: 0 0 30px;
+        width: 30px;
         height: 36px;
         margin: 0;
         padding: 0;
     }
 
     header.navbar.premium-navbar .user-menu {
-        top: calc(100% + 8px);
-        right: 0;
+        position: absolute;
+        top: calc(100% + 10px);
+        right: -35px;
+        z-index: 2200;
     }
 
     /* HAMBURGER — FAR RIGHT */
     header.navbar.premium-navbar .menu-toggle {
-        grid-column: 5;
-        grid-row: 1;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
 
         display: inline-flex;
-        justify-self: end;
+        align-items: center;
+        justify-content: center;
 
-        width: 32px;
+        width: 30px;
         height: 36px;
+        margin: 0;
+        padding: 0;
+
+        flex: none;
+        border: none;
+        border-radius: 50%;
+        background: transparent;
+
+        color: #155b42;
         font-size: 19px;
-        z-index: 2;
+        z-index: 5;
     }
 
-    /* Prevent page content from sitting behind navbar */
+    header.navbar.premium-navbar .menu-toggle:hover {
+        background: #eaf3ee;
+    }
+
+    /* PREVENT PAGE CONTENT FROM HIDING UNDER NAVBAR */
     body {
         padding-top: 64px;
     }
 }
 
-/* SMALL PHONES */
+/* EXTRA SMALL PHONES */
 @media (max-width: 380px) {
 
     header.navbar.premium-navbar {
-        padding: 0 9px;
+        padding: 0 8px;
     }
 
     header.navbar.premium-navbar #logo {
-        width: 36px;
-        height: 38px;
+        height: 36px;
+        max-width: 44px;
     }
 
-    header.navbar.premium-navbar .nav-icon,
-    header.navbar.premium-navbar .user-dropdown {
-        width: 29px;
-        height: 34px;
+    header.navbar.premium-navbar .nav-right {
+        gap: 1px;
     }
 
     header.navbar.premium-navbar .nav-icon {
+        flex-basis: 27px;
+        width: 27px;
+        height: 34px;
         font-size: 15px;
     }
 
+    header.navbar.premium-navbar .user-dropdown {
+        flex-basis: 27px;
+        width: 27px;
+        height: 34px;
+    }
+
     header.navbar.premium-navbar .menu-toggle {
-        width: 28px;
+        right: 6px;
+        width: 26px;
         font-size: 18px;
     }
 }
-```
 /* =========================================
    SEARCH PANEL
 ========================================= */
@@ -1732,12 +1754,14 @@ body {
             <i class="fa-solid fa-magnifying-glass"></i>
         </button>
 
-        <div class="user-dropdown">
-            <button type="button" class="nav-icon"
-                    onclick="toggleUserMenu(event)" aria-label="Account">
-                <i class="fa-regular fa-user"></i>
-            </button>
-
+       <button type="button"
+        class="nav-icon menu-toggle"
+        onclick="toggleAboutMobileMenu()"
+        aria-label="Open mobile menu"
+        aria-controls="aboutMobileDrawer"
+        aria-expanded="false">
+    <i class="fa-solid fa-bars"></i>
+</button>
             <div class="user-menu" id="userMenu">
                 <a href="#" onclick="openLogin(); return false;">Login</a>
                 <a href="#" onclick="openRegister(); return false;">Register</a>
