@@ -1576,6 +1576,120 @@
                 animation: none !important;
             }
         }
+    
+
+        /* ===== Mobile navbar refinement to match the FOOTRA About page ===== */
+        @media (max-width: 768px) {
+            .navbar {
+                height: 64px;
+                padding: 0 12px;
+                display: flex;
+                justify-content: space-between;
+                gap: 8px;
+                background: #fff;
+                box-shadow: 0 2px 12px rgba(15, 45, 32, .06);
+            }
+            .brand-logo { order: 1; margin-right: auto; }
+            #logo { max-height: 38px; max-width: 52px; }
+            .nav-center { display: none !important; }
+            .nav-right {
+                order: 2;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-left: auto;
+            }
+            .nav-right .nav-icon {
+                width: 25px;
+                height: 36px;
+                min-width: 25px;
+                padding: 0;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                border: 0;
+                color: #26382f;
+                font-size: 18px;
+            }
+            .nav-right .nav-count { display: none; }
+            .hamburger-btn {
+                order: 3;
+                display: inline-flex !important;
+                flex: 0 0 28px;
+                width: 28px;
+                height: 36px;
+                padding: 0;
+                margin-left: 2px;
+                border-radius: 0;
+                font-size: 19px;
+                color: #26382f;
+            }
+            .mobile-nav {
+                left: auto;
+                right: -100%;
+                width: min(340px, 90vw);
+                max-width: 90vw;
+                height: 100dvh;
+                padding-bottom: 24px;
+                box-shadow: -8px 0 35px rgba(10, 77, 49, .14);
+                transition: right .32s cubic-bezier(.25,.8,.3,1);
+            }
+            .mobile-nav.open { left: auto; right: 0; }
+            .mobile-overlay { z-index: 1400; }
+            .mobile-nav { z-index: 1500; }
+            .mobile-nav-header {
+                min-height: 80px;
+                padding: 0 22px;
+                border-bottom: 1px solid #e2e9e4;
+            }
+            .m-brand {
+                color: #17452f;
+                font-size: 22px;
+                letter-spacing: 2px;
+                font-weight: 800;
+            }
+            .mobile-nav-close {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                background: #edf5f0;
+                color: #17452f;
+            }
+            .mobile-nav-links { padding: 16px 22px 8px; }
+            .mobile-nav-links > a,
+            .mobile-cat-toggle {
+                min-height: 46px;
+                border-radius: 10px;
+                padding: 0 12px;
+                font-size: 14px;
+            }
+            .mobile-nav-links > a.active {
+                background: #eaf3ed;
+                color: #176044;
+            }
+            .mobile-nav-divider {
+                margin: 8px 22px 16px;
+                background: #e2e9e4;
+            }
+            .mobile-nav-actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                padding: 0 22px;
+            }
+            .mobile-nav-actions button {
+                min-height: 42px;
+                border: 1px solid #d8e5dc;
+                border-radius: 11px;
+                background: #fff;
+                color: #176044;
+                font-size: 13px;
+                font-weight: 700;
+            }
+            .search-bar { top: 64px; }
+        }
+
     </style>
 </head>
 
@@ -2244,5 +2358,4 @@
         });
     </script>
 </body>
-
 </html>
