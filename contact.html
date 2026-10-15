@@ -92,7 +92,7 @@
         .contact-hero > img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
         .contact-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10,20,13,.82), rgba(10,20,13,.48) 55%, rgba(10,20,13,.16)); }
         .hero-text { width: min(1180px, 100%); margin: 0 auto; padding: 55px 28px; color: #fff; }
-        .hero-kicker { display: block; margin-bottom: 14px; color: #c8ddce; font-size: .75rem; font-weight: 800; letter-spacing: .2em;  }
+        .hero-kicker { display: block; margin-bottom: 14px; color: #c8ddce; font-size: .75rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
         .hero-text h1 { max-width: 700px; margin: 0 0 18px; font-size: clamp(2.5rem, 6vw, 4.7rem); line-height: 1.02; letter-spacing: -.055em; }
         .hero-text p { max-width: 610px; margin: 0; color: #edf1ed; font-size: clamp(.95rem, 1.5vw, 1.1rem); line-height: 1.8; }
 
@@ -105,7 +105,7 @@
 
         .contact-main { width: min(1120px, calc(100% - 40px)); margin: 74px auto 80px; display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
         .contact-copy { padding-top: 10px; }
-        .section-kicker { color: var(--footra-green); font-size: .74rem; font-weight: 800; letter-spacing: .18em; }
+        .section-kicker { color: var(--footra-green); font-size: .74rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
         .contact-copy h2 { margin: 12px 0 16px; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -.045em; }
         .contact-copy > p { color: var(--footra-muted); line-height: 1.85; }
         .contact-promise { display: flex; gap: 12px; margin-top: 26px; align-items: flex-start; color: #455249; font-size: .88rem; line-height: 1.7; }
@@ -201,7 +201,7 @@
 ========================================= */
 
 .navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
     z-index: 1200;
     width: 100%;
@@ -740,10 +740,61 @@ header.navbar .menu-toggle { display:none !important; }
     header.navbar .nav-right > i, header.navbar .user-dropdown > i { flex-basis:27px !important; width:27px !important; font-size:14px !important; }
 }
 
+
+
+/* MOBILE SLIDE-OUT NAVIGATION — MATCHES THE FOOTRA ABOUT PAGE */
+.mobile-menu-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 3990;
+    background: rgba(9, 20, 14, .48);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s ease, visibility .25s ease;
+}
+.mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+.mobile-drawer {
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    z-index: 4000;
+    width: min(340px, 88vw);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    box-shadow: -18px 0 45px rgba(0,0,0,.16);
+    transform: translateX(105%);
+    transition: transform .28s ease;
+    overflow-y: auto;
+}
+.mobile-drawer.open { transform: translateX(0); }
+.mobile-drawer-header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding-bottom:20px; border-bottom:1px solid #e1e8e2; }
+.mobile-drawer-title { margin:0; color:#17452f; font-size:22px; font-weight:800; letter-spacing:.08em; }
+.mobile-drawer-close { display:grid; place-items:center; width:40px; height:40px; flex:0 0 40px; border:0; border-radius:50%; color:#17452f; background:#eaf3ee; font-size:17px; cursor:pointer; }
+.mobile-drawer-links { display:grid; gap:4px; padding:18px 0; border-bottom:1px solid #e1e8e2; }
+.mobile-drawer-links a, .mobile-category-toggle { display:flex; align-items:center; gap:14px; width:100%; min-height:46px; padding:12px; border:0; border-radius:10px; color:#303832; background:transparent; text-align:left; text-decoration:none; font:600 14px 'Manrope',Arial,sans-serif; cursor:pointer; }
+.mobile-drawer-links a > i, .mobile-category-toggle > i:first-child { width:18px; color:#176044; text-align:center; }
+.mobile-drawer-links a.active, .mobile-drawer-links a:hover, .mobile-category-toggle:hover { color:#155b42; background:#eaf3ee; }
+.mobile-category-toggle .category-chevron { margin-left:auto; transition:transform .2s ease; }
+.mobile-category-group.open .category-chevron { transform:rotate(180deg); }
+.mobile-category-submenu { display:none; padding:3px 0 5px 27px; }
+.mobile-category-group.open .mobile-category-submenu { display:grid; }
+.mobile-category-submenu a { min-height:39px; padding:10px 12px; font-size:13px; }
+.mobile-drawer-auth { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding-top:20px; }
+.mobile-drawer-auth button { min-height:42px; display:flex; align-items:center; justify-content:center; gap:8px; border:1px solid #d7e5db; border-radius:10px; color:#155b42; background:#fff; font:800 12px 'Manrope',Arial,sans-serif; cursor:pointer; }
+.mobile-drawer-auth button:hover { background:#eaf3ee; }
+body.mobile-drawer-open { overflow:hidden; }
+@media (min-width:761px) { .mobile-drawer, .mobile-menu-overlay { display:none !important; } }
+@media (max-width:760px) {
+    header.navbar .menu { display:none !important; }
+    header.navbar .menu-toggle { display:inline-flex !important; }
+}
+
     </style>
 </head>
 <body>
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="toggleMobileMenu()"></div>
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="toggleMobileMenu(false)" aria-hidden="true"></div>
 
         <!-- PREMIUM WHITE NAVBAR -->
     <header class="navbar">
@@ -804,6 +855,33 @@ header.navbar .menu-toggle { display:none !important; }
                onclick="toggleMobileMenu()"></i>
         </div>
     </header>
+
+    <!-- Mobile slide-out navigation -->
+    <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation" aria-hidden="true">
+        <div class="mobile-drawer-header">
+            <h2 class="mobile-drawer-title">FOOTRA</h2>
+            <button class="mobile-drawer-close" type="button" aria-label="Close menu" onclick="toggleMobileMenu(false)"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+        </div>
+        <nav class="mobile-drawer-links" aria-label="Mobile menu links">
+            <a href="index.html" onclick="toggleMobileMenu(false)"><i class="fa-solid fa-house" aria-hidden="true"></i><span>Home</span></a>
+            <a href="index.html#shop" onclick="toggleMobileMenu(false)"><i class="fa-solid fa-store" aria-hidden="true"></i><span>Shop</span></a>
+            <div class="mobile-category-group" id="mobileCategoryGroup">
+                <button class="mobile-category-toggle" type="button" aria-expanded="false" onclick="toggleMobileCategories()"><i class="fa-solid fa-layer-group" aria-hidden="true"></i><span>Categories</span><i class="fa-solid fa-chevron-down category-chevron" aria-hidden="true"></i></button>
+                <div class="mobile-category-submenu">
+                    <a href="index.html#shop" onclick="toggleMobileMenu(false)">Men's Footwear</a>
+                    <a href="index.html#shop" onclick="toggleMobileMenu(false)">Women's Footwear</a>
+                    <a href="index.html#shop" onclick="toggleMobileMenu(false)">Sneakers</a>
+                    <a href="index.html#shop" onclick="toggleMobileMenu(false)">Formal Shoes</a>
+                </div>
+            </div>
+            <a href="contact.html" class="active" aria-current="page" onclick="toggleMobileMenu(false)"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span>Contact</span></a>
+            <a href="about.html" onclick="toggleMobileMenu(false)"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span>About</span></a>
+        </nav>
+        <div class="mobile-drawer-auth">
+            <button type="button" onclick="toggleMobileMenu(false); openLogin();"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>Login</button>
+            <button type="button" onclick="toggleMobileMenu(false); openRegister();"><i class="fa-solid fa-user-plus" aria-hidden="true"></i>Register</button>
+        </div>
+    </aside>
 
     <div class="search-bar" id="searchBar">
         <input type="search" id="siteSearchInput" placeholder="Search for boots, shoes..." aria-label="Search products">
@@ -974,9 +1052,23 @@ header.navbar .menu-toggle { display:none !important; }
     <script src="myscript.js"></script>
     <script>
         // Keep the contact page usable even if these optional helpers are not in myscript.js.
-        window.toggleMobileMenu = window.toggleMobileMenu || function () {
-            var menu = document.getElementById("mainMenu");
-            if (menu) menu.classList.toggle("open");
+        window.toggleMobileMenu = function (forceOpen) {
+            var drawer = document.getElementById("mobileDrawer");
+            var overlay = document.getElementById("mobileMenuOverlay");
+            if (!drawer || !overlay) return;
+            var open = typeof forceOpen === "boolean" ? forceOpen : !drawer.classList.contains("open");
+            drawer.classList.toggle("open", open);
+            overlay.classList.toggle("active", open);
+            drawer.setAttribute("aria-hidden", String(!open));
+            overlay.setAttribute("aria-hidden", String(!open));
+            document.body.classList.toggle("mobile-drawer-open", open);
+        };
+        window.toggleMobileCategories = function () {
+            var group = document.getElementById("mobileCategoryGroup");
+            if (!group) return;
+            var open = group.classList.toggle("open");
+            var button = group.querySelector(".mobile-category-toggle");
+            if (button) button.setAttribute("aria-expanded", String(open));
         };
         window.toggleSearch = window.toggleSearch || function () {
             var bar = document.getElementById("searchBar");
@@ -1049,6 +1141,7 @@ header.navbar .menu-toggle { display:none !important; }
             if (event.key === "Escape") {
                 document.getElementById("userMenu")?.classList.remove("show");
                 document.getElementById("searchBar")?.classList.remove("active");
+                window.toggleMobileMenu(false);
                 window.closeModal();
             }
             if ((event.key === "Enter" || event.key === " ") && event.target.matches('[role="button"]')) {
