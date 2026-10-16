@@ -544,7 +544,7 @@ function initializeWishlistRemove() {
     // SEARCH
     // =========================================================
 
-    window.toggleSearch = function () {
+   /* window.toggleSearch = function () {
 
         const searchBar = $("searchBar");
 
@@ -560,7 +560,7 @@ function initializeWishlistRemove() {
                 setTimeout(() => input.focus(), 100);
             }
         }
-    };
+    }; */
 
 
     // =========================================================
