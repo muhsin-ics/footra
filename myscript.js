@@ -289,8 +289,12 @@ function saveWishlist() {
 // ---------------------------------------------------------
 
 function renderWishlist() {
+    const container = document.getElementById('wishlistItems');
+    const count = document.getElementById('wishlistCount');
 
-    const container = $("wishlistItems");
+    if (count) {
+        count.textContent = wishlist.length;
+    }
 
     if (!container) return;
 
