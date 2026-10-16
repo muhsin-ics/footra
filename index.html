@@ -515,7 +515,23 @@
             gap: 10px;
         }
 
-        .search-inner > i { color: var(--ft-green); font-size: 17px; flex-shrink: 0; }
+        .search-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 38px;
+            width: 38px;
+            height: 42px;
+            border: 0;
+            border-radius: 10px;
+            background: transparent;
+            color: var(--ft-green);
+            font-size: 19px;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+        .search-submit:hover,
+        .search-submit:focus-visible { background: var(--ft-green-soft); outline: 2px solid var(--ft-green); outline-offset: 1px; }
 
         .search-inner input {
             flex: 1;
@@ -530,6 +546,28 @@
         }
 
         .search-inner input:focus { border-color: var(--ft-green); background: #fff; }
+
+        /* Keep search text readable even if mystyle.css styles all inputs white. */
+        #searchBar #siteSearch,
+        #searchBar #siteSearch:focus {
+            color: #141a16 !important;
+            -webkit-text-fill-color: #141a16 !important;
+            caret-color: #0a4d31;
+            opacity: 1;
+        }
+        #searchBar #siteSearch::placeholder {
+            color: #6d746e !important;
+            -webkit-text-fill-color: #6d746e !important;
+            opacity: 1;
+        }
+        #searchResultsStatus {
+            max-width: 760px;
+            margin: 8px auto 0;
+            color: #0a4d31;
+            font-size: 12px;
+            font-weight: 700;
+            min-height: 16px;
+        }
 
         .close-search {
             background: transparent;
@@ -1838,12 +1876,15 @@
     <!-- SEARCH PANEL -->
     <div class="search-bar" id="searchBar" aria-hidden="true">
         <div class="search-inner">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" id="siteSearch" placeholder="Search your next favourite pair..." aria-label="Search products">
-            <button type="button" class="close-search" onclick="toggleSearch()" aria-label="Close search">
-                <i class="fa-solid fa-xmark"></i>
+            <button type="button" class="search-submit" id="submitProductSearch" onclick="performProductSearch()" aria-label="Search products">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+            <input type="text" id="siteSearch" placeholder="Search your next favourite pair..." aria-label="Search products" autocomplete="off">
+            <button type="button" class="close-search" onclick="toggleSearch(event)" aria-label="Close search">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
         </div>
+        <div id="searchResultsStatus" aria-live="polite"></div>
     </div>
 
     <!-- CART OVERLAY -->
@@ -2400,6 +2441,73 @@
                 closeCatMenu();
             }
         });
+    </script>
+
+    <!-- FOOTRA SEARCH FIX: clickable search and close controls; works on mobile -->
+    <script>
+    (function () {
+        'use strict';
+        const bar = document.getElementById('searchBar');
+        const input = document.getElementById('siteSearch');
+        const status = document.getElementById('searchResultsStatus');
+        const cards = Array.from(document.querySelectorAll('#productGrid .shoe-card'));
+        if (!bar || !input) return;
+
+        function setSearchOpen(open) {
+            bar.classList.toggle('open', open);
+            bar.classList.toggle('active', open);
+            bar.style.setProperty('display', open ? 'block' : 'none', 'important');
+            bar.setAttribute('aria-hidden', open ? 'false' : 'true');
+            if (open) window.setTimeout(function () { input.focus(); }, 0);
+        }
+
+        // Navbar magnifying glass opens the search field; the X closes it.
+        window.toggleSearch = function (event) {
+            if (event) event.preventDefault();
+            const closeClicked = event && event.currentTarget &&
+                event.currentTarget.classList.contains('close-search');
+            setSearchOpen(closeClicked ? false : !bar.classList.contains('open'));
+        };
+
+        function filterProducts(shouldScroll) {
+            const query = input.value.trim().toLocaleLowerCase();
+            let visible = 0;
+            cards.forEach(function (card) {
+                const name = (card.getAttribute('data-name') || '').toLocaleLowerCase();
+                const text = (card.textContent || '').toLocaleLowerCase();
+                const match = !query || name.includes(query) || text.includes(query);
+                card.style.display = match ? '' : 'none';
+                if (match) visible++;
+            });
+            if (status) {
+                status.textContent = query
+                    ? (visible ? visible + (visible === 1 ? ' product found' : ' products found') : 'No products found. Try “boots” or “loafers”.')
+                    : 'Showing all products';
+            }
+            if (shouldScroll) {
+                const shop = document.getElementById('shop');
+                if (shop) shop.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Search button beside the field explicitly runs filtering (no Enter key needed).
+        window.performProductSearch = function () {
+            filterProducts(true);
+        };
+
+        // Keep live filtering as a convenience, but the button works independently too.
+        input.addEventListener('input', function () { filterProducts(false); });
+        input.addEventListener('search', function () { filterProducts(false); });
+        input.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                filterProducts(true);
+            }
+        });
+
+        setSearchOpen(false);
+        filterProducts(false);
+    })();
     </script>
 </body>
 </html>
