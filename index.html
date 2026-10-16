@@ -2366,6 +2366,54 @@ window.toggleSearch = toggleSearch;
                 closeCatMenu();
             }
         });
+
+
+
+
+        (function () {
+    const searchBar = document.getElementById('searchBar');
+    const searchInput = document.getElementById('siteSearch');
+
+    if (!searchBar) {
+        console.error('FOOTRA: searchBar element not found.');
+        return;
+    }
+
+    function setSearchOpen(open) {
+        searchBar.classList.toggle('open', open);
+        searchBar.style.setProperty(
+            'display',
+            open ? 'block' : 'none',
+            'important'
+        );
+
+        if (open && searchInput) {
+            searchInput.focus();
+        }
+    }
+
+    // Handle both the navbar search icon and close button.
+    document.addEventListener('click', function (event) {
+        const button = event.target.closest(
+            '.nav-right button[aria-label="Toggle search"], ' +
+            '#searchBar .close-search'
+        );
+
+        if (!button) return;
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        setSearchOpen(
+            button.classList.contains('close-search')
+                ? false
+                : !searchBar.classList.contains('open')
+        );
+    }, true);
+
+    // Make the search panel start closed.
+    setSearchOpen(false);
+})();
     </script>
 </body>
 </html>
