@@ -2215,10 +2215,20 @@
         });
 
         // --- Search ---
-        function toggleSearch() {
-            const bar = document.getElementById('searchBar');
-            if (bar) bar.classList.toggle('open');
-        }
+       function toggleSearch() {
+    const bar = document.getElementById('searchBar');
+    const input = document.getElementById('siteSearch');
+
+    if (!bar) return;
+
+    bar.classList.toggle('open');
+
+    if (bar.classList.contains('open') && input) {
+        input.focus();
+    }
+}
+
+window.toggleSearch = toggleSearch;
 
         // --- Cart ---
         function openCart() {
