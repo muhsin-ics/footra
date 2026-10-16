@@ -1160,6 +1160,43 @@
             .mobile-drawer,
             .mobile-menu-overlay { display: none !important; }
         }
+
+
+
+        header.navbar .user-dropdown {
+    position: relative !important;
+}
+
+header.navbar .user-menu {
+    display: none;
+    position: absolute !important;
+    top: calc(100% + 10px) !important;
+    right: 0 !important;
+    z-index: 5000 !important;
+    min-width: 175px;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #e5ebe6;
+    border-radius: 12px;
+    box-shadow: 0 14px 35px rgba(15, 40, 25, .12);
+}
+
+header.navbar .user-menu.show {
+    display: grid !important;
+}
+
+header.navbar .user-menu a {
+    display: block;
+    padding: 11px 12px;
+    color: #303832;
+    text-decoration: none;
+    border-radius: 7px;
+}
+
+header.navbar .user-menu a:hover {
+    color: #155b42;
+    background: #eaf3ee;
+}
     </style>
 </head>
 
@@ -1232,20 +1269,21 @@
             </i>
 
             <div class="user-dropdown">
-                <i
-                    class="fa-regular fa-user"
-                    role="button"
-                    tabindex="0"
-                    aria-label="Account menu"
-                    onclick="toggleUserMenu(event)">
-                </i>
+    <i class="fa-regular fa-user"
+       id="accountIcon"
+       role="button"
+       tabindex="0"
+       aria-label="Account menu"
+       aria-expanded="false"
+       onclick="toggleUserMenu(event)">
+    </i>
 
-                <div class="user-menu" id="userMenu">
-                    <a href="#" onclick="openLogin(); return false;">Login</a>
-                    <a href="#" onclick="openRegister(); return false;">Register</a>
-                    <a href="#" onclick="openAccount(); return false;">My Account</a>
-                </div>
-            </div>
+    <div class="user-menu" id="userMenu">
+        <a href="#" onclick="openLogin(); return false;">Login</a>
+        <a href="#" onclick="openRegister(); return false;">Register</a>
+        <a href="#" onclick="openAccount(); return false;">My Account</a>
+    </div>
+</div>
 
             <i
                 class="fa-solid fa-bag-shopping"
@@ -1752,11 +1790,24 @@
 
         /* ================= ACCOUNT MENU ================= */
 
-        window.toggleUserMenu = window.toggleUserMenu || function (event) {
-            if (event) event.stopPropagation();
+       
+window.toggleUserMenu = function (event) {
+    if (event) {
+        event.stopPropagation();
+    }
 
-            document.getElementById("userMenu")?.classList.toggle("show");
-        };
+    const menu = document.getElementById("userMenu");
+    const icon = document.getElementById("accountIcon");
+
+    if (!menu) return;
+
+    const isOpen = menu.classList.toggle("show");
+
+    if (icon) {
+        icon.setAttribute("aria-expanded", String(isOpen));
+    }
+};
+
 
         window.openLogin = window.openLogin || function () {
             const modal = document.getElementById("authModal");
