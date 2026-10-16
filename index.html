@@ -1836,7 +1836,7 @@
     </header>
 
     <!-- SEARCH PANEL -->
-    <div class="search-bar" id="searchBar">
+    <div class="search-bar" id="searchBar" aria-hidden="true">
         <div class="search-inner">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="search" id="siteSearch" placeholder="Search your next favourite pair..." aria-label="Search products">
@@ -2214,21 +2214,49 @@
             }
         });
 
-        // --- Search ---
-       function toggleSearch() {
-    const bar = document.getElementById('searchBar');
-    const input = document.getElementById('siteSearch');
+        // --- Search (single handler shared by navbar and close button) ---
+        window.toggleSearch = function (event) {
+            if (event) {
+                event.preventDefault();
+            }
 
-    if (!bar) return;
+            const bar = document.getElementById('searchBar');
+            const input = document.getElementById('siteSearch');
+            if (!bar) {
+                console.error('FOOTRA search: #searchBar was not found.');
+                return;
+            }
 
-    bar.classList.toggle('open');
+            const clickedCloseButton = event && event.currentTarget &&
+                event.currentTarget.classList.contains('close-search');
+            const isOpen = bar.classList.contains('open');
+            const shouldOpen = clickedCloseButton ? false : !isOpen;
 
-    if (bar.classList.contains('open') && input) {
-        input.focus();
-    }
-}
+            // Keep both class names in sync for compatibility with existing CSS/scripts.
+            bar.classList.toggle('open', shouldOpen);
+            bar.classList.toggle('active', shouldOpen);
+            bar.style.setProperty('display', shouldOpen ? 'block' : 'none', 'important');
+            bar.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
 
-window.toggleSearch = toggleSearch;
+            if (shouldOpen && input) {
+                window.setTimeout(function () { input.focus(); }, 0);
+            }
+        };
+
+        // Product search: filter the existing product cards without changing their layout.
+        (function initializeProductSearch() {
+            const input = document.getElementById('siteSearch');
+            if (!input || input.dataset.searchInitialized === 'true') return;
+            input.dataset.searchInitialized = 'true';
+
+            input.addEventListener('input', function () {
+                const query = input.value.trim().toLowerCase();
+                document.querySelectorAll('.shoe-card').forEach(function (card) {
+                    const text = (card.dataset.name || card.textContent || '').toLowerCase();
+                    card.style.display = (!query || text.includes(query)) ? '' : 'none';
+                });
+            });
+        })();
 
         // --- Cart ---
         function openCart() {
@@ -2359,6 +2387,12 @@ window.toggleSearch = toggleSearch;
         // --- Escape key closes everything ---
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
+                const searchBar = document.getElementById('searchBar');
+                if (searchBar) {
+                    searchBar.classList.remove('open', 'active');
+                    searchBar.style.setProperty('display', 'none', 'important');
+                    searchBar.setAttribute('aria-hidden', 'true');
+                }
                 closeMobileNav();
                 closeCart();
                 closeWishlist();
@@ -2366,10 +2400,6 @@ window.toggleSearch = toggleSearch;
                 closeCatMenu();
             }
         });
-
-
-
-
     </script>
 </body>
 </html>
