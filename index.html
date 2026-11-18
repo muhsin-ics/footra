@@ -5,27 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="theme-color" content="#0a4d31">
-    <title>FOOTRA | Premium Footwear</title>
+    <title>FOOTRA | Premium Men's Boots, Loafers & Leather Shoes</title>
     <meta name="robots" content="index, follow">
 <meta name="author" content="FOOTRA">
+    <meta name="description" content="Shop premium men's footwear at FOOTRA. Explore stylish leather boots, Chelsea boots, loafers and formal shoes designed for comfort and timeless style.">
+    <meta name="keywords" content="FOOTRA, premium men's footwear, men's leather boots, men's loafers, Chelsea boots for men, formal shoes for men, leather shoes online, stylish men's footwear">
+    <meta name="author" content="FOOTRA">
+    <meta name="robots" content="index, follow">
 
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="FOOTRA">
-<meta property="og:title" content="FOOTRA | Premium Leather Boots, Loafers & Men's Footwear">
-<meta property="og:description" content="Explore premium leather boots, loafers and formal footwear with FOOTRA—made for confident steps and timeless style.">
+    <link rel="canonical" href="https://muhsin-ics.github.io/footra/">
+    
+    
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FOOTRA">
+    <meta property="og:url" content="https://muhsin-ics.github.io/footra/">
+    <meta property="og:title" content="FOOTRA | Premium Men's Boots, Loafers & Leather Shoes">
+    <meta property="og:description" content="Discover premium men's leather boots, stylish loafers and formal footwear at FOOTRA. Step into comfort, quality and timeless style.">
+    
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FOOTRA | Premium Men's Footwear">
-<meta name="twitter:description" content="Shop premium leather boots, loafers and formal shoes at FOOTRA.">
 
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FOOTRA | Premium Men's Footwear">
+    <meta name="twitter:description" content="Shop premium men's leather boots, Chelsea boots, loafers and formal shoes at FOOTRA.">
+
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
     <!-- FOOTRA CSS -->
     <link rel="stylesheet" href="mystyle.css">
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
    
@@ -1806,131 +1822,264 @@
         </div>
     </nav>
 
-    <!-- =========================
-         PREMIUM NAVBAR
-    ========================== -->
-    <header class="navbar">
+   
+<!-- =========================
+     PREMIUM NAVBAR
+========================== -->
+<header class="navbar" role="banner">
 
-        <!-- HAMBURGER (mobile only) -->
-        <button class="hamburger-btn" onclick="openMobileNav()" aria-label="Open menu">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+    <!-- HAMBURGER (mobile only) -->
+    <button class="hamburger-btn"
+        type="button"
+        onclick="openMobileNav()"
+        aria-label="Open FOOTRA navigation menu">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
 
-        <!-- BRAND LOGO -->
-        <a href="index.html" class="brand-logo" aria-label="FOOTRA Home">
-            <img src="FOOTRA-LOGO.png" id="logo" alt="FOOTRA">
+    <!-- BRAND LOGO -->
+    <a href="index.html" class="brand-logo" aria-label="FOOTRA - Premium Men's Footwear Home">
+        <img src="FOOTRA-LOGO.png"
+             id="logo"
+             alt="FOOTRA premium men's boots, loafers and leather shoes">
+    </a>
+
+    <!-- DESKTOP NAV CENTER -->
+    <nav class="nav-center" aria-label="Main navigation">
+
+        <a href="#home" class="nav-link active" aria-current="page">
+            <i class="fa-solid fa-house" aria-hidden="true"></i> Home
         </a>
 
-        <!-- DESKTOP NAV CENTER -->
-        <nav class="nav-center" aria-label="Main navigation">
-            <a href="#home" class="nav-link active">
-                <i class="fa-solid fa-house"></i> Home
-            </a>
-            <a href="#shop" class="nav-link">
-                <i class="fa-solid fa-store"></i> Shop
-            </a>
+        <a href="#shop" class="nav-link">
+            <i class="fa-solid fa-store" aria-hidden="true"></i> Shop Men's Footwear
+        </a>
 
-            <div class="cat-dropdown" id="catDropdown">
-                <button class="cat-btn" onclick="toggleCatMenu(event)" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa-solid fa-layer-group"></i> Categories <i class="fa-solid fa-chevron-down"></i>
-                </button>
-                <div class="cat-menu">
-                    <a href="#shop" onclick="closeCatMenu()"><i class="fa-solid fa-shoe-prints"></i> All Footwear</a>
-                    <div class="cat-divider"></div>
-                    <a href="#shop" onclick="closeCatMenu()"><i class="fa-solid fa-mountain"></i> Boots</a>
-                    <a href="#shop" onclick="closeCatMenu()"><i class="fa-solid fa-glasses"></i> Loafers</a>
-                    <a href="#shop" onclick="closeCatMenu()"><i class="fa-solid fa-gem"></i> Chelsea Boots</a>
-                    <a href="#shop" onclick="closeCatMenu()"><i class="fa-solid fa-briefcase"></i> Formal</a>
-                    <div class="cat-divider"></div>
-                    <a href="#shop" onclick="closeCatMenu()"><i class="fa-solid fa-fire"></i> New Arrivals</a>
-                    <a href="#shop" onclick="closeCatMenu()"><i class="fa-solid fa-tag"></i> Sale</a>
-                </div>
+        <!-- CATEGORIES -->
+        <div class="cat-dropdown" id="catDropdown">
+            <button class="cat-btn"
+                type="button"
+                onclick="toggleCatMenu(event)"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="footwearCategoryMenu">
+                <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                Categories
+                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+
+            <div class="cat-menu" id="footwearCategoryMenu">
+
+                <a href="#shop" onclick="closeCatMenu()">
+                    <i class="fa-solid fa-shoe-prints" aria-hidden="true"></i>
+                    All Men's Footwear
+                </a>
+
+                <div class="cat-divider"></div>
+
+                <a href="#shop" onclick="closeCatMenu()">
+                    <i class="fa-solid fa-mountain" aria-hidden="true"></i>
+                    Men's Leather Boots
+                </a>
+
+                <a href="#shop" onclick="closeCatMenu()">
+                    <i class="fa-solid fa-glasses" aria-hidden="true"></i>
+                    Men's Loafers
+                </a>
+
+                <a href="#shop" onclick="closeCatMenu()">
+                    <i class="fa-solid fa-gem" aria-hidden="true"></i>
+                    Chelsea Boots
+                </a>
+
+                <a href="#shop" onclick="closeCatMenu()">
+                    <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+                    Formal Shoes
+                </a>
+
+                <div class="cat-divider"></div>
+
+                <a href="#shop" onclick="closeCatMenu()">
+                    <i class="fa-solid fa-fire" aria-hidden="true"></i>
+                    New Arrivals
+                </a>
+
+                <a href="#sale" onclick="closeCatMenu()">
+                    <i class="fa-solid fa-tag" aria-hidden="true"></i>
+                    Footwear Sale
+                </a>
+
             </div>
+        </div>
 
-            <a href="contact.html" class="nav-link">
-                <i class="fa-solid fa-envelope"></i> Contact
-            </a>
-            <a href="about.html" class="nav-link">
-                <i class="fa-solid fa-circle-info"></i> About
-            </a>
-        </nav>
+        <a href="contact.html" class="nav-link">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            Contact
+        </a>
 
-        <!-- RIGHT-SIDE ACTIONS -->
-        <div class="nav-right">
+        <a href="about.html" class="nav-link">
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+            About FOOTRA
+        </a>
 
-            <button type="button" class="nav-icon" onclick="toggleSearch()" aria-label="Toggle search">
-                <i class="fa-solid fa-magnifying-glass"></i>
+    </nav>
+
+    <!-- RIGHT-SIDE ACTIONS -->
+    <div class="nav-right">
+
+        <!-- SEARCH -->
+        <button type="button"
+            class="nav-icon"
+            onclick="toggleSearch()"
+            aria-label="Search men's boots, loafers and shoes">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        </button>
+
+        <!-- ACCOUNT -->
+        <div class="user-dropdown">
+
+            <button type="button"
+                class="nav-icon"
+                onclick="toggleUserMenu(event)"
+                aria-label="Open FOOTRA customer account menu">
+                <i class="fa-regular fa-user" aria-hidden="true"></i>
             </button>
 
-            <div class="user-dropdown">
-                <button type="button" class="nav-icon" onclick="toggleUserMenu(event)" aria-label="Account menu">
-                    <i class="fa-regular fa-user"></i>
-                </button>
-                <div class="user-menu" id="userMenu">
-                    <a href="#" onclick="openLogin(); return false;"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
-                    <a href="#" onclick="openRegister(); return false;"><i class="fa-solid fa-user-plus"></i> Register</a>
-                    <a href="#" onclick="openAccount(); return false;"><i class="fa-regular fa-circle-user"></i> My Account</a>
-                </div>
+            <div class="user-menu" id="userMenu">
+
+                <a href="#" onclick="openLogin(); return false;">
+                    <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>
+                    Login
+                </a>
+
+                <a href="#" onclick="openRegister(); return false;">
+                    <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+                    Register
+                </a>
+
+                <a href="#" onclick="openAccount(); return false;">
+                    <i class="fa-regular fa-circle-user" aria-hidden="true"></i>
+                    My Account
+                </a>
+
             </div>
-
-            <button type="button" class="nav-icon" onclick="openCart()" aria-label="Open shopping cart">
-                <i class="fa-solid fa-bag-shopping"></i>
-                <span class="nav-count" id="cartCount">0</span>
-            </button>
-
-            <button type="button" class="nav-icon" onclick="openWishlist()" aria-label="Open wishlist">
-                <i class="fa-regular fa-heart"></i>
-                <span class="nav-count" id="wishlistCount">0</span>
-            </button>
-
         </div>
-    </header>
 
-    <!-- SEARCH PANEL -->
-    <div class="search-bar" id="searchBar" aria-hidden="true">
-        <div class="search-inner">
-            <button type="button" class="search-submit" id="submitProductSearch" onclick="performProductSearch()" aria-label="Search products">
-                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-            </button>
-            <input type="text" id="siteSearch" placeholder="Search your next favourite pair..." aria-label="Search products" autocomplete="off">
-            <button type="button" class="close-search" onclick="toggleSearch(event)" aria-label="Close search">
-                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-            </button>
-        </div>
-        <div id="searchResultsStatus" aria-live="polite"></div>
+        <!-- CART -->
+        <button type="button"
+            class="nav-icon"
+            onclick="openCart()"
+            aria-label="Open shopping cart">
+            <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+            <span class="nav-count" id="cartCount">0</span>
+        </button>
+
+        <!-- WISHLIST -->
+        <button type="button"
+            class="nav-icon"
+            onclick="openWishlist()"
+            aria-label="Open footwear wishlist">
+            <i class="fa-regular fa-heart" aria-hidden="true"></i>
+            <span class="nav-count" id="wishlistCount">0</span>
+        </button>
+
+    </div>
+</header>
+
+<!-- SEARCH PANEL -->
+<div class="search-bar" id="searchBar" aria-hidden="true">
+
+    <div class="search-inner">
+
+        <button type="button"
+            class="search-submit"
+            id="submitProductSearch"
+            onclick="performProductSearch()"
+            aria-label="Search footwear products">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        </button>
+
+        <input type="text"
+            id="siteSearch"
+            placeholder="Search men's boots, loafers and shoes..."
+            aria-label="Search FOOTRA footwear products"
+            autocomplete="off">
+
+        <button type="button"
+            class="close-search"
+            onclick="toggleSearch(event)"
+            aria-label="Close product search">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+
     </div>
 
-    <!-- CART OVERLAY -->
-    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()" aria-hidden="true"></div>
+    <div id="searchResultsStatus" aria-live="polite"></div>
 
-    <!-- CART DRAWER -->
-    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
-        <div class="cart-header">
-            <h3>Your Cart <span class="cart-count" id="cartCountDrawer">0</span></h3>
-            <button type="button" class="close-cart" onclick="closeCart()" aria-label="Close cart">✕</button>
-        </div>
-        <div class="cart-body" id="cartItems">
-            <p>Your cart is empty.</p>
-        </div>
-        <div class="cart-footer">
-            <h3>Total: ₹<span id="cartTotal">0</span></h3>
-            <button type="button" class="checkout-btn" id="cartCheckoutBtn" onclick="checkout()">Checkout</button>
-        </div>
-    </aside>
+</div>
 
-    <!-- WISHLIST OVERLAY -->
-    <div class="cart-overlay" id="wishlistOverlay" onclick="closeWishlist()" aria-hidden="true"></div>
+<!-- CART OVERLAY -->
+<div class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart()"
+    aria-hidden="true"></div>
 
-    <!-- WISHLIST DRAWER -->
-    <aside class="wishlist-drawer" id="wishlistDrawer" aria-label="Wishlist">
-        <div class="wishlist-header">
-            <h3>Your Wishlist</h3>
-            <button type="button" class="close-cart" onclick="closeWishlist()" aria-label="Close wishlist">✕</button>
-        </div>
-        <div id="wishlistItems">
-            <p>Your wishlist is empty.</p>
-        </div>
-    </aside>
+<!-- CART DRAWER -->
+<aside class="cart-drawer" id="cartDrawer" aria-label="FOOTRA shopping cart">
+
+    <div class="cart-header">
+        <h3>Your Cart
+            <span class="cart-count" id="cartCountDrawer">0</span>
+        </h3>
+
+        <button type="button"
+            class="close-cart"
+            onclick="closeCart()"
+            aria-label="Close shopping cart">✕</button>
+    </div>
+
+    <div class="cart-body" id="cartItems">
+        <p>Your cart is empty.</p>
+    </div>
+
+    <div class="cart-footer">
+        <h3>Total: ₹<span id="cartTotal">0</span></h3>
+
+        <button type="button"
+            class="checkout-btn"
+            id="cartCheckoutBtn"
+            onclick="checkout()">
+            Checkout
+        </button>
+    </div>
+
+</aside>
+
+<!-- WISHLIST OVERLAY -->
+<div class="cart-overlay"
+    id="wishlistOverlay"
+    onclick="closeWishlist()"
+    aria-hidden="true"></div>
+
+<!-- WISHLIST DRAWER -->
+<aside class="wishlist-drawer"
+    id="wishlistDrawer"
+    aria-label="FOOTRA footwear wishlist">
+
+    <div class="wishlist-header">
+        <h3>Your Wishlist</h3>
+
+        <button type="button"
+            class="close-cart"
+            onclick="closeWishlist()"
+            aria-label="Close wishlist">✕</button>
+    </div>
+
+    <div id="wishlistItems">
+        <p>Your wishlist is empty.</p>
+    </div>
+
+</aside>
+
 
     <!-- MAIN CONTENT -->
     <main>
