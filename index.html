@@ -86,7 +86,7 @@
 
         /* ============================================
            PREMIUM NAVBAR — Mobile Friendly
-        ============================================ */
+        ============================================ 
         header.navbar {
             background: #ffffff;
             border-bottom: 1px solid var(--ft-border);
@@ -113,7 +113,7 @@
 
         .brand-logo:hover #logo { transform: scale(1.04); }
 
-        /* ---- Desktop nav center (hidden on mobile) ---- */
+        /* ---- Desktop nav center (hidden on mobile) ---- 
         .nav-center {
             display: flex;
             align-items: center;
@@ -144,7 +144,7 @@
             background: var(--ft-green-soft);
         }
 
-        /* Categories dropdown */
+        /* Categories dropdown 
         .cat-dropdown { position: relative; }
 
         .cat-dropdown .cat-btn {
@@ -222,7 +222,7 @@
             margin: 6px 10px;
         }
 
-        /* ---- Right-side actions ---- */
+        /* ---- Right-side actions ---- 
         .nav-right {
             display: flex;
             align-items: center;
@@ -270,7 +270,7 @@
             line-height: 1;
         }
 
-        /* Hamburger toggle — only visible on mobile */
+        /* Hamburger toggle — only visible on mobile 
         .hamburger-btn {
             display: none;
             width: 40px;
@@ -287,7 +287,7 @@
 
         .hamburger-btn:hover { background: var(--ft-green-soft); }
 
-        /* User dropdown */
+        /* User dropdown 
         .user-dropdown { position: relative; display: inline-block; }
 
         .user-menu {
@@ -322,7 +322,7 @@
 
         /* ============================================
            MOBILE SLIDE-OUT MENU
-        ============================================ */
+        ============================================ 
         .mobile-nav {
             position: fixed;
             top: 0;
@@ -402,7 +402,7 @@
             color: var(--ft-green);
         }
 
-        /* Mobile categories accordion */
+        /* Mobile categories accordion 
         .mobile-cat-group {
             margin: 6px 0;
             border-radius: 12px;
@@ -502,6 +502,451 @@
         }
 
         .m-btn-secondary:hover { background: #d9e9df; }
+
+        
+/* =========================================
+   FOOTRA — LUXURY PREMIUM NAVBAR
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Manrope', sans-serif;
+}
+
+/* MAIN NAVBAR */
+
+.navbar {
+    width: 100%;
+    min-height: 88px;
+    padding: 0 6%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid #eaece8;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    transition: all 0.3s ease;
+}
+
+/* LOGO */
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.brand-logo img {
+    width: 155px;
+    max-height: 58px;
+    display: block;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.brand-logo:hover img {
+    transform: scale(1.04);
+}
+
+/* NAVIGATION */
+
+.nav-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 38px;
+    flex: 1;
+}
+
+.nav-link {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 14px 0;
+
+    color: #333a35;
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+
+    transition: color 0.3s ease;
+}
+
+.nav-link i {
+    color: #527361;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #155b42;
+}
+
+.nav-link:hover i {
+    transform: translateY(-2px);
+}
+
+/* UNDERLINE EFFECT */
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+
+    width: 0;
+    height: 2px;
+
+    background: #155b42;
+    border-radius: 5px;
+
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* RIGHT ACTIONS */
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* ICON BUTTONS */
+
+.nav-icon {
+    position: relative;
+
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e9ede9;
+    border-radius: 50%;
+
+    background: #ffffff;
+    color: #183d2e;
+
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.nav-icon:hover {
+    background: #155b42;
+    border-color: #155b42;
+    color: #ffffff;
+
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(21, 91, 66, 0.18);
+}
+
+/* CART / WISHLIST BADGES */
+
+.nav-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #155b42;
+    color: #ffffff;
+
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* ACCOUNT DROPDOWN */
+
+.user-dropdown {
+    position: relative;
+}
+
+.user-menu {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+
+    width: 205px;
+    padding: 10px;
+
+    background: #ffffff;
+    border: 1px solid #edf0ed;
+    border-radius: 13px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.10);
+
+    display: none;
+    z-index: 1100;
+}
+
+.user-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 13px 12px;
+
+    color: #303a33;
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    border-radius: 8px;
+    transition: all 0.25s ease;
+}
+
+.user-menu a i {
+    color: #155b42;
+    width: 17px;
+}
+
+.user-menu a:hover {
+    background: #eff5f0;
+    color: #155b42;
+    padding-left: 17px;
+}
+
+/* HAMBURGER */
+
+.hamburger-btn {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e9ede9;
+    border-radius: 50%;
+
+    background: #ffffff;
+    color: #155b42;
+
+    font-size: 18px;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.hamburger-btn:hover {
+    background: #155b42;
+    color: #ffffff;
+}
+
+/* SEARCH PANEL */
+
+.search-bar {
+    position: absolute;
+    top: 88px;
+    left: 0;
+
+    width: 100%;
+    padding: 22px 5%;
+
+    background: #ffffff;
+    border-top: 1px solid #f0f0ec;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+
+    z-index: 999;
+}
+
+.search-inner {
+    max-width: 720px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 9px 18px;
+
+    background: #f7f9f7;
+    border: 1px solid #e3e9e3;
+    border-radius: 50px;
+
+    transition: border-color 0.3s ease;
+}
+
+.search-inner:focus-within {
+    border-color: #155b42;
+}
+
+.search-inner input {
+    flex: 1;
+    min-width: 0;
+
+    padding: 11px 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+    color: #25342b;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.search-inner input::placeholder {
+    color: #929a93;
+}
+
+.search-submit,
+.close-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background: transparent;
+
+    color: #155b42;
+    font-size: 17px;
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+.search-submit:hover,
+.close-search:hover {
+    transform: scale(1.15);
+}
+
+/* MOBILE NAVBAR */
+
+@media (max-width: 1050px) {
+
+    .navbar {
+        min-height: 76px;
+        padding: 0 4%;
+        gap: 18px;
+    }
+
+    .hamburger-btn {
+        display: flex;
+        flex-shrink: 0;
+    }
+
+    .brand-logo img {
+        width: 135px;
+    }
+
+    .nav-center {
+        display: none;
+    }
+
+    .nav-right {
+        gap: 9px;
+        margin-left: auto;
+    }
+
+    .nav-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .search-bar {
+        top: 76px;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 480px) {
+
+    .navbar {
+        min-height: 68px;
+        padding: 0 12px;
+        gap: 8px;
+    }
+
+    .brand-logo img {
+        width: 108px;
+        max-height: 45px;
+    }
+
+    .hamburger-btn,
+    .nav-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .nav-right {
+        gap: 5px;
+    }
+
+    .nav-count {
+        min-width: 17px;
+        height: 17px;
+        font-size: 9px;
+    }
+
+    .search-bar {
+        top: 68px;
+        padding: 15px 12px;
+    }
+
+    .search-inner {
+        gap: 10px;
+        padding: 7px 13px;
+    }
+
+    .search-inner input {
+        font-size: 12px;
+    }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    .navbar *,
+    .navbar *::before,
+    .navbar *::after {
+        transition: none !important;
+    }
+}
 
         /* Mobile menu overlay */
         .mobile-overlay {
@@ -1824,46 +2269,48 @@
 
    
 <!-- =========================
-     PREMIUM NAVBAR
+     FOOTRA PREMIUM NAVBAR
 ========================== -->
 <header class="navbar" role="banner">
 
-    <!-- HAMBURGER (mobile only) -->
+    <!-- MOBILE MENU -->
     <button class="hamburger-btn"
         type="button"
         onclick="openMobileNav()"
-        aria-label="Open FOOTRA navigation menu">
+        aria-label="Open navigation menu">
         <i class="fa-solid fa-bars" aria-hidden="true"></i>
     </button>
 
     <!-- BRAND LOGO -->
-    <a href="index.html" class="brand-logo" aria-label="FOOTRA - Premium Men's Footwear Home">
+    <a href="index.html" class="brand-logo"
+       aria-label="FOOTRA - Premium Men's Footwear">
+
         <img src="FOOTRA-LOGO.png"
              id="logo"
-             alt="FOOTRA premium men's boots, loafers and leather shoes">
+             alt="FOOTRA premium footwear logo">
     </a>
 
-    <!-- DESKTOP NAV CENTER -->
+    <!-- MAIN NAVIGATION -->
     <nav class="nav-center" aria-label="Main navigation">
 
         <a href="#home" class="nav-link active" aria-current="page">
-            <i class="fa-solid fa-house" aria-hidden="true"></i> Home
+            <i class="fa-solid fa-house" aria-hidden="true"></i>
+            <span>Home</span>
         </a>
 
         <a href="#shop" class="nav-link">
-            <i class="fa-solid fa-store" aria-hidden="true"></i> Shop Men's Footwear
-        </a>
-
-        
-
-        <a href="contact.html" class="nav-link">
-            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-            Contact
+            <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+            <span>Shop Collection</span>
         </a>
 
         <a href="about.html" class="nav-link">
             <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
-            About FOOTRA
+            <span>Our Story</span>
+        </a>
+
+        <a href="contact.html" class="nav-link">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <span>Contact</span>
         </a>
 
     </nav>
@@ -1875,7 +2322,7 @@
         <button type="button"
             class="nav-icon"
             onclick="toggleSearch()"
-            aria-label="Search men's boots, loafers and shoes">
+            aria-label="Search FOOTRA products">
             <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
         </button>
 
@@ -1885,7 +2332,7 @@
             <button type="button"
                 class="nav-icon"
                 onclick="toggleUserMenu(event)"
-                aria-label="Open FOOTRA customer account menu">
+                aria-label="Customer account">
                 <i class="fa-regular fa-user" aria-hidden="true"></i>
             </button>
 
@@ -1914,6 +2361,7 @@
             class="nav-icon"
             onclick="openCart()"
             aria-label="Open shopping cart">
+
             <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
             <span class="nav-count" id="cartCount">0</span>
         </button>
@@ -1922,12 +2370,14 @@
         <button type="button"
             class="nav-icon"
             onclick="openWishlist()"
-            aria-label="Open footwear wishlist">
+            aria-label="Open wishlist">
+
             <i class="fa-regular fa-heart" aria-hidden="true"></i>
             <span class="nav-count" id="wishlistCount">0</span>
         </button>
 
     </div>
+
 </header>
 
 <!-- SEARCH PANEL -->
