@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About FOOTRA | Handcrafted Premium Leather Footwear for Men</title>
+<meta name="description" content="FOOTRA started as a three-person workshop and now makes durable, comfortable leather boots and shoes for men. Meet the team and the craft behind every pair.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#155b42">
+<link rel="canonical" href="https://www.footra.com/about.html">
+<link rel="icon" href="LOGO.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FOOTRA">
+<meta property="og:title" content="About FOOTRA | Handcrafted Premium Leather Footwear">
+<meta property="og:description" content="Bold leather footwear built for comfort, strength and style. Discover the FOOTRA story.">
+<meta property="og:url" content="https://www.footra.com/about.html">
+<meta property="og:image" content="https://www.footra.com/about.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About FOOTRA | Handcrafted Premium Leather Footwear">
+<meta name="twitter:image" content="https://www.footra.com/about.jpg">
+
+<link rel="preload" as="image" href="about.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="mystyle.css">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://www.footra.com/#org","name":"FOOTRA","url":"https://www.footra.com/","logo":"https://www.footra.com/LOGO.png","description":"Premium leather footwear for men, designed for confidence, comfort and timeless style.","sameAs":[]},
+{"@type":"AboutPage","name":"About FOOTRA","url":"https://www.footra.com/about.html","isPartOf":{"@id":"https://www.footra.com/#org"},"primaryImageOfPage":"https://www.footra.com/about.jpg"},
+{"@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://www.footra.com/"},
+{"@type":"ListItem","position":2,"name":"About","item":"https://www.footra.com/about.html"}]}]}
+</script>
+
+<style>
+:root{--green:#155b42;--dark:#103d2e;--deep:#0b2d22;--sage:#eaf3ee;--light:#f6f9f6;--text:#26332b;--muted:#5b685f;--border:#dce6df;--shadow:0 15px 45px rgba(16,61,46,.09);--header:72px}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header) + 15px)}
+body{margin:0;padding-top:var(--header);font-family:Manrope,system-ui,sans-serif;color:var(--text);background:#fff;line-height:1.7;overflow-x:hidden}
+body.drawer-open{overflow:hidden}
+img{max-width:100%;height:auto;display:block}
+button,input{font:inherit}button{cursor:pointer}
+a{transition:color .2s,background .2s}
+:focus-visible{outline:3px solid #7db99b;outline-offset:2px}
+.skip{position:absolute;left:-999px;top:8px;z-index:6000;background:#fff;padding:8px 14px;border-radius:8px}
+.skip:focus{left:8px}
+
+/* Header */
+.premium-navbar{position:fixed;inset:0 0 auto;z-index:3000;height:var(--header);padding:0 clamp(12px,4vw,55px);display:grid;grid-template-columns:minmax(75px,1fr) auto minmax(130px,1fr);align-items:center;gap:16px;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 3px 18px rgba(16,61,46,.05)}
+.brand-logo{display:inline-flex;justify-self:start}
+#logo{height:46px;width:auto;max-width:95px;object-fit:contain}
+.nav-center{display:flex;gap:3px;justify-content:center}
+.nav-link{min-height:40px;padding:0 10px;display:inline-flex;align-items:center;gap:7px;border-radius:22px;color:#303832;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap}
+.nav-link i{color:var(--green);font-size:12px}
+.nav-link:hover,.nav-link.active{color:var(--green);background:var(--sage)}
+.nav-right{display:flex;align-items:center;justify-self:end;gap:4px}
+.nav-icon{position:relative;width:35px;height:38px;display:inline-flex;align-items:center;justify-content:center;padding:0;border:0;border-radius:50%;background:transparent;color:var(--text);font-size:17px}
+.nav-icon:hover{color:var(--green);background:var(--sage)}
+.count{position:absolute;top:0;right:-1px;min-width:16px;height:16px;padding:0 4px;display:inline-flex;align-items:center;justify-content:center;border-radius:20px;background:var(--green);color:#fff;font-size:9px;font-weight:800}
+.count[hidden]{display:none}
+.user-dropdown{position:relative}
+.user-menu{position:absolute;top:calc(100% + 8px);right:0;display:none;flex-direction:column;min-width:155px;padding:8px;background:#fff;border:1px solid var(--border);border-radius:13px;box-shadow:0 16px 40px rgba(16,61,46,.14)}
+.user-dropdown.open .user-menu{display:flex}
+.user-menu a{padding:10px 12px;border-radius:8px;color:var(--text);font-size:12px;text-decoration:none}
+.user-menu a:hover{background:var(--sage);color:var(--green)}
+.menu-toggle{display:none}
+
+.search-bar{position:fixed;top:var(--header);left:0;z-index:2900;display:none;width:100%;padding:15px 5%;background:#fff;border-bottom:1px solid var(--border)}
+.search-bar.active{display:block}
+.search-inner{display:flex;align-items:center;gap:10px;max-width:850px;margin:auto}
+.search-inner input{flex:1;min-width:0;height:45px;padding:0 15px;border:1px solid var(--border);border-radius:10px;background:var(--light);font-size:14px}
+
+.mobile-menu-overlay{position:fixed;inset:0;z-index:3990;visibility:hidden;opacity:0;background:rgba(8,24,17,.48);transition:opacity .25s,visibility .25s}
+.mobile-menu-overlay.active{visibility:visible;opacity:1}
+.mobile-nav-drawer{position:fixed;top:0;right:0;z-index:4000;width:min(340px,88vw);height:100dvh;padding:22px;overflow-y:auto;background:#fff;transform:translateX(105%);visibility:hidden;transition:transform .28s,visibility .28s}
+.mobile-nav-drawer.open{transform:none;visibility:visible}
+.mobile-drawer-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.drawer-brand{color:var(--dark);font-size:22px;font-weight:800;letter-spacing:2px;text-decoration:none}
+.mobile-drawer-close{width:38px;height:38px;border:0;border-radius:50%;background:var(--sage);color:var(--green)}
+.mobile-drawer-links{display:flex;flex-direction:column;gap:5px;padding:18px 0}
+.mobile-drawer-links a{min-height:45px;display:flex;align-items:center;gap:12px;padding:0 13px;border-radius:10px;color:var(--text);font-size:14px;font-weight:700;text-decoration:none}
+.mobile-drawer-links a i{width:18px;color:var(--green)}
+.mobile-drawer-links a:hover,.mobile-drawer-links a.active{color:var(--green);background:var(--sage)}
+.mobile-drawer-auth{display:flex;gap:10px;padding-top:20px;border-top:1px solid var(--border)}
+.mobile-drawer-auth a{flex:1;min-height:42px;display:flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--border);border-radius:10px;color:var(--green);font-size:12px;font-weight:800;text-decoration:none}
+
+/* Hero */
+.hero{position:relative;isolation:isolate;display:flex;align-items:center;min-height:470px;height:min(66vh,650px);overflow:hidden;background:var(--deep)}
+.hero>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,32,23,.91),rgba(11,45,34,.76) 42%,rgba(11,45,34,.16))}
+.hero-text{max-width:850px;padding:60px 8%;color:#fff;animation:fadeUp .7s ease both}
+.breadcrumb{margin:0 0 18px;padding:0;list-style:none;display:flex;gap:8px;font-size:12px;font-weight:700;color:#c1e1cf}
+.breadcrumb a{color:#c1e1cf}
+.breadcrumb li+li::before{content:"/";margin-right:8px;opacity:.6}
+.hero-text h1{margin:0 0 20px;font-size:clamp(44px,6vw,76px);font-weight:800;line-height:1.1;letter-spacing:-2px}
+.hero-text p{max-width:570px;margin:0;color:#ffffffe8;font-size:clamp(15px,1.5vw,18px);line-height:1.9}
+
+/* Story */
+.about-section{padding:100px 7%;background:#fff}
+.story{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;max-width:1150px;margin:auto}
+.story h2,.section-head h2{margin:0 0 22px;color:var(--dark);font-size:clamp(28px,3vw,39px);font-weight:800;line-height:1.3;letter-spacing:-1px}
+.story p{margin:0 0 18px;color:var(--muted);font-size:15px;line-height:1.9;max-width:62ch}
+.founder-note{margin:30px 0 0;padding:24px 26px;background:var(--light);border-left:4px solid var(--green);border-radius:0 14px 14px 0}
+.founder-note p{margin:0 0 10px;color:var(--dark);font-style:italic;font-weight:600}
+.founder-note footer{color:var(--green);font-size:12px;font-weight:800}
+.story figure,.gallery figure{margin:0}
+.story img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:22px;box-shadow:var(--shadow)}
+figcaption{margin-top:10px;color:var(--muted);font-size:12px}
+
+/* Stats */
+.stats-section{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:0;padding:60px 7%;background:linear-gradient(135deg,var(--dark),var(--green))}
+.stat-item{padding:20px 12px;text-align:center;border-right:1px solid #ffffff2e}
+.stat-item:last-child{border-right:0}
+.stat-item dd{margin:0;color:#fff;font-size:clamp(29px,3.3vw,43px);font-weight:800;line-height:1.2}
+.stat-item dt{order:2;color:#e0ece4;font-size:12px;font-weight:600}
+.stat-item{display:flex;flex-direction:column}
+
+/* Craft gallery */
+.craft{padding:95px 7%;background:var(--light)}
+.section-head{max-width:700px;margin:0 auto 44px;text-align:center}
+.section-head p{margin:0;color:var(--muted)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1150px;margin:auto}
+.gallery img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:18px}
+.gallery h3{margin:14px 0 4px;color:var(--dark);font-size:18px;font-weight:800}
+.gallery p{margin:0;color:var(--muted);font-size:14px}
+
+/* Values */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:95px 7%}
+.feature-box{padding:36px 30px;background:#fff;border:1px solid var(--border);border-radius:19px;transition:transform .3s,box-shadow .3s}
+.feature-box:hover{transform:translateY(-5px);box-shadow:0 20px 45px #103d2e1a}
+.feature-box i{width:58px;height:58px;margin-bottom:20px;display:inline-flex;align-items:center;justify-content:center;color:var(--green);background:var(--sage);border-radius:16px;font-size:23px}
+.feature-box h3{margin:0 0 10px;color:var(--dark);font-size:18px;font-weight:800}
+.feature-box p{margin:0;color:var(--muted);font-size:14px}
+.cta-row{padding:0 7% 95px;text-align:center}
+.btn{display:inline-block;padding:15px 32px;border-radius:12px;background:var(--green);color:#fff;font-weight:800;text-decoration:none}
+.btn:hover{background:var(--dark)}
+
+/* Newsletter */
+.newsletter{padding:80px 7%;text-align:center;background:linear-gradient(135deg,var(--dark),var(--green))}
+.newsletter h2{margin:0 0 12px;color:#fff;font-size:clamp(27px,3vw,38px);font-weight:800}
+.newsletter>p{margin:0 auto 28px;color:#e0ece4;font-size:14px}
+.newsletter-form{display:flex;gap:11px;max-width:780px;margin:auto}
+.newsletter-form input{flex:1;min-width:0;height:52px;padding:0 16px;border:1px solid var(--border);border-radius:10px;font-size:14px}
+.newsletter-form button{min-height:52px;padding:0 23px;border:0;border-radius:10px;background:#fff;color:var(--green);font-weight:800}
+.newsletter-message{min-height:20px;margin:12px 0 0!important;color:#fff!important;font-size:13px!important}
+
+/* Footer */
+.footer{padding:70px 7% 0;color:#d0dbd3;background:var(--deep)}
+.footer-container{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:38px;max-width:1400px;margin:auto;padding-bottom:48px}
+.footer-logo{margin:0 0 16px;color:#fff;font-size:28px;font-weight:800;letter-spacing:3px}
+.footer-text{max-width:310px;margin:0;font-size:13px}
+.footer h3{margin:0 0 18px;color:#fff;font-size:14px;font-weight:800}
+.footer ul{margin:0;padding:0;list-style:none}
+.footer li{margin-bottom:10px}
+.footer a{color:#d0dbd3;font-size:13px;text-decoration:none}
+.footer a:hover{color:#a9d8bd}
+.footer-social{display:flex;flex-wrap:wrap;gap:10px}
+.footer-social a{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #ffffff1f;border-radius:50%;background:#ffffff14;color:#fff}
+.footer-bottom{padding:20px 8px;border-top:1px solid #ffffff1f;text-align:center;font-size:12px}
+
+/* Auth modal */
+.auth-modal{position:fixed;inset:0;z-index:5000;display:none;align-items:center;justify-content:center;padding:20px;background:#0009}
+.auth-modal.open{display:flex}
+.auth-card{position:relative;width:100%;max-width:420px;padding:36px;border-radius:22px;background:#fff;text-align:center}
+.auth-close{position:absolute;top:12px;right:12px;width:34px;height:34px;border:0;border-radius:50%;background:var(--light)}
+.auth-section h2{margin:0 0 22px;color:var(--dark);font-size:26px}
+.auth-section input{width:100%;height:46px;margin-bottom:12px;padding:0 14px;border:1px solid var(--border);border-radius:10px}
+.auth-submit{width:100%;min-height:46px;border:0;border-radius:10px;background:var(--dark);color:#fff;font-weight:800}
+.auth-section p{margin:17px 0 0;color:var(--muted);font-size:13px}
+.auth-section p button{padding:0;border:0;background:none;color:var(--green);font-weight:800}
+.auth-section[hidden]{display:none!important}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media(max-width:1100px){.nav-link{padding-inline:7px;font-size:11px}.story{gap:36px}.footer-container{gap:25px}}
+@media(max-width:900px){.story{grid-template-columns:1fr}.story img{aspect-ratio:4/3}.gallery,.features{grid-template-columns:1fr}.gallery img{aspect-ratio:4/3}}
+@media(max-width:760px){
+:root{--header:64px}
+.premium-navbar{grid-template-columns:1fr auto;padding:0 12px}
+.nav-center{display:none}.menu-toggle{display:inline-flex}
+#logo{height:42px;max-width:62px}
+.hero{height:58vh;min-height:360px}.hero-text{padding:42px 7%}
+.about-section,.craft,.features{padding:62px 5%}
+.stats-section{grid-template-columns:repeat(2,1fr);gap:8px;padding:36px 5%}
+.stat-item{border-right:0;border-bottom:1px solid #ffffff2e}
+.newsletter-form{flex-direction:column}
+.newsletter-form button{width:100%}
+.footer-container{grid-template-columns:repeat(2,1fr)}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true"></div>
+<aside class="mobile-nav-drawer" id="aboutMobileDrawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="mobile-drawer-header">
+    <a class="drawer-brand" href="index.html">FOOTRA</a>
+    <button class="mobile-drawer-close" id="closeMobileMenu" type="button" aria-label="Close navigation"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <nav class="mobile-drawer-links" aria-label="Mobile navigation links">
+    <a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a>
+    <a href="index.html#shop"><i class="fa-solid fa-store"></i><span>Shop</span></a>
+    <a href="contact.html"><i class="fa-solid fa-envelope"></i><span>Contact</span></a>
+    <a href="about.html" class="active" aria-current="page"><i class="fa-solid fa-circle-info"></i><span>About</span></a>
+  </nav>
+  <div class="mobile-drawer-auth">
+    <a href="#" data-auth="login"><i class="fa-solid fa-right-to-bracket"></i>Login</a>
+    <a href="#" data-auth="register"><i class="fa-solid fa-user-plus"></i>Register</a>
+  </div>
+</aside>
+
+<header class="premium-navbar">
+  <a class="brand-logo" href="index.html" aria-label="FOOTRA home">
+    <img id="logo" src="LOGO.png" alt="FOOTRA logo" width="95" height="46">
+  </a>
+  <nav class="nav-center" aria-label="Main navigation">
+    <a class="nav-link" href="index.html"><i class="fa-solid fa-house"></i>Home</a>
+    <a class="nav-link" href="index.html#shop"><i class="fa-solid fa-store"></i>Shop Men's Footwear</a>
+    <a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope"></i>Contact</a>
+    <a class="nav-link active" href="about.html" aria-current="page"><i class="fa-solid fa-circle-info"></i>About FOOTRA</a>
+  </nav>
+  <div class="nav-right">
+    <button class="nav-icon" id="searchToggle" type="button" aria-label="Open search" aria-expanded="false"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <div class="user-dropdown" id="userDropdown">
+      <button class="nav-icon" id="accountToggle" type="button" aria-label="Account menu" aria-expanded="false"><i class="fa-regular fa-user"></i></button>
+      <div class="user-menu">
+        <a href="#" data-auth="login">Login</a>
+        <a href="#" data-auth="register">Register</a>
+        <a href="#" data-auth="account">My Account</a>
+      </div>
+    </div>
+    <button class="nav-icon" id="cartButton" type="button" aria-label="Shopping cart"><i class="fa-solid fa-bag-shopping"></i><span class="count" id="cartCount" hidden>0</span></button>
+    <button class="nav-icon" id="wishlistButton" type="button" aria-label="Wishlist"><i class="fa-regular fa-heart"></i><span class="count" id="wishlistCount" hidden>0</span></button>
+    <button class="nav-icon menu-toggle" id="mobileMenuToggle" type="button" aria-controls="aboutMobileDrawer" aria-expanded="false" aria-label="Open mobile menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</header>
+
+<section class="search-bar" id="searchBar" aria-label="Site search">
+  <form class="search-inner" id="siteSearchForm" role="search">
+    <input id="siteSearch" type="search" placeholder="Search boots, shoes and new arrivals..." aria-label="Search footwear">
+    <button class="nav-icon" type="submit" aria-label="Submit search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <button class="nav-icon" id="closeSearch" type="button" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+  </form>
+</section>
+
+<main id="main">
+  <section class="hero" aria-labelledby="heroTitle">
+    <img src="about.jpg" alt="Pair of premium black leather boots crafted by FOOTRA" width="1920" height="1080" fetchpriority="high">
+    <div class="hero-text">
+      <ol class="breadcrumb" aria-label="Breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">About</li>
+      </ol>
+      <h1 id="heroTitle">Our Story: Bold Leather Footwear, Made to Last</h1>
+      <p>FOOTRA crafts boots and shoes for people who walk their own path. Step into confidence with every stride.</p>
+    </div>
+  </section>
+
+  <section class="about-section" aria-labelledby="journeyTitle">
+    <div class="story">
+      <div>
+        <h2 id="journeyTitle">The FOOTRA Journey</h2>
+        <p>FOOTRA was founded by an entrepreneur who wanted to build a high-quality leather goods brand. It began as a small workshop with three craftsmen and has grown into a footwear destination for people who value thoughtful design and lasting quality.</p>
+        <p>Our mission is simple: design footwear that combines style, strength and comfort. We believe footwear is more than fashion. It is confidence, identity and attitude.</p>
+        <blockquote class="founder-note">
+          <p>“Every pair of FOOTRA shoes tells a story of craftsmanship, dedication, and the pursuit of perfection. We're not just making footwear; we're building confidence, one step at a time.”</p>
+          <footer>— The FOOTRA Team</footer>
+        </blockquote>
+      </div>
+      <figure>
+        <img src="images/footra-workshop.jpg" alt="FOOTRA craftsman stitching a leather boot by hand in the workshop" width="800" height="1000" loading="lazy" decoding="async">
+        <figcaption>Where it started: a small workshop and three craftsmen.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-label="FOOTRA at a glance">
+    <dl class="stats-section">
+      <div class="stat-item"><dd>15K+</dd><dt>Happy Customers</dt></div>
+      <div class="stat-item"><dd>50+</dd><dt>Distinctive Designs</dt></div>
+      <div class="stat-item"><dd>100%</dd><dt>Quality Focus</dt></div>
+      <div class="stat-item"><dd>24/7</dd><dt>Customer Support</dt></div>
+    </dl>
+  </section>
+
+  <section class="craft" aria-labelledby="craftTitle">
+    <div class="section-head">
+      <h2 id="craftTitle">How a FOOTRA Pair Is Made</h2>
+      <p>From the first sketch to the final polish, every step is done with care.</p>
+    </div>
+    <div class="gallery">
+      <figure>
+        <img src="images/footra-leather-selection.jpg" alt="Rolls of full-grain leather being selected for footwear" width="600" height="800" loading="lazy" decoding="async">
+        <figcaption><h3>1. Select the leather</h3><p>Durable, supple leather chosen for strength and a natural finish.</p></figcaption>
+      </figure>
+      <figure>
+        <img src="images/footra-stitching-detail.jpg" alt="Close-up of hand stitching on a FOOTRA leather boot" width="600" height="800" loading="lazy" decoding="async">
+        <figcaption><h3>2. Cut and stitch</h3><p>Each panel is shaped and stitched to hold up to daily wear.</p></figcaption>
+      </figure>
+      <figure>
+        <img src="images/footra-finished-boots.jpg" alt="Finished FOOTRA boots polished and ready to ship" width="600" height="800" loading="lazy" decoding="async">
+        <figcaption><h3>3. Finish and inspect</h3><p>Every pair is polished and checked before it leaves our workshop.</p></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="features" aria-labelledby="valuesTitle">
+    <h2 id="valuesTitle" hidden>What FOOTRA stands for</h2>
+    <article class="feature-box">
+      <i class="fa-solid fa-medal" aria-hidden="true"></i>
+      <h3>Premium Quality</h3>
+      <p>Built with durable materials for long-lasting wear. Every stitch reflects our commitment to careful craftsmanship.</p>
+    </article>
+    <article class="feature-box">
+      <i class="fa-solid fa-pen-ruler" aria-hidden="true"></i>
+      <h3>Modern Design</h3>
+      <p>Contemporary designs that complement modern wardrobes while keeping timeless appeal and everyday versatility.</p>
+    </article>
+    <article class="feature-box">
+      <i class="fa-solid fa-face-smile" aria-hidden="true"></i>
+      <h3>Comfort First</h3>
+      <p>Thoughtful shapes and comfortable materials make every step feel natural, from busy days to special occasions.</p>
+    </article>
+  </section>
+
+  <div class="cta-row"><a class="btn" href="index.html#shop">Shop men's boots and shoes</a></div>
+
+  <section class="newsletter" aria-labelledby="newsletterTitle">
+    <h2 id="newsletterTitle">Join the FOOTRA Family</h2>
+    <p>Subscribe for exclusive offers, new arrivals and styling tips.</p>
+    <form class="newsletter-form" id="newsletterForm">
+      <input id="newsletterName" name="name" type="text" placeholder="Your name" autocomplete="name" aria-label="Your name" required>
+      <input id="newsletterEmail" name="email" type="email" placeholder="Your email address" autocomplete="email" aria-label="Your email address" required>
+      <button type="submit"><i class="fa-regular fa-bell" aria-hidden="true"></i> Subscribe</button>
+    </form>
+    <p class="newsletter-message" id="newsletterMessage" role="status" aria-live="polite"></p>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div>
+      <p class="footer-logo">FOOTRA</p>
+      <p class="footer-text">Elevate your style with premium footwear crafted for confidence, comfort and timeless design.</p>
+    </div>
+    <nav aria-label="Quick links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#shop">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Support">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="contact.html">Help Center</a></li>
+        <li><a href="contact.html">Returns</a></li>
+        <li><a href="contact.html">Shipping</a></li>
+        <li><a href="contact.html">Track Order</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h3>Follow Us</h3>
+      <div class="footer-social">
+        <a href="#" aria-label="FOOTRA on Instagram" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="FOOTRA on Facebook" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="FOOTRA on X" rel="noopener"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="FOOTRA on YouTube" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 FOOTRA. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></div>
+</footer>
+
+<div class="auth-modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle" aria-hidden="true">
+  <div class="auth-card">
+    <button class="auth-close" id="closeAuthModal" type="button" aria-label="Close dialog"><i class="fa-solid fa-xmark"></i></button>
+    <form class="auth-section" id="loginSection">
+      <h2 id="authTitle">Welcome Back</h2>
+      <input name="email" type="email" placeholder="Email address" autocomplete="email" aria-label="Email address" required>
+      <input name="password" type="password" placeholder="Password" autocomplete="current-password" aria-label="Password" required>
+      <button class="auth-submit" type="submit">Login</button>
+      <p>Don't have an account? <button type="button" data-auth="register">Register</button></p>
+    </form>
+    <form class="auth-section" id="registerSection" hidden>
+      <h2>Create Account</h2>
+      <input name="name" type="text" placeholder="Full name" autocomplete="name" aria-label="Full name" required>
+      <input name="email" type="email" placeholder="Email address" autocomplete="email" aria-label="Email address" required>
+      <input name="password" type="password" placeholder="Create a password (8+ characters)" autocomplete="new-password" minlength="8" aria-label="Password" required>
+      <button class="auth-submit" type="submit">Register</button>
+      <p>Already have an account? <button type="button" data-auth="login">Login</button></p>
+    </form>
+    <section class="auth-section" id="accountSection" hidden>
+      <h2>My Account</h2>
+      <p>Sign in to continue to your account.</p>
+      <button class="auth-submit" id="accountLoginButton" type="button">Login to continue</button>
+    </section>
+  </div>
+</div>
+
+<script src="myscript.js" defer></script>
+<script>
+(()=>{"use strict";
+const $=id=>document.getElementById(id);
+const drawer=$("aboutMobileDrawer"),overlay=$("mobileMenuOverlay"),menuToggle=$("mobileMenuToggle");
+const userDropdown=$("userDropdown"),accountToggle=$("accountToggle"),searchBar=$("searchBar"),searchToggle=$("searchToggle"),authModal=$("authModal");
+const login=$("loginSection"),register=$("registerSection"),account=$("accountSection");
+function setMobileMenu(open){
+  drawer.classList.toggle("open",open);overlay.classList.toggle("active",open);document.body.classList.toggle("drawer-open",open);
+  drawer.setAttribute("aria-hidden",String(!open));overlay.setAttribute("aria-hidden",String(!open));
+  menuToggle.setAttribute("aria-expanded",String(open));
+  const i=menuToggle.querySelector("i");i.classList.toggle("fa-bars",!open);i.classList.toggle("fa-xmark",open);
+}
+function setSearch(open){searchBar.classList.toggle("active",open);searchToggle.setAttribute("aria-expanded",String(open));if(open)setTimeout(()=>$("siteSearch").focus(),80)}
+function closeUser(){userDropdown.classList.remove("open");accountToggle.setAttribute("aria-expanded","false")}
+function showAuth(s){
+  setMobileMenu(false);closeUser();
+  login.hidden=s!=="login";register.hidden=s!=="register";account.hidden=s!=="account";
+  authModal.classList.add("open");authModal.setAttribute("aria-hidden","false");document.body.classList.add("drawer-open");
+  const input=authModal.querySelector(".auth-section:not([hidden]) input");if(input)setTimeout(()=>input.focus(),50);
+}
+function closeAuth(){authModal.classList.remove("open");authModal.setAttribute("aria-hidden","true");document.body.classList.remove("drawer-open")}
+menuToggle.addEventListener("click",()=>setMobileMenu(!drawer.classList.contains("open")));
+$("closeMobileMenu").addEventListener("click",()=>setMobileMenu(false));
+overlay.addEventListener("click",()=>setMobileMenu(false));
+drawer.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{if(!a.hasAttribute("data-auth"))setMobileMenu(false)}));
+accountToggle.addEventListener("click",e=>{e.stopPropagation();const o=!userDropdown.classList.contains("open");userDropdown.classList.toggle("open",o);accountToggle.setAttribute("aria-expanded",String(o))});
+searchToggle.addEventListener("click",()=>setSearch(!searchBar.classList.contains("active")));
+$("closeSearch").addEventListener("click",()=>setSearch(false));
+$("siteSearchForm").addEventListener("submit",e=>{e.preventDefault();const q=$("siteSearch").value.trim();if(!q)return $("siteSearch").focus();location.href="index.html?search="+encodeURIComponent(q)+"#shop"});
+document.addEventListener("click",e=>{
+  if(!e.target.closest("#userDropdown"))closeUser();
+  const a=e.target.closest("[data-auth]");if(a){e.preventDefault();showAuth(a.dataset.auth)}
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){setMobileMenu(false);setSearch(false);closeUser();closeAuth()}});
+$("closeAuthModal").addEventListener("click",closeAuth);
+authModal.addEventListener("click",e=>{if(e.target===authModal)closeAuth()});
+$("accountLoginButton").addEventListener("click",()=>showAuth("login"));
+login.addEventListener("submit",e=>{e.preventDefault();alert("The login form is ready. Connect it to your authentication backend to sign in.")});
+register.addEventListener("submit",e=>{e.preventDefault();alert("The registration form is ready. Connect it to your authentication backend to create an account.")});
+$("newsletterForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n=$("newsletterName").value.trim(),m=$("newsletterEmail").value.trim(),msg=$("newsletterMessage");
+  if(!n||!m){msg.textContent="Please enter your name and a valid email address.";return}
+  msg.textContent="Thanks, "+n+"! Connect this form to your newsletter service to save your subscription.";e.currentTarget.reset();
+});
+$("cartButton").addEventListener("click",()=>{typeof window.openCart==="function"?window.openCart():alert("The cart drawer is not configured on this page. Check myscript.js.")});
+$("wishlistButton").addEventListener("click",()=>{typeof window.openWishlist==="function"?window.openWishlist():alert("The wishlist drawer is not configured on this page. Check myscript.js.")});
+function updateCounts(){
+  try{
+    const c=JSON.parse(localStorage.getItem("footraCart")||"[]"),w=JSON.parse(localStorage.getItem("footraWishlist")||"[]");
+    if(Array.isArray(c)){const n=c.reduce((s,i)=>s+(Number(i.quantity)||1),0);$("cartCount").textContent=n;$("cartCount").hidden=n===0}
+    if(Array.isArray(w)){$("wishlistCount").textContent=w.length;$("wishlistCount").hidden=w.length===0}
+  }catch(err){}
+}
+updateCounts();addEventListener("storage",updateCounts);
+})();
+</script>
+</body>
+</html>
