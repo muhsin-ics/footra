@@ -1,11 +1,67 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#173d2b">
-    <title>Contact | FOOTRA Premium Footwear</title>
+    <meta name="description" content="Contact FOOTRA for questions about men’s boots, loafers, footwear sizing, orders and product information. Send an enquiry through the FOOTRA contact page.">
+    <meta name="keywords" content="contact FOOTRA, FOOTRA customer support, men's footwear enquiries, boots and shoes India, footwear sizing help">
+    <meta name="author" content="FOOTRA">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://muhsin-ics.github.io/footra/contact.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FOOTRA">
+    <meta property="og:title" content="Contact FOOTRA | Customer Support for Men’s Footwear">
+    <meta property="og:description" content="Get in touch with FOOTRA for product information, footwear sizing, order and delivery enquiries.">
+    <meta property="og:url" content="https://muhsin-ics.github.io/footra/contact.html">
+    <meta property="og:image" content="https://muhsin-ics.github.io/footra/contact.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact FOOTRA | Customer Support">
+    <meta name="twitter:description" content="Questions about FOOTRA boots, loafers, sizing or orders? Send us an enquiry.">
+    <meta name="twitter:image" content="https://muhsin-ics.github.io/footra/contact.jpg">
+    <title>Contact FOOTRA | Customer Support for Men’s Footwear in India</title>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://muhsin-ics.github.io/footra/#organization",
+      "name": "FOOTRA",
+      "url": "https://muhsin-ics.github.io/footra/",
+      "logo": "https://muhsin-ics.github.io/footra/LOGO.png",
+      "description": "FOOTRA is a men's footwear brand featuring boots and shoes with a focus on style, comfort and timeless design."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://muhsin-ics.github.io/footra/#website",
+      "url": "https://muhsin-ics.github.io/footra/",
+      "name": "FOOTRA",
+      "publisher": {"@id": "https://muhsin-ics.github.io/footra/#organization"}
+    },
+    {
+      "@type": "ContactPage",
+      "@id": "https://muhsin-ics.github.io/footra/contact.html#webpage",
+      "url": "https://muhsin-ics.github.io/footra/contact.html",
+      "name": "Contact FOOTRA",
+      "description": "Contact FOOTRA for product information, footwear sizing, order and delivery enquiries.",
+      "isPartOf": {"@id": "https://muhsin-ics.github.io/footra/#website"},
+      "about": {"@id": "https://muhsin-ics.github.io/footra/#organization"},
+      "breadcrumb": {"@id": "https://muhsin-ics.github.io/footra/contact.html#breadcrumb"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://muhsin-ics.github.io/footra/contact.html#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://muhsin-ics.github.io/footra/"},
+        {"@type": "ListItem", "position": 2, "name": "Contact", "item": "https://muhsin-ics.github.io/footra/contact.html"}
+      ]
+    }
+  ]
+}
+</script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -585,7 +641,7 @@
             text-transform: uppercase;
         }
 
-        .hero-text h2 {
+        .hero-text h1 {
             max-width: 650px;
             margin: 0 0 18px;
             font-size: clamp(2.5rem, 6vw, 4.7rem);
@@ -812,6 +868,52 @@
             width: 100%;
             height: 350px;
             border: 0;
+        }
+
+
+        /* ================= CONTACT FAQ / ANSWER CONTENT ================= */
+        .contact-faq {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto 78px;
+        }
+        .contact-faq-heading {
+            max-width: 680px;
+            margin: 0 auto 28px;
+            text-align: center;
+        }
+        .contact-faq-heading h2 {
+            margin: 10px 0;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            line-height: 1.15;
+            letter-spacing: -.04em;
+        }
+        .contact-faq-heading p {
+            color: var(--footra-muted);
+            font-size: .9rem;
+            line-height: 1.7;
+        }
+        .contact-faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+        .contact-faq-item {
+            padding: 23px;
+            background: #fff;
+            border: 1px solid var(--footra-border);
+            border-radius: 12px;
+        }
+        .contact-faq-item h3 {
+            margin: 0 0 9px;
+            color: var(--footra-green-dark);
+            font-size: 1rem;
+            line-height: 1.45;
+        }
+        .contact-faq-item p {
+            margin: 0;
+            color: var(--footra-muted);
+            font-size: .86rem;
+            line-height: 1.75;
         }
 
         /* ================= NEWSLETTER ================= */
@@ -1052,6 +1154,7 @@
         }
 
         @media (max-width: 760px) {
+            .contact-faq-grid { grid-template-columns: 1fr; }
             header.navbar {
                 height: 70px !important;
                 min-height: 70px !important;
@@ -1435,11 +1538,11 @@ header.navbar .user-menu a:hover {
 
         <!-- CONTACT HERO -->
         <section class="contact-hero">
-            <img src="contact.jpg" alt="" onerror="this.style.display='none'">
+            <img src="contact.jpg" alt="FOOTRA premium men’s footwear contact page banner" onerror="this.style.display='none'">
 
             <div class="hero-text">
                 <span class="hero-kicker">We're here to help</span>
-                <h2>Let's talk about your next step.</h2>
+                <h1>Contact FOOTRA for Men’s Footwear Support</h1>
                 <p>
                     Questions about your order, a product, or finding the right fit?
                     Get in touch with the FOOTRA team. We're happy to help.
@@ -1550,6 +1653,34 @@ header.navbar .user-menu a:hover {
                 referrerpolicy="no-referrer-when-downgrade"
                 allowfullscreen>
             </iframe>
+        </section>
+
+
+        <!-- CONTACT FAQ: concise answers for visitors and answer engines -->
+        <section class="contact-faq" aria-labelledby="contactFaqTitle">
+            <div class="contact-faq-heading">
+                <span class="section-kicker">Need help?</span>
+                <h2 id="contactFaqTitle">FOOTRA Contact FAQs</h2>
+                <p>Quick answers to common questions about contacting our footwear team.</p>
+            </div>
+            <div class="contact-faq-grid">
+                <article class="contact-faq-item">
+                    <h3>What can I contact FOOTRA about?</h3>
+                    <p>You can enquire about footwear products, sizes and fit, order details, delivery and after-sales support.</p>
+                </article>
+                <article class="contact-faq-item">
+                    <h3>How can I send an enquiry to FOOTRA?</h3>
+                    <p>Use the contact form on this page to enter your name, email address and message. A working server or form service is required to deliver submissions to the FOOTRA team.</p>
+                </article>
+                <article class="contact-faq-item">
+                    <h3>Can I ask for help choosing a shoe size?</h3>
+                    <p>Yes. Include the footwear style you are interested in and your sizing question in the contact form message.</p>
+                </article>
+                <article class="contact-faq-item">
+                    <h3>Does the contact form send messages automatically?</h3>
+                    <p>The current page validates the form in the browser. It needs a connected backend or form service before messages can be delivered to a support inbox.</p>
+                </article>
+            </div>
         </section>
 
         <!-- NEWSLETTER -->
